@@ -4,24 +4,32 @@ var DinnerModel = function() {
 	//TODO Lab 2 implement the data structure that will hold number of guest
 	// and selected dinner options for dinner menu
 
+	var numberOfGuests = 0;
+
+	var dinnerMenu = [];
 
 	this.setNumberOfGuests = function(num) {
 		//TODO Lab 2
+		numberOfGuests = num;
 	}
 
 	// should return 
 	this.getNumberOfGuests = function() {
 		//TODO Lab 2
+		return numberOfGuests;
 	}
 
 	//Returns the dish that is on the menu for selected type 
 	this.getSelectedDish = function(type) {
-		//TODO Lab 2
+		return $(dinnerMenu).filter(function(index,dish) {
+	  		return dish.type == type;
+	  	});
 	}
 
 	//Returns all the dishes on the menu.
 	this.getFullMenu = function() {
 		//TODO Lab 2
+		return dinnerMenu;
 	}
 
 	//Returns all ingredients for all the dishes on the menu.
@@ -38,6 +46,15 @@ var DinnerModel = function() {
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
 		//TODO Lab 2 
+		var notFound = true;
+		$.each(dinnerMenu,function(index,ingredient) {
+				if(dinnerMenu.type.indexOf(filter)!=-1) {
+					notFound = false;
+				}
+		});
+		if(notFound){
+			dinnerMenu.push(this.getDish(id));
+		}
 	}
 
 	//Removes dish from menu
@@ -52,8 +69,10 @@ var DinnerModel = function() {
 	  return $(dishes).filter(function(index,dish) {
 		var found = true;
 		if(filter){
+	  		console.log("filter = " + filter);
 			found = false;
 			$.each(dish.ingredients,function(index,ingredient) {
+				//match if equal
 				if(ingredient.name.indexOf(filter)!=-1) {
 					found = true;
 				}
@@ -327,5 +346,13 @@ var DinnerModel = function() {
 			}]
 		}
 	];
+	/* Initial test for methods
+	console.log(numberOfGuests);
+	this.setNumberOfGuests(5);
+	console.log("Setting numGuest to 5 = " + numberOfGuests); */
+
+	console.log(this.getFullMenu());
+	this.addDishToMenu(1);
+	console.log(this.getFullMenu());
 
 }
