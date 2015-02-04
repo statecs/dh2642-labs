@@ -46,14 +46,17 @@ var DinnerModel = function() {
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
 		//TODO Lab 2 
-		var notFound = true;
-		$.each(dinnerMenu,function(index,ingredient) {
-				if(dinnerMenu.type.indexOf(filter)!=-1) {
-					notFound = false;
-				}
+		var notFound = true;			  	//To check if type is already in the menu
+		var dishToAdd = this.getDish(id)	//Dish to add for the menu
+		$.each(dinnerMenu,function(index) {
+			//Check if dish of type found and replace it
+			if(dinnerMenu[index].type === dishToAdd.type) {
+				notFound = false;
+				dinnerMenu[index] = dishToAdd;
+			}
 		});
 		if(notFound){
-			dinnerMenu.push(this.getDish(id));
+			dinnerMenu.push(dishToAdd);
 		}
 	}
 
@@ -350,9 +353,11 @@ var DinnerModel = function() {
 	console.log(numberOfGuests);
 	this.setNumberOfGuests(5);
 	console.log("Setting numGuest to 5 = " + numberOfGuests); */
-
+	
+	/* Console for testing addDishToMenu
 	console.log(this.getFullMenu());
 	this.addDishToMenu(1);
 	console.log(this.getFullMenu());
-
+	this.addDishToMenu(2);
+	console.log(this.getFullMenu()); */
 }
