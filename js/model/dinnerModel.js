@@ -26,15 +26,21 @@ var DinnerModel = function() {
 	  	});
 	}
 
-	//Returns all the dishes on the menu.
+	//Returns all the dishes on the menu (IMPROVEMENT: Add sorting by type)
 	this.getFullMenu = function() {
-		//TODO Lab 2
 		return dinnerMenu;
 	}
 
-	//Returns all ingredients for all the dishes on the menu.
+	//Returns all ingredients for all the dishes on the menu. (IMPROVEMENT: Add quantity if ingridient matches)
 	this.getAllIngredients = function() {
 		//TODO Lab 2
+		var allIngredients = [];
+		$.each(dinnerMenu,function(index, dishFromMenu){
+			$.each(dishFromMenu.ingredients,function(index,ingredient) {
+				allIngredients.push(ingredient);
+			});
+		});
+		return allIngredients;
 	}
 
 	//Returns the total price of the menu (all the ingredients multiplied by number of guests).
@@ -397,5 +403,13 @@ var DinnerModel = function() {
 	console.log("Total price = " + this.getTotalMenuPrice());
 	this.setNumberOfGuests(5);
 	console.log("Total price (5 pers) = " + this.getTotalMenuPrice());*/
+
+	/* Console for testing getAllIngredients
+	console.log(this.getFullMenu());
+	this.addDishToMenu(100);
+	this.addDishToMenu(1);
+	this.addDishToMenu(200);
+	console.log(this.getFullMenu());
+	console.log(this.getAllIngredients()); */
 
 }
