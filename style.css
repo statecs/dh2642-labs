@@ -1,0 +1,165 @@
+html{
+	height: 100%;
+}
+body{
+	background: url(bg.jpg) no-repeat center center fixed;;
+	height: 100%;
+  	max-width: 100%;
+  	background-size: cover;
+}
+
+#header{
+	background-color: #F0F0EB;
+}
+
+#container{
+	height: 100%;
+}
+
+#row100{
+	height: 100%;
+}
+
+#row1{
+	height: 25em;
+
+}
+
+.header{
+	background: rgba(255,250,205, 0.6);
+	border-bottom-width:0.3em;
+	border-bottom-color:black;
+	border-bottom-style: solid;
+	padding-left: 2em;
+}
+
+.startDiv{
+	padding-top: 15em;
+
+}
+
+.price{
+	color: red;
+
+}
+.welcomeDiv{
+	background: rgba(245, 245, 245, 0.6);
+	padding-bottom: 1em;
+	margin-left: 5em;
+}
+
+
+#secondDiv{
+	height: 100%;
+}
+
+#leftMenu{
+	padding-left: 2em;
+	background: white;
+	height: 100%;
+	border-right-width: 0.3em;
+	border-right-color: black;
+	border-right-style: solid;
+}
+
+.rightColumn{
+	height:100%;
+}
+
+#selectDishView{
+	padding-bottom: 1em;
+	background: rgb(255,250,205);
+	border-bottom-width:0.3em;
+	border-bottom-color:black;
+	border-bottom-style: solid;
+}
+
+#dishes{
+	padding-top: 2em;
+	background: white;
+	/*height: 100%;*/
+}
+
+#dish{
+	background: white;
+	height: 100%;
+}
+
+#ingredients{
+	background: rgb(255,250,205);
+	border-left-width: 0.3em;
+	border-left-color: black;
+	border-left-style: solid;
+	border-bottom-width: 0.3em;
+	border-bottom-color: black;
+	border-bottom-style: solid;
+}
+
+#overview{
+	background: rgb(255,250,205);
+	border-bottom-width: 0.3em;
+	border-bottom-color: black;
+	border-bottom-style: solid;
+}
+
+#overViewDishes{
+	background: white;
+	height: 100%;
+
+}
+
+#printButton{
+	background: white;
+	border-top-width: 0.1em;
+	border-top-color: black;
+	border-top-style: solid;
+	padding: 0.4em;
+	height: 100%;
+
+}
+
+#totalPrice{
+	background: white;
+	border-left-width: 0.1em;
+	border-left-color: black;
+	border-left-style: solid;
+	padding: 0.4em;
+	height: 100%;
+	position: relative;
+
+}
+
+#totalPriceContent{
+	position: absolute;
+	bottom: 0;
+	padding: 0.4em;
+
+}
+
+#overviewBtn{
+	padding-top: 1em;
+}
+
+#overViewDishes{
+	padding:2em;
+}
+
+#lastPage{
+	background: white;
+}
+
+.thumbnail{
+	cursor:pointer;
+}
+.thumbnail:hover{
+	background-color:#F0F0EB;
+}
+#lastPageImage{
+	padding-top: 1.8em;
+}
+
+#pending {
+	padding:1em;
+	border: 0.1em;
+	background-color:#F0F0EB;
+}
