@@ -55,6 +55,7 @@ var DinnerModel = function() {
 				dinnerMenu[index] = dishToAdd;
 			}
 		});
+		//If not found in menu, just add dish in the end
 		if(notFound){
 			dinnerMenu.push(dishToAdd);
 		}
@@ -62,7 +63,18 @@ var DinnerModel = function() {
 
 	//Removes dish from menu
 	this.removeDishFromMenu = function(id) {
-		//TODO Lab 2
+		var indexToRemove = -1;			//Index of item to remove
+		$.each(dinnerMenu,function(index, dishFromMenu){
+			//Check if 'id' is in dinnerMenu
+			if(dishFromMenu.id === id){
+				indexToRemove = index;
+			}
+		});
+		//Remove dish from menu if found
+		if(indexToRemove != -1){
+			dinnerMenu.splice(indexToRemove,1);
+		}
+
 	}
 
 	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
@@ -360,4 +372,13 @@ var DinnerModel = function() {
 	console.log(this.getFullMenu());
 	this.addDishToMenu(2);
 	console.log(this.getFullMenu()); */
+
+	/* Console for testing removeDishFromMenu()
+	console.log("Full menu = " + this.getFullMenu());
+	this.addDishToMenu(1);
+	console.log("Full menu = " + this.getFullMenu());
+	this.addDishToMenu(100);
+	console.log("Full menu = " + this.getFullMenu());
+	this.removeDishFromMenu(1);
+	console.log(this.getFullMenu());*/
 }
