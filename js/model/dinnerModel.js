@@ -20,6 +20,7 @@ var DinnerModel = function() {
 	}
 
 	//Returns the dish that is on the menu for selected type 
+	// Must handle empty list, or if type is not found
 	this.getSelectedDish = function(type) {
 		return $(dinnerMenu).filter(function(index,dish) {
 	  		return dish.type == type;
@@ -393,7 +394,7 @@ var DinnerModel = function() {
 	this.addDishToMenu(100);
 	console.log("Full menu = " + this.getFullMenu());
 	this.removeDishFromMenu(1);
-	console.log(this.getFullMenu());*/
+	console.log(this.getFullMenu());*/d
 
 	/* Console for testing getTotalMenuPrice
 	console.log(this.getFullMenu());
