@@ -5,17 +5,19 @@ var DinnerModel = function() {
 	// and selected dinner options for dinner menu
 	var numberOfGuests = 0;
 	var menu = [];
+	menu['starter'] = 1;
 
 	this.setNumberOfGuests = function(num) {
 		//TODO Lab 2
-	numberOfGuests = num;
-	
+		if(num>0) {
+		numberOfGuests = num;
+		}
 	}
 
 	// should return 
 	this.getNumberOfGuests = function() {
 		//TODO Lab 2
-		return parseInt(getNumberOfGuests);
+		return parseInt(numberOfGuests);
 	}
 
 	this.setSelectedDishType = function(type) {
@@ -25,34 +27,57 @@ var DinnerModel = function() {
 	//Returns the dish that is on the menu for selected type 
 	this.getSelectedDish = function(type) {
 		//TODO Lab 2
-		return selectedDishType;
+		return menu[type];
 
 	}
 
 	//Returns all the dishes on the menu.
 	this.getFullMenu = function() {
 		//TODO Lab 2
+		var menuDishes = [];
+		for(key in menu) {
+			menuDishes.push(this.getDish(menu[key]));
+		}
+		return menuDishes;
 	}
 
 	//Returns all ingredients for all the dishes on the menu.
 	this.getAllIngredients = function() {
+		var ingredients = [];
 		//TODO Lab 2
+
+		for(key in menu) {
+			var dish = this.getDish(menu[key]);
+			ingredients = ingredients.concat(dish.ingredients);
+		}
+		return ingredients;
 	}
 
 	//Returns the total price of the menu (all the ingredients multiplied by number of guests).
 	this.getTotalMenuPrice = function() {
 		//TODO Lab 2
+			var ingredients = this.getAllIngredients();
+		var sum = 0.;
+		for(key in ingredients) {
+			sum += parseFloat(ingredients[key].price) * this.getNumberOfGuests();
+		}
+		return sum;
 	}
 
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
 		//TODO Lab 2 
+		menu[this.getDish(id).type] = id;
 	}
 
 	//Removes dish from menu
 	this.removeDishFromMenu = function(id) {
 		//TODO Lab 2
+			var type = this.getDish(id).type;
+		if(menu[type] == id) {
+			delete menu[type];
+		}
 	}
 
 	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
@@ -65,6 +90,7 @@ var DinnerModel = function() {
 		if(filter){
 			found = false;
 			$.each(dish.ingredients,function(index,ingredient) {
+				//Exact match
 				if(ingredient.name.indexOf(filter)!=-1) {
 					found = true;
 				}
@@ -77,7 +103,22 @@ var DinnerModel = function() {
 	  	return dish.type == type && found;
 	  });	
 	}
+	
+	this.getTitle = function(id) {
+	for(key in dishes) {
+		if(dishes[key].id == id) {
+			return dishes[key].name;
+			}
+		}
+	}
 
+	this.getDescription = function(id) {
+	for(key in dishes) {
+		if(dishes[key].id == id) {
+			return dishes[key].description;
+			}
+		}
+	}
 	//function that returns a dish of specific ID
 	this.getDish = function (id) {
 	  for(key in dishes){
@@ -89,8 +130,16 @@ var DinnerModel = function() {
 
 	this.setNumberOfGuests(5);
 	console.log("");
-
 	console.log(numberOfGuests);
+
+	console.log(this.getFullMenu());
+
+	this.getAllDishes();
+
+	console.log(getAllDishes);
+	this.addDishToMenu(200);
+
+	
 
 
 	// the dishes variable contains an array of all the 
