@@ -40,20 +40,22 @@
 				<label class="numGuests" for="numGuests"> People </label>
 				<input id="peopleInput" value="0" type="number" name="quantity" min="0" max="99">
 		    </div>
-
-		<div class="dishHead">
-			<label>Dish Name </label>
-			<p class="pull-right">Cost</p>
-		</div>
-
-		<div class="sidebar-content">
-			<div><span id="nameOfStarter"></span><span id="priceOfStarter"></span> Pending 0.0</div>
-
-			<div class="pull-right">SEK <div id="priceOfMenu"></div></div>
-
-			<button type="button" class="btn btn-default" disabled="disabled">Confirm Dinner</button>
-	     </div>
-    	</div>
+			<table class="table" id="sidebarTable">
+		    <thead>
+		      <tr>
+		        <th>Dish</th>
+		        <th class="text-right">Cost</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		      <tr>
+		        <td id="sidebar-placeholder-dish">Pending</td>
+		        <td class="text-right" id="sidebar-placeholder-cost">0.0</td>
+		      </tr>
+		    </tbody>
+		  </table>
+			<button type="button" id="sidebarConfirmButton" class="btn btn-default" disabled="disabled">Confirm Dinner</button>
+    	</div>	
   	</div>
 
     <!-- mainView -->
@@ -209,126 +211,22 @@
 
 </div> <!--end dishToSelectView-->
 
-
-<div id="selectedDishView" style="display:none"> <!-- Start selectedDishView-->
-    
-    <!--start main content -->
-    
-    <div class="content col-md-10">
-       <div class="select-dish row">
-	
-			<form action="#" class="col-md-3">
-			  <h4>Select dish</h4>
-			  <input type="text" name="FirstName" value="Enter keywords">
-			  <input type="submit" value="Search">
-			</form>
-			
-			<select class="categories col-md-3" id="dropdownMenu">
-			  
-		  	<option value="all">All Dishes</option>  
-			<option value="starter">Starter</option>
-			<option value="main">Main Course</option>
-			<option value="dessert">Dessert</option>
-		  	  
-			</select>
-
-	
-      </div><!--end select-dish-->
-      
-      
-      <div class="main-container recipes-list col-md-10">
-      <div id="starters">
-	      <h3> Starters</h3>
-	     	<div class="image">
-			  <img src="images/toast.jpg"/>
-			  <button class="img-name" id="toast">French Toast</button><br/>
-			  <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla sit amet turpis non tempus. Praesent nec diam a augue mattis dictum nec sed odio. Fusce quis nisi nibh.</p>
-			</div>
-
-			<div class="image">
-			  <img src="images/bakedbrie.jpg"/>
-			  <button class="img-name" id="bakedbrie">Baked Brie</button><br>
-			  <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla sit amet turpis non tempus. Praesent nec diam a augue mattis dictum nec sed odio. Fusce quis nisi nibh.</p>
-			</div>
-
-			<div class="image">
-			  <img src="images/sourdough.jpg"/>
-			  <button class="img-name" id="sourdough">Sourdough</button><br/>
-			  <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla sit amet turpis non tempus. Praesent nec diam a augue mattis dictum nec sed odio. Fusce quis nisi nibh.</p>
-			</div>
-
-		</div><!--end #starters-->
-
-	<div id="main_course">
-      <h3> Main Dishes</h3>
-		<div class="image">
-			  <img src="images/meatballs.jpg"/>
-			  <button class="img-name" id="meatballs">Meatballs</button><br/>
-			  <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla sit amet turpis non tempus. Praesent nec diam a augue mattis dictum nec sed odio. Fusce quis nisi nibh.</p>
-			</div>
-
-		<div class="image">
-		  <img src="images/bakedbrie.jpg"/>
-		  <button class="img-name" id="bakedbrie2">MD2</button><br>
-		  <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla sit amet turpis non tempus. Praesent nec diam a augue mattis dictum nec sed odio. Fusce quis nisi nibh.</p>
-		</div>
-
-		 <div class="image">
-		  <img src="images/meatballs.jpg"/>
-		  <button class="img-name" id="meatballs2">MD3</button><br/>
-		  <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla sit amet turpis non tempus. Praesent nec diam a augue mattis dictum nec sed odio. Fusce quis nisi nibh.</p>
-		</div>
-
-		<div class="image">
-		  <img src="images/meatballs.jpg"/>
-		  <button class="img-name" id="meatballs3">MD4</button><br/>
-		  <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla sit amet turpis non tempus. Praesent nec diam a augue mattis dictum nec sed odio. Fusce quis nisi nibh.</p>
-		</div>
-
-     </div><!--end #main_course-->
-
-     <div id="desserts">
-		<div class="image">
-		  <img src="images/icecream.jpg"/>
-		  <button class="img-name" id="iceCream">Chocolate Ice Cream</button><br/>
-		  <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla sit amet turpis non tempus. Praesent nec diam a augue mattis dictum nec sed odio. Fusce quis nisi nibh.</p>
-		</div>
-	
-		<div class="image">
-		  <img src="images/icecream.jpg"/>
-		  <button class="img-name" id="iceCream2">Vanilla Ice Cream</button><br/>
-		  <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla sit amet turpis non tempus. Praesent nec diam a augue mattis dictum nec sed odio. Fusce quis nisi nibh.</p>
-		</div>
-	
-		<div class="image">
-		  <img src="images/icecream.jpg"/>
-		  <button class="img-name" id="iceCream3">Strawberry Ice Cream</button><br/>
-		  <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla sit amet turpis non tempus. Praesent nec diam a augue mattis dictum nec sed odio. Fusce quis nisi nibh.</p>
-		</div>
-
-	 </div><!--end #desserts-->
-  	</div><!--ends food_images main-container	-->
-	</div><!-- end content content col-md-10 -->
-</div>	<!-- END mainView -->
-
-
 <div id="fullMenuView" style="display:none"> <!-- Start fullMenuView -->
 
 	<div class="page-bar row">
-	<div class="col-md-9">
-		<h3>My Dinner: 4 people</h3>
-	</div>
-	<div class="col-md-2">
-		<button id="backToMainButton" >Go back and edit dinner</button>
-	</div>
-
+		<div class="col-md-9">
+			<h3>My Dinner: 4 people</h3>
+		</div>
+		<div class="col-md-2">
+			<button id="backToMainButton" >Go back and edit dinner</button>
+		</div>
 	</div> <!--ends page-5-bar-->
 
 	 <div class="main-container recipes-list col-md-10">
       <div id="starters">
 	     	<div class="image">
 			  <img src="images/toast.jpg"/>
-			  <button class="img-name" id="toast">French Toast</button><br/>
+			  <button class="img-name" id="french-toast">French Toast</button><br/>
 			  <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla sit amet turpis non tempus. Praesent nec diam a augue mattis dictum nec sed odio. Fusce quis nisi nibh.</p>
 			</div>
 		<label id="price"></label>
@@ -382,7 +280,6 @@
     <script src="js/view/sidebarView.js"></script>
     <script src="js/view/mainView.js"></script>
     <script src="js/view/dishToSelectView.js"></script>
-    <script src="js/view/selectedDishView.js"></script>
     <script src="js/view/fullMenuView.js"></script>
  	<script src="js/view/printMenuView.js"></script>
 
@@ -390,5 +287,8 @@
  	<script src="js/controllers/startCtrl.js"></script>
  	<script src="js/controllers/mainCtrl.js"></script>
  	<script src="js/controllers/sidebarCtrl.js"></script>
+ 	<script src="js/controllers/dishToSelectCtrl.js"></script>
+ 	<script src="js/controllers/fullMenuCtrl.js"></script>
+ 	<script src="js/controllers/printMenuCtrl.js"></script>
 </body>
 </html>

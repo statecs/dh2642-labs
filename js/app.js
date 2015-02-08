@@ -5,15 +5,17 @@ $(function() {
 	//And create the needed views
 	var startView = new StartView($("#startView"), model);
 	var sidebarView = new SidebarView($("#sidebarView"), model);
-	window.mainView = new mainView($("#mainView"), model);
-	window.dishToSelectView = new dishToSelectView($("#dishToSelectView"), model);
-	window.selectedDishView = new selectedDishView($("#selectedDishView"), model);
-	window.fullMenuView = new fullMenuView($("#fullMenuView"), model);
-	window.printMenuView = new printMenuView($("#printMenuView"), model);
+	var mainView = new MainView($("#mainView"), model);
+	var dishToSelectView = new DishToSelectView($("#dishToSelectView"), model);
+	var fullMenuView = new FullMenuView($("#fullMenuView"), model);
+	var printMenuView = new PrintMenuView($("#printMenuView"), model);
 
 	//And create the needed controllers
 	var startCtrl = new StartCtrl(startView, model);
 	var mainCtrl = new MainCtrl(mainView, model);
-	var sidebarCtrl = new MainCtrl(sidebarView, model);
+	var sidebarCtrl = new SidebarCtrl(sidebarView, model);
+	var dishToSelectCtrl = new DishToSelectCtrl(dishToSelectView, model);
+	var fullMenuCtrl = new FullMenuCtrl(fullMenuView, model);
+	var printMenuCtrl = new PrintMenuCtrl(printMenuView, model);
 
 });
