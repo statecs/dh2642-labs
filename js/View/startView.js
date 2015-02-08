@@ -1,4 +1,4 @@
-var viewOne = function (container, model) {
+var startView = function (container, model) {
 
 	/* Find #createbutton */
 	createButton = container.find("#createButton");
@@ -7,9 +7,9 @@ var viewOne = function (container, model) {
 	$( createButton ).click(function() {
 
 		/* #pageOne change CSS to display:none; */
-  	  $("#pageOne").css("display", "none");
+  	  $("#startView").css("display", "none");
   	  /* #pageTwo change CSS to display:inline; */
-	  $("#pageTwo").css("display", "inline");
+	  $("#mainView").css("display", "inline");
 	  /* Remove background from #pageOne */
 	  $(".bg").removeClass("bg");
 

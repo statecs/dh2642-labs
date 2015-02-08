@@ -1,4 +1,4 @@
-var viewThree = function (container, model) {
+var dishToSelectView = function (container, model) {
 
 	/* Find #confirmButton,backButton */
 	confirmButton = container.find("#confirmButton");
@@ -7,17 +7,17 @@ var viewThree = function (container, model) {
 	/* If confirmButton click */
 	$( confirmButton ).click(function() {
 	/* #pageThree change CSS to display:none; */
-  	  $("#pageThree").css("display", "none");
+  	  $("#dishToSelectView").css("display", "none");
   	  /* #pageFour change CSS to display:inline; */
-	  $("#pageFour").css("display", "inline");
+	  $("#selectedDishView").css("display", "inline");
 
 	});
 	/* If backbutton click */
 	$( backButton ).click(function() {
 	  /* #pageThree change CSS to display:none; */
-  	  $("#pageThree").css("display", "none");
+  	  $("#dishToSelectView").css("display", "none");
   	  /* #pageTwo change CSS to display:inline; */
-	  $("#pageTwo").css("display", "inline");
+	  $("#mainView").css("display", "inline");
 
 
 

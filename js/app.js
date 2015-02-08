@@ -3,11 +3,11 @@ $(function() {
 	var model = new DinnerModel();
 	
 	//And create the needed controllers and views
-	window.viewOne = new viewOne($("#pageOne"), model);
-	window.viewTwo = new viewTwo($("#pageTwo"), model);
-	window.viewThree = new viewThree($("#pageThree"), model);
-	window.viewFour = new viewFour($("#pageFour"), model);
-	window.viewFive = new viewFive($("#pageFive"), model);
-	window.viewSix = new viewSix($("#pageSix"), model);
+	window.startView = new startView($("#startView"), model);
+	window.mainView = new mainView($("#mainView"), model);
+	window.dishToSelectView = new dishToSelectView($("#dishToSelectView"), model);
+	window.selectedDishView = new selectedDishView($("#selectedDishView"), model);
+	window.fullMenuView = new fullMenuView($("#fullMenuView"), model);
+	window.printMenuView = new printMenuView($("#printMenuView"), model);
 
 });

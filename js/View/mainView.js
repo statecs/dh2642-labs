@@ -1,4 +1,4 @@
-var viewTwo = function (container, model) {
+var mainView = function (container, model) {
 
 	/* Find #toastButton,bakedbrieButton,sourdoughButton */
 	toastButton = container.find("#toast");
@@ -8,9 +8,9 @@ var viewTwo = function (container, model) {
 	/* If toastButton  click */
 	$( toastButton ).click(function() {
 		/* #pageTwo change CSS to display:none; */
-		$("#pageTwo").css("display", "none");
+		$("#mainView").css("display", "none");
 		/* #pageThree change CSS to display:inline; */
-		$("#pageThree").css("display", "inline");
+		$("#dishToSelectView").css("display", "inline");
 
 
 	});
