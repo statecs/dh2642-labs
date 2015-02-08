@@ -1,6 +1,6 @@
 var printMenuView = function(container, model) {
 
-	backpage = container.find("#back6to2Button");
+	backpage = container.find("#backToMainButton");
 
 	$( backpage ).click(function() {
 		

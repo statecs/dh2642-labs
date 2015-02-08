@@ -19,14 +19,11 @@ header{
   padding: 20px 50px;
   background:rgba(255, 229, 153, 0.5);
 }
-/*header background gray */
-header#gray{
-  background:rgba(211, 211, 211, 0.5);
-}
 /* Header subtitle - italic */
 header p{
   font-style: italic;
 }
+/*REMOVED THIS FROM SIDEBAR, MAYBE ADD LATER */
 /* buttons and text - color black and bold */
 button{
   background-color: orange;

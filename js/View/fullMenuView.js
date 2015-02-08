@@ -1,7 +1,7 @@
 var fullMenuView = function(container, model) {
 
 	printFull = container.find("#printFull");
-	back2two = container.find("#back5to2Button");
+	back2two = container.find("#backToMainButton");
 
 	$( printFull ).click(function() {
 		
