@@ -52,7 +52,7 @@
 		</div>
 
 		<div class="sidebar-content">
-			<p>Pending 0.0</p>
+			<div><span id="nameOfStarter"></span><span id="priceOfStarter"></span> Pending 0.0</div>
 
 			<div class="pull-right">SEK <div id="priceOfMenu"></div></div>
 
@@ -138,6 +138,7 @@
      </div><!--end #main_course-->
 
      <div id="desserts">
+     <h3>Desserts</h3>
 		<div class="image">
 		  <img src="images/icecream.jpg"/>
 		  <button class="img-name" id="iceCream">Chocolate Ice Cream</button><br/>
@@ -183,7 +184,7 @@
 		</div>
 
 		<div class="sidebar-content">
-			<p>Pending 0.0</p>
+			<div><span id="nameOfStarter"></span><span id="priceOfStarter"></span> Pending 0.0</div>
 
 			<div class="pull-right">SEK <div id="priceOfMenu"></div></div>
 
@@ -199,7 +200,7 @@
 		<div class="food">
 			<h3 id="dishHeader"></h3>
 			<div class="image">
-				<img src="images/icecream.jpg" id="dishPicture"/>
+				<img src="images/toast_big.jpg" id="dishPicture"/>
 			</div><!--ends image-->
 			
 			<p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla sit amet turpis non tempus. Praesent nec diam a augue mattis dictum nec sed odio. Fusce quis nisi nibh.</p>
@@ -257,7 +258,7 @@
 		</div>
 
 		<div class="sidebar-content">
-			<p>French Toast 10.0</p>
+				<div><span id="nameOfStarter"></span><span id="priceOfStarter"></span> French Toast 10.0</div>
 
 			<div class="pull-right">SEK <div id="priceOfMenu"></div></div>
 
@@ -389,7 +390,7 @@
 			  <button class="img-name" id="toast">French Toast</button><br/>
 			  <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla sit amet turpis non tempus. Praesent nec diam a augue mattis dictum nec sed odio. Fusce quis nisi nibh.</p>
 			</div>
-
+		<label id="price"></label>
 		<button id="printFull">Print Full Recipe</button>
 
 		</div> <!--ends page-5-content-->
@@ -406,32 +407,31 @@
 	</header> 
 
 	<div class="page-bar row">
-	<div class="col-md-9"><h3>My Dinner: 4 people</h3></div>
-	<div class="col-md-2"><button id="back6to2Button" >Go back and edit dinner</button></div>
-
+		<div class="col-md-9">
+			<h3>My Dinner: 4 people</h3>
+		</div>
+		<div class="col-md-2">
+			<button id="back6to2Button" >Go back and edit dinner</button>
+		</div>
 	</div> <!--ends page-bar-->
 
 
 	<div class="page-6-content">
 	<div class="row">
-		<div class="col-md-2" id="starterImage"><img src="images/sourdough.jpg"/></div>
-		<div class="col-md-3"><h3><div id="starterName"></div></h3>
+		<div class="col-md-2" id="mainImage">
+			<img src="images/toast.jpg"/>
 		</div>
-		<div class="col-md-5"><h3>Preparations</h3><p id="starterDescription"></p></div>
+		<div class="col-md-3">
+			<h3>
+				<div id="mainName">Toast</div>
+			</h3>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla sit amet turpis non tempus. Praesent nec diam a augue mattis dictum nec sed odio. Fusce quis nisi nibh.</p>
+		</div>
+		<div class="col-md-5">
+			<h4>Preparations</h4>
+			<p><div id="mainDescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla sit amet turpis non tempus. Praesent nec diam a augue mattis dictum nec sed odio. Fusce quis nisi nibh.</div></p>
+		</div>
 	</div>
-
-	<div class="row">
-		<div class="col-md-2" id="mainImage"><img src="images/toast.jpg"/></div>
-		<div class="col-md-3"><h3><div id="mainName"></div></h3></div>
-		<div class="col-md-5"><h3>Preparations</h3><p><div id="mainDescription"></div></p></div>
-	</div>
-
-	<div class="row">
-		<div class="col-md-2" id="dessertImage"><img src="images/meatballs.jpg"/></div>
-		<div class="col-md-3"><h3><div id="dessertName"></div></h3></div>
-		<div class="col-md-5"><h3>Preparations</h3><p><div id="dessertDescription"></div></p></div>
-	</div>
-
 
 		</div> <!--ends page-6-content-->
 
