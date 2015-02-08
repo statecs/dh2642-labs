@@ -4,11 +4,6 @@ var DinnerModel = function() {
 	//TODO Lab 2 implement the data structure that will hold number of guest
 	// and selected dinner options for dinner menu
 
-<<<<<<< HEAD
-
-	this.setNumberOfGuests = function(num) {
-		//TODO Lab 2
-=======
 	var numberOfGuests = 0;
 
 	var dinnerMenu = [];
@@ -16,29 +11,11 @@ var DinnerModel = function() {
 	this.setNumberOfGuests = function(num) {
 		//TODO Lab 2
 		numberOfGuests = num;
->>>>>>> origin/lab2
 	}
 
 	// should return 
 	this.getNumberOfGuests = function() {
 		//TODO Lab 2
-<<<<<<< HEAD
-	}
-
-	//Returns the dish that is on the menu for selected type 
-	this.getSelectedDish = function(type) {
-		//TODO Lab 2
-	}
-
-	//Returns all the dishes on the menu.
-	this.getFullMenu = function() {
-		//TODO Lab 2
-	}
-
-	//Returns all ingredients for all the dishes on the menu.
-	this.getAllIngredients = function() {
-		//TODO Lab 2
-=======
 		return numberOfGuests;
 	}
 
@@ -65,14 +42,10 @@ var DinnerModel = function() {
 			});
 		});
 		return allIngredients;
->>>>>>> origin/lab2
 	}
 
 	//Returns the total price of the menu (all the ingredients multiplied by number of guests).
 	this.getTotalMenuPrice = function() {
-<<<<<<< HEAD
-		//TODO Lab 2
-=======
 		var totalMenuPrice = 0;			//To count total menu price	
 		$.each(dinnerMenu,function(index, dishFromMenu){
 			//For each ingridient, add price times number of guests
@@ -81,15 +54,11 @@ var DinnerModel = function() {
 			});
 		});
 		return totalMenuPrice;
->>>>>>> origin/lab2
 	}
 
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
-		//TODO Lab 2 
-<<<<<<< HEAD
-=======
 		var notFound = true;			  	//To check if type is already in the menu
 		var dishToAdd = this.getDish(id)	//Dish to add for the menu
 		$.each(dinnerMenu,function(index) {
@@ -103,14 +72,10 @@ var DinnerModel = function() {
 		if(notFound){
 			dinnerMenu.push(dishToAdd);
 		}
->>>>>>> origin/lab2
 	}
 
 	//Removes dish from menu
 	this.removeDishFromMenu = function(id) {
-<<<<<<< HEAD
-		//TODO Lab 2
-=======
 		var indexToRemove = -1;			//Index of item to remove
 		$.each(dinnerMenu,function(index, dishFromMenu){
 			//Check if 'id' is in dinnerMenu
@@ -122,8 +87,6 @@ var DinnerModel = function() {
 		if(indexToRemove != -1){
 			dinnerMenu.splice(indexToRemove,1);
 		}
-
->>>>>>> origin/lab2
 	}
 
 	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
@@ -133,15 +96,9 @@ var DinnerModel = function() {
 	  return $(dishes).filter(function(index,dish) {
 		var found = true;
 		if(filter){
-<<<<<<< HEAD
-			found = false;
-			$.each(dish.ingredients,function(index,ingredient) {
-=======
-	  		console.log("filter = " + filter);
 			found = false;
 			$.each(dish.ingredients,function(index,ingredient) {
 				//match if equal
->>>>>>> origin/lab2
 				if(ingredient.name.indexOf(filter)!=-1) {
 					found = true;
 				}
@@ -415,8 +372,6 @@ var DinnerModel = function() {
 			}]
 		}
 	];
-<<<<<<< HEAD
-=======
 	/* Initial test for methods
 	console.log(numberOfGuests);
 	this.setNumberOfGuests(5);
@@ -436,7 +391,7 @@ var DinnerModel = function() {
 	this.addDishToMenu(100);
 	console.log("Full menu = " + this.getFullMenu());
 	this.removeDishFromMenu(1);
-	console.log(this.getFullMenu());*/d
+	console.log(this.getFullMenu());*/
 
 	/* Console for testing getTotalMenuPrice
 	console.log(this.getFullMenu());
@@ -454,6 +409,4 @@ var DinnerModel = function() {
 	this.addDishToMenu(200);
 	console.log(this.getFullMenu());
 	console.log(this.getAllIngredients()); */
->>>>>>> origin/lab2
-
 }
