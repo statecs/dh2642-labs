@@ -1,4 +1,4 @@
-var ViewOne = function (container, model) {
+var viewOne = function (container, model) {
 
 	/* Find #createbutton */
 	createButton = container.find("#createButton");

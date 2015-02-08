@@ -1,4 +1,4 @@
-var ViewSix = function(container, model) {
+var viewSix = function(container, model) {
 
 	backpage = container.find("#back6to2Button");
 

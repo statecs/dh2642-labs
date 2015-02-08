@@ -1,4 +1,4 @@
-var ViewFour = function(container, model) {
+var viewFour = function(container, model) {
 
 	confirmDinner = container.find("#confirmDinner4");
 	toastButton = container.find("#toast");

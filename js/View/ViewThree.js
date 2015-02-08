@@ -1,4 +1,4 @@
-var ViewThree = function (container, model) {
+var viewThree = function (container, model) {
 
 	/* Find #confirmButton,backButton */
 	confirmButton = container.find("#confirmButton");

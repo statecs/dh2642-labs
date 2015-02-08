@@ -1,4 +1,4 @@
-var ViewTwo = function (container, model) {
+var viewTwo = function (container, model) {
 
 	/* Find #toastButton,bakedbrieButton,sourdoughButton */
 	toastButton = container.find("#toast");

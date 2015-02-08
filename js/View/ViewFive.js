@@ -1,4 +1,4 @@
-var ViewFive = function(container, model) {
+var viewFive = function(container, model) {
 
 	printFull = container.find("#printFull");
 	back2two = container.find("#back5to2Button");
@@ -10,7 +10,7 @@ var ViewFive = function(container, model) {
 
 
 	});
-		$( back2two ).click(function() {
+	$( back2two ).click(function() {
 		
   	  $("#pageFive").css("display", "none");
 	  $("#pageTwo").css("display", "inline");
