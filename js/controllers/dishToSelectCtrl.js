@@ -19,6 +19,7 @@ var DishToSelectCtrl = function(view,model) {
 	/* If removeButton click */
 	view.container.find("#removeButton").click(function() {
 	  /* #dishToSelectView change CSS to display:none; */
+
   	  $("#dishToSelectView").css("display", "none");
   	  
   	  /*Remove disability of confirm button in sidebar, to make it possible to checkout*/
