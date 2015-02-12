@@ -73,7 +73,7 @@
 			  <input type="submit" value="Search">
 			</form>
 			
-			<select class="categories col-md-3" id="dropdownMenu">
+			<select class="categories col-md-3" id="dishType">
 			  
 		  	<option value="all">All Dishes</option>  
 			<option value="starter">Starter</option>
@@ -85,7 +85,12 @@
       </div><!--end select-dish-->
 
       <!--Dishes content main-container, used for creation in mainView.js - loadDishes()-->
-      <div class="main-container recipes-list"></div>
+      <div class="main-container recipes-list col-md-10">
+      	
+      	 <div id="starters"></div>
+      	  <div id="main_course"></div>
+      	   <div id="dessert"></div>
+      </div>
 
 </div>	<!-- END mainView -->
 
