@@ -11,19 +11,13 @@ var DishToSelectView = function (container, model) {
        var selectedDish = model.getDish(1);
 
         $.each(selectedDish.ingredients, function(key, ingredient) {
-            var stringToAdd = ingredient.quantity + " " + ingredient.unit + "" + ingredient.name + "   SEK   " + ingredient.price;
-
-            ingredientsContainer.append("<span>" + stringToAdd + "</span></br>");
+            var quantity = "<div class='col-md-1'>" + ingredient.quantity + "</div>";
+            var unit = "<div class='col-md-2'>"+ ingredient.unit + "</div>";
+            var name = "<div class='col-md-7'>"+ ingredient.name + "</div>";
+            var currency = "<div class='col-md-1 text-right'>SEK</div>";
+            var price = "<div class='col-md-1 text-right'>"+ ingredient.price + "</div>";
+            ingredientsContainer.append("<div class='row'>" + quantity + unit + name + currency + price + "</div>");
         });
-        /*$.each(allIngredients, function(key, ingredient) {
-            var stringToAdd = "<span class='floatleft'>" + 
-            ingredient.unit + "</span><span class='marginleft'>" + 
-            ingredient.name + "</span><span class='floatright'>" + 
-
-            ingredientsContainer.append("<label id='" + ingredient.id + ">" + stringToAdd + "</div>");
-        });*/
-
-
 	}
 	loadIngredientsOfSelected();
 }
