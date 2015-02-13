@@ -19,14 +19,11 @@ header{
   padding: 20px 50px;
   background:rgba(255, 229, 153, 0.5);
 }
-/*header background gray */
-header#gray{
-  background:rgba(211, 211, 211, 0.5);
-}
 /* Header subtitle - italic */
 header p{
   font-style: italic;
 }
+/*REMOVED THIS FROM SIDEBAR, MAYBE ADD LATER */
 /* buttons and text - color black and bold */
 button{
   background-color: orange;
@@ -36,7 +33,7 @@ button{
   color:#000 !important;
 }
 
-/*pageone.html */
+/*startView.html */
 /* Transparent box - frontpage */
 #transbox{
   position: relative;
@@ -99,6 +96,7 @@ button{
     display: inline-block;
     width: 200px;
     margin-right: 20px;
+    vertical-align: top;
 }
 .image img { 
     border: 2px solid black;

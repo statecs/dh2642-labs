@@ -16,12 +16,13 @@
   </head>
   <body class="bg">
 
-    <div id="pageOne"><!-- PageOne -->
-	    <header id="unique"><!-- Header #1 -->
+  		<header id="uniqueHeader"><!-- Header #1 -->
 	      	<h1>HOMELETTE</h1>
 	      	<p>From the best chefs in the world directly into your kitchen</p>
 		</header>
-      
+
+    <div id="startView"><!-- startView -->
+	  
       <div id="transbox"><!-- Transparent white box -->
 	
 		  <h3>A Home Dinner Service</h3>
@@ -29,39 +30,38 @@
 
 		  <button id="createButton">Create New Dinner</button>
 		</div> <!--end transbox-->
-  	</div> <!--- end of class pageOne-->
+  	</div> <!--- end of class startView-->
+  	
 
-
-    <!-- PageTwo -->
-    <div id="pageTwo" style="display:none">
-    <header id="gray">	<!-- Header #2 -->
-			<h1>HOMELETTE</h1>
-			<p>From the best chefs in the world directly into your kitchen</p>
-	</header> 
-    
-    <div class="sidebar col-md-2">
+  	<div id="sidebarView" style="display:none"><!--SidebarView-->
+  		<div class="sidebar col-md-2">
 		    <div class="sidebar-content"><!-- Sidebar content -->
 				<h4>My Dinner</h4>
 				<label class="numGuests" for="numGuests"> People </label>
 				<input id="peopleInput" value="0" type="number" name="quantity" min="0" max="99">
 		    </div>
+			<table class="table" id="sidebarTable">
+		    <thead>
+		      <tr>
+		        <th>Dish</th>
+		        <th class="text-right">Cost</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		      <tr>
+		        <td id="sidebar-placeholder-dish">Pending</td>
+		        <td class="text-right" id="sidebar-placeholder-cost">0.0</td>
+		      </tr>
+		    </tbody>
+		  </table>
+			<button type="button" id="sidebarConfirmButton" class="btn btn-default" disabled="disabled">Confirm Dinner</button>
+    	</div>	
+  	</div>
 
-		<div class="dishHead">
-			<label>Dish Name </label>
-			<p class="pull-right">Cost</p>
-		</div>
-
-		<div class="sidebar-content">
-			<div><span id="nameOfStarter"></span><span id="priceOfStarter"></span> Pending 0.0</div>
-
-			<div class="pull-right">SEK <div id="priceOfMenu"></div></div>
-
-			<button id="confirmDinner">Confirm Dinner</button>
-	     </div>
-    </div>
+    <!-- mainView -->
+    <div id="mainView" style="display:none">
     
-    
-    <!--start main content - PageTwo.html -->
+    <!--start main content - mainView.html -->
     
     <div class="content col-md-10">
 
@@ -73,7 +73,7 @@
 			  <input type="submit" value="Search">
 			</form>
 			
-			<select class="categories col-md-3" id="dropdownMenu">
+			<select class="categories col-md-3" id="dishType">
 			  
 		  	<option value="all">All Dishes</option>  
 			<option value="starter">Starter</option>
@@ -84,114 +84,20 @@
 	
       </div><!--end select-dish-->
 
-      <!--Dishes content main-container-->
+      <!--Dishes content main-container, used for creation in mainView.js - loadDishes()-->
+      <div class="main-container recipes-list ">
+      	
+      	 <div id="starters"></div>
+      	  <div id="main_course"></div>
+      	   <div id="dessert"></div>
+      </div>
 
-      <div class="main-container recipes-list col-md-10">
-      <div id="starters">
-	      <h3> Starters</h3>
-	     	<div class="image">
-			  <img src="images/toast.jpg"/>
-			  <button class="img-name" id="toast">French Toast</button><br/>
-			  <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla sit amet turpis non tempus. Praesent nec diam a augue mattis dictum nec sed odio. Fusce quis nisi nibh.</p>
-			</div>
+</div>	<!-- END mainView -->
+</div>
+ <!-- Start dishToSelectView-->
 
-			<div class="image">
-			  <img src="images/bakedbrie.jpg"/>
-			  <button class="img-name" id="bakedbrie">Baked Brie</button><br>
-			  <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla sit amet turpis non tempus. Praesent nec diam a augue mattis dictum nec sed odio. Fusce quis nisi nibh.</p>
-			</div>
-
-			<div class="image">
-			  <img src="images/sourdough.jpg"/>
-			  <button class="img-name" id="sourdough">Sourdough</button><br/>
-			  <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla sit amet turpis non tempus. Praesent nec diam a augue mattis dictum nec sed odio. Fusce quis nisi nibh.</p>
-			</div>
-
-		</div><!--end #starters-->
-
-	<div id="main_course">
-      <h3> Main Dishes</h3>
-		<div class="image">
-			  <img src="images/meatballs.jpg"/>
-			  <button class="img-name" id="meatballs">Meatballs</button><br/>
-			  <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla sit amet turpis non tempus. Praesent nec diam a augue mattis dictum nec sed odio. Fusce quis nisi nibh.</p>
-			</div>
-
-		<div class="image">
-		  <img src="images/bakedbrie.jpg"/>
-		  <button class="img-name" id="bakedbrie2">MD2</button><br>
-		  <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla sit amet turpis non tempus. Praesent nec diam a augue mattis dictum nec sed odio. Fusce quis nisi nibh.</p>
-		</div>
-
-		 <div class="image">
-		  <img src="images/meatballs.jpg"/>
-		  <button class="img-name" id="meatballs2">MD3</button><br/>
-		  <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla sit amet turpis non tempus. Praesent nec diam a augue mattis dictum nec sed odio. Fusce quis nisi nibh.</p>
-		</div>
-
-		<div class="image">
-		  <img src="images/meatballs.jpg"/>
-		  <button class="img-name" id="meatballs3">MD4</button><br/>
-		  <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla sit amet turpis non tempus. Praesent nec diam a augue mattis dictum nec sed odio. Fusce quis nisi nibh.</p>
-		</div>
-
-     </div><!--end #main_course-->
-
-     <div id="desserts">
-     <h3>Desserts</h3>
-		<div class="image">
-		  <img src="images/icecream.jpg"/>
-		  <button class="img-name" id="iceCream">Chocolate Ice Cream</button><br/>
-		  <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla sit amet turpis non tempus. Praesent nec diam a augue mattis dictum nec sed odio. Fusce quis nisi nibh.</p>
-		</div>
-	
-		<div class="image">
-		  <img src="images/icecream.jpg"/>
-		  <button class="img-name" id="iceCream2">Vanilla Ice Cream</button><br/>
-		  <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla sit amet turpis non tempus. Praesent nec diam a augue mattis dictum nec sed odio. Fusce quis nisi nibh.</p>
-		</div>
-	
-		<div class="image">
-		  <img src="images/icecream.jpg"/>
-		  <button class="img-name" id="iceCream3">Strawberry Ice Cream</button><br/>
-		  <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla sit amet turpis non tempus. Praesent nec diam a augue mattis dictum nec sed odio. Fusce quis nisi nibh.</p>
-		</div>
-
-	 </div><!--end #desserts-->
-  	</div><!--ends food_images main-container	-->
-	</div><!-- end content content col-md-10 -->
-</div>	<!-- END PageTwo -->
-
- <!-- Start pageThree-->
-
-<div id="pageThree" style="display:none">
-	
-	 <header id="gray">	<!-- Header #2 -->
-			<h1>HOMELETTE</h1>
-			<p>From the best chefs in the world directly into your kitchen</p>
-	</header> 
+<div id="dishToSelectView" style="display:none">
     
-    <div class="sidebar col-md-2">
-		    <div class="sidebar-content"><!-- Sidebar content -->
-				<h4>My Dinner</h4>
-				<label class="numGuests" for="numGuests"> People </label>
-				<input id="peopleInput" value="0" type="number" name="quantity" min="0" max="99">
-		    </div>
-
-		<div class="dishHead">
-			<label>Dish Name </label>
-			<p class="pull-right">Cost</p>
-		</div>
-
-		<div class="sidebar-content">
-			<div><span id="nameOfStarter"></span><span id="priceOfStarter"></span> Pending 0.0</div>
-
-			<div class="pull-right">SEK <div id="priceOfMenu"></div></div>
-
-			<button id="confirmDinner">Confirm Dinner</button>
-	     </div>
-    </div>
-
    <!--start main content -->
 
 	<div class="dish col-md-5 main-container">
@@ -215,179 +121,37 @@
 	<div class="ingredients col-md-5">
 				
 		<h3>Ingredients for 4 people</h3>
-
-			<div class="ing">
-				<label id="amount"></label>
-				<label id="ing"></label>
-				<label id="sek"></label>
-				<label id="price"></label>
-			</div>
-
+		<hr/>
+		<!--Used for ingredient list for selected item-->
+		<div class="ing"></div>
+		<hr/>
 		<div class="buttonconfirm col-md-6">
 			<a href="#"><button id="confirmButton">Confirm dish</button></a>
 		</div>
-		<div class="buttonconfirm col-md-6">
-			<a href="#"><button id="removeButton">Remove dish</button></a>
-		</div>
 
 		<div class="totalsek col-md-6">
-			<p>TOTAL SEK: </p>
+			<p class="text-right">TOTAL SEK: </p>
 		</div>
 	</div>	<!--en ingredients col-md-5 -->
 
-</div> <!--end pageThree-->
+</div> <!--end dishToSelectView-->
 
-
-<div id="pageFour" style="display:none"> <!-- Start pageFour-->
-   
-    <header id="gray">	<!-- Header #2 -->
-			<h1>HOMELETTE</h1>
-			<p>From the best chefs in the world directly into your kitchen</p>
-	</header> 
-    
-    <div class="sidebar col-md-2">
-		    <div class="sidebar-content"><!-- Sidebar content -->
-				<h4>My Dinner</h4>
-				<label class="numGuests" for="numGuests"> People </label>
-				<input id="peopleInput" value="0" type="number" name="quantity" min="0" max="99">
-		    </div>
-
-		<div class="dishHead">
-			<label>Dish Name </label>
-			<p class="pull-right">Cost</p>
-		</div>
-
-		<div class="sidebar-content">
-				<div><span id="nameOfStarter"></span><span id="priceOfStarter"></span> French Toast 10.0</div>
-
-			<div class="pull-right">SEK <div id="priceOfMenu"></div></div>
-
-			<button id="confirmDinner4">Confirm Dinner</button>
-	     </div>
-    </div>
-    
-    <!--start main content -->
-    
-    <div class="content col-md-10">
-       <div class="select-dish row">
-	
-			<form action="#" class="col-md-3">
-			  <h4>Select dish</h4>
-			  <input type="text" name="FirstName" value="Enter keywords">
-			  <input type="submit" value="Search">
-			</form>
-			
-			<select class="categories col-md-3" id="dropdownMenu">
-			  
-		  	<option value="all">All Dishes</option>  
-			<option value="starter">Starter</option>
-			<option value="main">Main Course</option>
-			<option value="dessert">Dessert</option>
-		  	  
-			</select>
-
-	
-      </div><!--end select-dish-->
-      
-      
-      <div class="main-container recipes-list col-md-10">
-      <div id="starters">
-	      <h3> Starters</h3>
-	     	<div class="image">
-			  <img src="images/toast.jpg"/>
-			  <button class="img-name" id="toast">French Toast</button><br/>
-			  <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla sit amet turpis non tempus. Praesent nec diam a augue mattis dictum nec sed odio. Fusce quis nisi nibh.</p>
-			</div>
-
-			<div class="image">
-			  <img src="images/bakedbrie.jpg"/>
-			  <button class="img-name" id="bakedbrie">Baked Brie</button><br>
-			  <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla sit amet turpis non tempus. Praesent nec diam a augue mattis dictum nec sed odio. Fusce quis nisi nibh.</p>
-			</div>
-
-			<div class="image">
-			  <img src="images/sourdough.jpg"/>
-			  <button class="img-name" id="sourdough">Sourdough</button><br/>
-			  <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla sit amet turpis non tempus. Praesent nec diam a augue mattis dictum nec sed odio. Fusce quis nisi nibh.</p>
-			</div>
-
-		</div><!--end #starters-->
-
-	<div id="main_course">
-      <h3> Main Dishes</h3>
-		<div class="image">
-			  <img src="images/meatballs.jpg"/>
-			  <button class="img-name" id="meatballs">Meatballs</button><br/>
-			  <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla sit amet turpis non tempus. Praesent nec diam a augue mattis dictum nec sed odio. Fusce quis nisi nibh.</p>
-			</div>
-
-		<div class="image">
-		  <img src="images/bakedbrie.jpg"/>
-		  <button class="img-name" id="bakedbrie2">MD2</button><br>
-		  <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla sit amet turpis non tempus. Praesent nec diam a augue mattis dictum nec sed odio. Fusce quis nisi nibh.</p>
-		</div>
-
-		 <div class="image">
-		  <img src="images/meatballs.jpg"/>
-		  <button class="img-name" id="meatballs2">MD3</button><br/>
-		  <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla sit amet turpis non tempus. Praesent nec diam a augue mattis dictum nec sed odio. Fusce quis nisi nibh.</p>
-		</div>
-
-		<div class="image">
-		  <img src="images/meatballs.jpg"/>
-		  <button class="img-name" id="meatballs3">MD4</button><br/>
-		  <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla sit amet turpis non tempus. Praesent nec diam a augue mattis dictum nec sed odio. Fusce quis nisi nibh.</p>
-		</div>
-
-     </div><!--end #main_course-->
-
-     <div id="desserts">
-		<div class="image">
-		  <img src="images/icecream.jpg"/>
-		  <button class="img-name" id="iceCream">Chocolate Ice Cream</button><br/>
-		  <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla sit amet turpis non tempus. Praesent nec diam a augue mattis dictum nec sed odio. Fusce quis nisi nibh.</p>
-		</div>
-	
-		<div class="image">
-		  <img src="images/icecream.jpg"/>
-		  <button class="img-name" id="iceCream2">Vanilla Ice Cream</button><br/>
-		  <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla sit amet turpis non tempus. Praesent nec diam a augue mattis dictum nec sed odio. Fusce quis nisi nibh.</p>
-		</div>
-	
-		<div class="image">
-		  <img src="images/icecream.jpg"/>
-		  <button class="img-name" id="iceCream3">Strawberry Ice Cream</button><br/>
-		  <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla sit amet turpis non tempus. Praesent nec diam a augue mattis dictum nec sed odio. Fusce quis nisi nibh.</p>
-		</div>
-
-	 </div><!--end #desserts-->
-  	</div><!--ends food_images main-container	-->
-	</div><!-- end content content col-md-10 -->
-</div>	<!-- END PageTwo -->
-
-
-<div id="pageFive" style="display:none"> <!-- Start pageFive -->
-
-  <header id="gray">	<!-- Header #2 -->
-			<h1>HOMELETTE</h1>
-			<p>From the best chefs in the world directly into your kitchen</p>
-	</header> 
+<div id="fullMenuView" style="display:none"> <!-- Start fullMenuView -->
 
 	<div class="page-bar row">
-	<div class="col-md-9">
-		<h3>My Dinner: 4 people</h3>
-	</div>
-	<div class="col-md-2">
-		<button id="back5to2Button" >Go back and edit dinner</button>
-	</div>
-
+		<div class="col-md-9">
+			<h3>My Dinner: 4 people</h3>
+		</div>
+		<div class="col-md-2">
+			<button id="backToMainButton" >Go back and edit dinner</button>
+		</div>
 	</div> <!--ends page-5-bar-->
 
 	 <div class="main-container recipes-list col-md-10">
       <div id="starters">
 	     	<div class="image">
 			  <img src="images/toast.jpg"/>
-			  <button class="img-name" id="toast">French Toast</button><br/>
+			  <button class="img-name" id="french-toast">French Toast</button><br/>
 			  <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla sit amet turpis non tempus. Praesent nec diam a augue mattis dictum nec sed odio. Fusce quis nisi nibh.</p>
 			</div>
 		<label id="price"></label>
@@ -395,23 +159,18 @@
 
 		</div> <!--ends page-5-content-->
 
-	</div> <!--ends pageFive-->
+	</div> <!--ends fullMenuView-->
 
 </div>
 
-<div id="pageSix" style="display:none"> <!-- Start pageSix-->
-
-  <header id="gray">	<!-- Header #2 -->
-			<h1>HOMELETTE</h1>
-			<p>From the best chefs in the world directly into your kitchen</p>
-	</header> 
+<div id="printMenuView" style="display:none"> <!-- Start printMenuView-->
 
 	<div class="page-bar row">
 		<div class="col-md-9">
 			<h3>My Dinner: 4 people</h3>
 		</div>
 		<div class="col-md-2">
-			<button id="back6to2Button" >Go back and edit dinner</button>
+			<button id="backToMainButton" >Go back and edit dinner</button>
 		</div>
 	</div> <!--ends page-bar-->
 
@@ -435,19 +194,26 @@
 
 		</div> <!--ends page-6-content-->
 
-	</div> <!--ends pageSix-->
+	</div> <!--ends printMenuView-->
 
 
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
     <script src="js/app.js"></script>
     <script src="js/model/dinnerModel.js"></script>
-    <script src="js/view/viewOne.js"></script>
-    <script src="js/view/viewTwo.js"></script>
-    <script src="js/view/viewThree.js"></script>
-    <script src="js/view/viewFour.js"></script>
-    <script src="js/view/viewFive.js"></script>
- 	<script src="js/view/viewSix.js"></script>
+    <script src="js/view/startView.js"></script>
+    <script src="js/view/sidebarView.js"></script>
+    <script src="js/view/mainView.js"></script>
+    <script src="js/view/dishToSelectView.js"></script>
+    <script src="js/view/fullMenuView.js"></script>
+ 	<script src="js/view/printMenuView.js"></script>
 
+ 	<!--Controllers-->
+ 	<script src="js/controllers/startCtrl.js"></script>
+ 	<script src="js/controllers/mainCtrl.js"></script>
+ 	<script src="js/controllers/sidebarCtrl.js"></script>
+ 	<script src="js/controllers/dishToSelectCtrl.js"></script>
+ 	<script src="js/controllers/fullMenuCtrl.js"></script>
+ 	<script src="js/controllers/printMenuCtrl.js"></script>
 </body>
 </html>
