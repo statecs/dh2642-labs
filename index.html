@@ -85,7 +85,7 @@
       </div><!--end select-dish-->
 
       <!--Dishes content main-container, used for creation in mainView.js - loadDishes()-->
-      <div class="main-container recipes-list col-md-10">
+      <div class="main-container recipes-list ">
       	
       	 <div id="starters"></div>
       	  <div id="main_course"></div>
@@ -121,23 +121,15 @@
 	<div class="ingredients col-md-5">
 				
 		<h3>Ingredients for 4 people</h3>
-
-			<div class="ing">
-				<label id="amount"></label>
-				<label id="ing"></label>
-				<label id="sek"></label>
-				<label id="price"></label>
-			</div>
+			<!--Used for ingredient list for selected item-->
+			<div class="ing"></div>
 
 		<div class="buttonconfirm col-md-6">
 			<a href="#"><button id="confirmButton">Confirm dish</button></a>
 		</div>
-		<div class="buttonconfirm col-md-6">
-			<a href="#"><button id="removeButton">Remove dish</button></a>
-		</div>
 
 		<div class="totalsek col-md-6">
-			<p>TOTAL SEK: </p>
+			<p class="text-right">TOTAL SEK: </p>
 		</div>
 	</div>	<!--en ingredients col-md-5 -->
 
