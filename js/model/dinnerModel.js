@@ -11,6 +11,7 @@ var DinnerModel = function() {
 	this.setNumberOfGuests = function(num) {
 		//TODO Lab 2
 		numberOfGuests = num;
+		this.notifyObservers();
 	}
 
 	// should return 
@@ -72,6 +73,7 @@ var DinnerModel = function() {
 		if(notFound){
 			dinnerMenu.push(dishToAdd);
 		}
+		this.notifyObservers();
 	}
 
 	//Removes dish from menu
@@ -87,6 +89,7 @@ var DinnerModel = function() {
 		if(indexToRemove != -1){
 			dinnerMenu.splice(indexToRemove,1);
 		}
+		this.notifyObservers();
 	}
 
 	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
@@ -121,6 +124,24 @@ var DinnerModel = function() {
 		}
 	}
 
+	/*****************************************  
+	      Observable implementation    
+	*****************************************/
+
+	this._observers = [];
+
+	this.addObserver = function(observer) 
+	{
+		this._observers.push(observer);
+	}
+
+	this.notifyObservers = function(arg) 
+	{
+		for(var i=0; i<this._observers.length; i++) 
+		{
+			this._observers[i].update(arg);
+		}	
+	}
 
 	// the dishes variable contains an array of all the 
 	// dishes in the database. each dish has id, name, type,
