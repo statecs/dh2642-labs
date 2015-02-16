@@ -9,9 +9,10 @@ var DishToSelectCtrl = function(view,model) {
   	  $("#sidebarView").find("#sidebarConfirmButton").removeAttr("disabled");
 
   	  /*Fixed for now: change later to be dynamic!!!*/
-	  $("#sidebarView").find("#sidebar-placeholder-dish").text("Toast");
-	  $("#sidebarView").find("#sidebar-placeholder-cost").text("10.0");
-
+//	  $("#sidebarView").find("#sidebar-placeholder-dish").text("Toast");
+//	  $("#sidebarView").find("#sidebar-placeholder-cost").text("10.0");
+	
+	  model.addDishToMenu(1);
   	  /* #mainView change CSS to display:inline; */
 	  $("#mainView").css("display", "inline");
 

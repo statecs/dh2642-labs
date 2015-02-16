@@ -38,22 +38,12 @@
 		    <div class="sidebar-content"><!-- Sidebar content -->
 				<h4>My Dinner</h4>
 				<label class="numGuests" for="numGuests"> People </label>
-				<input id="peopleInput" value="1" type="number" name="quantity" min="0" max="99">
+				<input id="peopleInput" value="0" type="number" name="quantity" min="0" max="99">
 		    </div>
-			<table class="table" id="sidebarTable">
-		    <thead>
-		      <tr>
-		        <th>Dish</th>
-		        <th class="text-right">Cost</th>
-		      </tr>
-		    </thead>
-		    <tbody>
-		      <tr>
-		        <td id="sidebar-placeholder-dish">Pending</td>
-		        <td class="text-right" id="sidebar-placeholder-cost">0.0</td>
-		      </tr>
-		    </tbody>
-		  </table>
+		    <hr/>
+		    <!--Placeholder for showing full menu in sidebar-->
+		    <div id="sidebar-fullmenu"></div>
+			<hr/>
 			<button type="button" id="sidebarConfirmButton" class="btn btn-default" disabled="disabled">Confirm Dinner</button>
     	</div>	
   	</div>
@@ -74,8 +64,7 @@
 			</form>
 			
 			<select class="categories col-md-3" id="dishType">
-			  
-		  	<option value="all">All Dishes</option>  
+			 
 			<option value="starter">Starter</option>
 			<option value="main">Main Course</option>
 			<option value="dessert">Dessert</option>
@@ -85,12 +74,7 @@
       </div><!--end select-dish-->
 
       <!--Dishes content main-container, used for creation in mainView.js - loadDishes()-->
-      <div class="main-container recipes-list ">
-      	
-      	 <div id="starters"></div>
-      	  <div id="main_course"></div>
-      	   <div id="dessert"></div>
-      </div>
+      <div class="main-container recipes-list "></div>
 
 </div>	<!-- END mainView -->
 </div>

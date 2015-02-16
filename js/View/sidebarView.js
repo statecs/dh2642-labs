@@ -9,8 +9,27 @@ var SidebarView = function (container, model) {
 	// be called by the model on each change.
 	model.addObserver(this);
 
+
+	var loadMenu = function() {
+
+		var numberOfGuests = model.getNumberOfGuests();
+		$("sidebar-fullmenu").html("");
+		//Update information about ingridients
+        $.each(model.getFullMenu(), function(key, dish) {
+        	var totalPriceOfDish = 0;
+            var name = "<div class='col-md-6'>"+ dish.name + "</div>";
+            
+            //Update information about ingridients
+        	$.each(dish.ingredients, function(key, ingredient) {
+	            totalPriceOfDish += ingredient.price*numberOfGuests;
+        	});
+            var cost = "<div class='col-md-6 text-right'>"+ totalPriceOfDish + "</div>";
+            $("#sidebar-fullmenu").append("<div class='row'>" + name + cost + "</div>");
+        });
+	};
 	// The observer update function, triggered by the model when there are changes
 	this.update = function() {
-		
+		loadMenu();	
 	}
+	loadMenu();
 }
