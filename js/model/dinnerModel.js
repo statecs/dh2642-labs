@@ -4,13 +4,14 @@ var DinnerModel = function() {
 	//TODO Lab 2 implement the data structure that will hold number of guest
 	// and selected dinner options for dinner menu
 
-	var numberOfGuests = 0;
+	var numberOfGuests = 3; //set default number of guests
 
 	var dinnerMenu = [];
 
 	this.setNumberOfGuests = function(num) {
 		//TODO Lab 2
 		numberOfGuests = num;
+		notifyObservers();
 	}
 
 	// should return 
@@ -72,6 +73,7 @@ var DinnerModel = function() {
 		if(notFound){
 			dinnerMenu.push(dishToAdd);
 		}
+		notifyObservers();
 	}
 
 	//Removes dish from menu
@@ -87,6 +89,7 @@ var DinnerModel = function() {
 		if(indexToRemove != -1){
 			dinnerMenu.splice(indexToRemove,1);
 		}
+		notifyObservers();
 	}
 
 	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
@@ -121,6 +124,21 @@ var DinnerModel = function() {
 		}
 	}
 
+	/*****************************************  
+	      Observable implementation    
+	*****************************************/
+
+    var observers = [];
+
+    this.addObserver = function(observer) {
+        observers.push(observer);
+    }
+
+    var notifyObservers = function(arg) {
+        for (var i = 0; i < observers.length; i++) {
+            observers[i].update(arg);
+        }
+    }
 
 	// the dishes variable contains an array of all the 
 	// dishes in the database. each dish has id, name, type,
@@ -372,6 +390,9 @@ var DinnerModel = function() {
 			}]
 		}
 	];
+
+
+
 	/* Initial test for methods
 	console.log(numberOfGuests);
 	this.setNumberOfGuests(5);
