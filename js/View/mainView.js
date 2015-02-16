@@ -25,8 +25,7 @@ var MainView = function (container, model) {
 
 	// The observer update function, triggered by the model when there are changes
 	this.update = function() {
-		loadDishes($("#dishType option:selected").text().toLowerCase());
-		console.log("MainView, numGuest: " + model.getNumberOfGuests());
+		loadDishes($("#dishType option:selected").val());
 	}
-	loadDishes($("#dishType option:selected").text().toLowerCase());
+	loadDishes($("#dishType option:selected").val());
 }
