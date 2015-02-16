@@ -11,4 +11,10 @@ var SidebarCtrl = function(view,model) {
 
 	});
 
+	//Set numberOfGuests when input change
+	view.container.find("#peopleInput").change(function(){
+		var numGuest = $("#peopleInput").val();
+		model.setNumberOfGuests(numGuest);
+	});
+
 };

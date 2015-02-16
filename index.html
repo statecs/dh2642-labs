@@ -38,7 +38,7 @@
 		    <div class="sidebar-content"><!-- Sidebar content -->
 				<h4>My Dinner</h4>
 				<label class="numGuests" for="numGuests"> People </label>
-				<input id="peopleInput" value="0" type="number" name="quantity" min="0" max="99">
+				<input id="peopleInput" value="1" type="number" name="quantity" min="0" max="99">
 		    </div>
 			<table class="table" id="sidebarTable">
 		    <thead>
@@ -120,7 +120,7 @@
 
 	<div class="ingredients col-md-5">
 				
-		<h3>Ingredients for 4 people</h3>
+		<h3 id="h3-ingridents-dishToSelect">Ingredients for 4 people</h3>
 		<hr/>
 		<!--Used for ingredient list for selected item-->
 		<div class="ing"></div>
@@ -133,7 +133,7 @@
 			</div>
 
 			<div class="totalsek col-md-6">
-				<div class="text-right">TOTAL SEK: 0</div>
+				<div id="totalprice-ingridients" class="text-right">TOTAL SEK: 0</div>
 			</div>
 		</div>
 

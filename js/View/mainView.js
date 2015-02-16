@@ -7,6 +7,11 @@ var MainView = function (container, model) {
 	var mainDishContainer = container.find("#main_course");
 	var dessertsContainer = container.find("#dessert");
 
+	// Register to listen for updates from the model. We need
+	// to also implement update method (see bellow) that will 
+	// be called by the model on each change.
+	model.addObserver(this);
+
 	var loadDishes = function() {
 		// clear anything that's in the list
 		var starters = model.getAllDishes('starter');
@@ -38,6 +43,12 @@ var MainView = function (container, model) {
         	dessertsContainer.append(stringToAdd);
 
         });
+	}
+
+	// The observer update function, triggered by the model when there are changes
+	this.update = function() {
+		loadDishes();
+		console.log("MainView, numGuest: " + model.getNumberOfGuests());
 	}
 	loadDishes();
 }
