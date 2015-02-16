@@ -35,6 +35,10 @@ var DishToSelectView = function (container, model) {
         $("#totalprice-ingridients").html("<div id='totalprice-ingridients' class='text-right'>TOTAL SEK: " + totalPrice + "</div>");
 	}
 
+    this.getSelectedDish = function() {
+        return selectedDish;
+    }
+
     this.setSelectedDish = function(id){
         selectedDish = model.getDish(id);
         loadIngredientsOfSelected();

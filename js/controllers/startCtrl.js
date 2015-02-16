@@ -4,11 +4,11 @@ var StartCtrl = function(view,model) {
 	view.container.find("#createButton").click(function() {
 		
 		/* #startView change CSS to display:none; */
-	  	$("#startView").css("display", "none");
+	  	$("#startView").hide();
 		
 		/* #mainView change CSS to display:inline; */
- 	 	$("#mainView").css("display", "inline");
-		$("#sidebarView").css("display", "inline");
+ 	 	$("#mainView").show();
+		$("#sidebarView").show();
 		
 		/* Remove background from #startView */
 		$(".bg").removeClass("bg");
