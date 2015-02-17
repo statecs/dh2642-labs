@@ -17,9 +17,7 @@ var DishToSelectView = function (container, model, dish) {
     dishesContainerSelect.html("");
 
     // get the current dish
-    dish = model.getDish(model.getCurrentDish());
-
-    dishesContainerSelect.append("<h3 id='dishHeader'" + dish.name + "</h3></br>" + "<div class='imageSelect'><img src='images/" + dish.image + "'></div></br><h3>PREPARATION</h3><p class='description'>" + dish.description + "</p><button class='image' id='back3to2Button'>Back to Select Dish</button>");
+    dishesContainerSelect.append("<h3 id='dishHeader'" + selectedDish.name + "</h3></br>" + "<div class='imageSelect'><img src='images/" + selectedDish.image + "'></div></br><h3>PREPARATION</h3><p class='description'>" + selectedDish.description + "</p><button class='image' id='back3to2Button'>Back to Select Dish</button>");
 
     }
 

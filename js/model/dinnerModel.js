@@ -11,8 +11,10 @@ var DinnerModel = function() {
 
 	this.setNumberOfGuests = function(num) {
 		//TODO Lab 2
-		numberOfGuests = num;
-		this.notifyObservers();
+		if (num > 0) {
+			numberOfGuests = num;
+			this.notifyObservers();
+		}
 	}
 
 	// should return 
@@ -123,17 +125,6 @@ var DinnerModel = function() {
 				return dishes[key];
 			}
 		}
-	}
-
-	//set the id of the dish we are currently looking at
-	this.setCurrentDish = function (id) {
-		currentDish = id;
-		notifyObservers();
-	}
-
-	//get the id of the dish we are currently looking at
-	this.getCurrentDish = function () {
-		return parseInt(currentDish);
 	}
 
 	/*****************************************  
