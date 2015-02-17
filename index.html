@@ -40,20 +40,10 @@
 				<label class="numGuests" for="numGuests"> People </label>
 				<input id="peopleInput" value="0" type="number" name="quantity" min="0" max="99">
 		    </div>
-			<table class="table" id="sidebarTable">
-		    <thead>
-		      <tr>
-		        <th>Dish</th>
-		        <th class="text-right">Cost</th>
-		      </tr>
-		    </thead>
-		    <tbody>
-		      <tr>
-		        <td id="sidebar-placeholder-dish">Pending</td>
-		        <td class="text-right" id="sidebar-placeholder-cost">0.0</td>
-		      </tr>
-		    </tbody>
-		  </table>
+		    <hr/>
+		    <!--Placeholder for showing full menu in sidebar-->
+		    <div id="sidebar-fullmenu"></div>
+			<hr/>
 			<button type="button" id="sidebarConfirmButton" class="btn btn-default" disabled="disabled">Confirm Dinner</button>
     	</div>	
   	</div>
@@ -69,15 +59,20 @@
 	
 			<form action="#" class="col-md-3">
 			  <h4>Select dish</h4>
-			  <input type="text" name="FirstName" value="Enter keywords">
-			  <input type="submit" value="Search">
+			    <div class="input-group">
+                    <input type="text" id="dishFilter" name="Filter" value="" class="form-control" placeholder="Search">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" id="btn-search" type="submit">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </div>
+                </div>
 			</form>
 			
 			<select class="categories col-md-3" id="dishType">
-			  
-		  	<option value="all">All Dishes</option>  
+			 
 			<option value="starter">Starter</option>
-			<option value="main">Main Course</option>
+			<option value="main dish">Main Course</option>
 			<option value="dessert">Dessert</option>
 		  	  
 			</select>
@@ -85,12 +80,7 @@
       </div><!--end select-dish-->
 
       <!--Dishes content main-container, used for creation in mainView.js - loadDishes()-->
-      <div class="main-container recipes-list ">
-      	
-      	 <div id="starters"></div>
-      	  <div id="main_course"></div>
-      	   <div id="dessert"></div>
-      </div>
+      <div class="main-container recipes-list"></div>
 
 </div>	<!-- END mainView -->
 </div>
@@ -105,7 +95,7 @@
 		<!--Dishes content -->
 		<div class="food">
 			<h3 id="dishHeader"></h3>
-			<div class="image">
+			<div class="imageSelect">
 				<img src="images/toast_big.jpg" id="dishPicture"/>
 			</div><!--ends image-->
 			
@@ -120,18 +110,23 @@
 
 	<div class="ingredients col-md-5">
 				
-		<h3>Ingredients for 4 people</h3>
+		<h3 id="h3-ingridents-dishToSelect">Ingredients for 4 people</h3>
 		<hr/>
 		<!--Used for ingredient list for selected item-->
 		<div class="ing"></div>
 		<hr/>
-		<div class="buttonconfirm col-md-6">
-			<a href="#"><button id="confirmButton">Confirm dish</button></a>
+
+
+		<div class="row">
+			<div class="buttonconfirm col-md-6">
+				<a href="#"><button id="confirmButton">Confirm dish</button></a>
+			</div>
+
+			<div class="totalsek col-md-6">
+				<div id="totalprice-ingridients" class="text-right">TOTAL SEK: 0</div>
+			</div>
 		</div>
 
-		<div class="totalsek col-md-6">
-			<p class="text-right">TOTAL SEK: </p>
-		</div>
 	</div>	<!--en ingredients col-md-5 -->
 
 </div> <!--end dishToSelectView-->
