@@ -19,7 +19,7 @@ var DishToSelectCtrl = function(view,model) {
 	});
 	
 	/* If backbutton click */
-	view.container.find("#back3to2Button").click(function() {
+	$(document).on('click','#back3to2Button',function () {
 	  /* #pageThree change CSS to display:none; */
   	  $("#dishToSelectView").hide();
   	  /* #pageTwo change CSS to display:inline; */

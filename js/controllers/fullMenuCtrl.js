@@ -4,7 +4,6 @@ var FullMenuCtrl = function(view,model) {
 		
   	  $("#fullMenuView").hide();
 	  $("#printMenuView").show();
-
 	});
 	view.container.find("#backToMainButton").click(function() {
 		

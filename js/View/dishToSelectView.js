@@ -1,9 +1,10 @@
-var DishToSelectView = function (container, model) {
+var DishToSelectView = function (container, model, dish) {
 
 	this.container = container;
 	
 	var ingredientsContainer = this.ingredientsContainer = container.find(".ing");
     var ingridentHeader = container.find("#h3-ingridents-dishToSelect");
+    var dishesContainerSelect = container.find(".food");
 
     var selectedDish = model.getDish(1);
     // Register to listen for updates from the model. We need
@@ -11,6 +12,16 @@ var DishToSelectView = function (container, model) {
     // be called by the model on each change.
     model.addObserver(this);
 
+    var loadDishOfSelected = function(id){
+
+    dishesContainerSelect.html("");
+
+    // get the current dish
+    dish = model.getDish(model.getCurrentDish());
+
+    dishesContainerSelect.append("<h3 id='dishHeader'" + dish.name + "</h3></br>" + "<div class='imageSelect'><img src='images/" + dish.image + "'></div></br><h3>PREPARATION</h3><p class='description'>" + dish.description + "</p><button class='image' id='back3to2Button'>Back to Select Dish</button>");
+
+    }
 
 	var loadIngredientsOfSelected = function() {
         ingridentHeader.html("");
@@ -42,10 +53,13 @@ var DishToSelectView = function (container, model) {
     this.setSelectedDish = function(id){
         selectedDish = model.getDish(id);
         loadIngredientsOfSelected();
+        loadDishOfSelected();
     }
     // The observer update function, triggered by the model when there are changes
     this.update = function() {
         loadIngredientsOfSelected();
+        loadDishOfSelected();
     }
     loadIngredientsOfSelected();
+    loadDishOfSelected();
 }

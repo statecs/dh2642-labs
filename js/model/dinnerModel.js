@@ -5,8 +5,9 @@ var DinnerModel = function() {
 	// and selected dinner options for dinner menu
 
 	var numberOfGuests = 0;
-
 	var dinnerMenu = [];
+
+	var currentDish = 1;
 
 	this.setNumberOfGuests = function(num) {
 		//TODO Lab 2
@@ -122,6 +123,17 @@ var DinnerModel = function() {
 				return dishes[key];
 			}
 		}
+	}
+
+	//set the id of the dish we are currently looking at
+	this.setCurrentDish = function (id) {
+		currentDish = id;
+		notifyObservers();
+	}
+
+	//get the id of the dish we are currently looking at
+	this.getCurrentDish = function () {
+		return parseInt(currentDish);
 	}
 
 	/*****************************************  
