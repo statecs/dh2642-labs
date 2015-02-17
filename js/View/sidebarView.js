@@ -1,5 +1,5 @@
 var SidebarView = function (container, model) {
-	this.buttonListeners = [];
+
 	this.container = container;
 	this.sideConfirmButton = container.find("#sidebarConfirmButton");
 	var numberOfGuests = this.numberOfGuests = container.find("#peopleInput");
@@ -12,7 +12,7 @@ var SidebarView = function (container, model) {
 
 	var loadMenu = function() {
 
-		var listeners = this.buttonListeners;
+	
 
 		var numberOfGuests = model.getNumberOfGuests();
 		$("#sidebar-fullmenu").html("");

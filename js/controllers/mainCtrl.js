@@ -30,9 +30,7 @@ var MainCtrl = function(view,model, dishToSelectView) {
 	$("#btn-search").click(function(e) {
 		e.preventDefault();
 		var searchedFor = document.getElementById('dishFilter').value;
-		var searchedList = model.getAllDishes(view.selectedDishType, searchedFor);
 		console.log(searchedFor);
-		console.log(searchedList);
 		
 		model.notifyObservers();
 

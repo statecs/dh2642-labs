@@ -1,5 +1,5 @@
 var SidebarCtrl = function(view,model) {
-	
+	this.model = model;
 	/* If toastButton  click */
 	view.container.find("#sidebarConfirmButton").click(function() {
 		/* Hide mainView and sidebarView */
@@ -11,6 +11,8 @@ var SidebarCtrl = function(view,model) {
 
 	});
 
+
+
 	//Set numberOfGuests when input change
 	view.container.find("#peopleInput").change(function(){
 		var numGuest = $("#peopleInput").val();
@@ -18,10 +20,13 @@ var SidebarCtrl = function(view,model) {
 	});
 
 	
-	$(document).on('click','.removeButton',function (dishId) {
-		
-  		model.removeDishFromMenu(1);
+	$(document).on('click','.removeButton',function () {
+		console.log(this.value);
 
+		//Issue - doesn't delete
+  		model.removeDishFromMenu(this.value);
+
+  		model.notifyObservers();
     });
 
 };

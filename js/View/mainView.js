@@ -10,10 +10,10 @@ var MainView = function (container, model) {
 	// be called by the model on each change.
 	model.addObserver(this);
 
-	var loadDishes = function(type) {
+	var loadDishes = function(type, name) {
 		// clear anything that's in the list
 		dishesContainer.html("");
-		var dishes = model.getAllDishes(type)
+		var dishes = model.getAllDishes(type, name)
 		$.each(dishes, function(key, dish) {
 			var stringToAdd = $("<div>");
 			stringToAdd.addClass("image");
@@ -26,7 +26,7 @@ var MainView = function (container, model) {
 
 	// The observer update function, triggered by the model when there are changes
 	this.update = function() {
-		loadDishes($("#dishType option:selected").val());
+		loadDishes($("#dishType option:selected").val(), document.getElementById('dishFilter').value);
 		
 	}
 	loadDishes($("#dishType option:selected").val());
