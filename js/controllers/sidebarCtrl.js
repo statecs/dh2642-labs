@@ -19,13 +19,9 @@ var SidebarCtrl = function(view,model) {
 		model.setNumberOfGuests(numGuest);
 	});
 
-	
+	//remove dish from menu and notify observers
 	$(document).on('click','.removeButton',function () {
-		console.log(this.value);
-
-		//Issue - doesn't delete
   		model.removeDishFromMenu(this.value);
-
   		model.notifyObservers();
     });
 

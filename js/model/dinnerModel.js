@@ -25,7 +25,9 @@ var DinnerModel = function() {
 	// Must handle empty list, or if type is not found
 	this.getSelectedDish = function(type) {
 		return $(dinnerMenu).filter(function(index,dish) {
-	  		return dish.type == type;
+	  		if(dish.type === type){
+	  			return dish;
+	  		}
 	  	});
 	}
 
@@ -82,7 +84,7 @@ var DinnerModel = function() {
 		var indexToRemove = -1;			//Index of item to remove
 		$.each(dinnerMenu,function(index, dishFromMenu){
 			//Check if 'id' is in dinnerMenu
-			if(dishFromMenu.id === id){
+			if(dishFromMenu.id == id){
 				indexToRemove = index;
 			}
 		});

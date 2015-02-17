@@ -12,8 +12,6 @@ var SidebarView = function (container, model) {
 
 	var loadMenu = function() {
 
-	
-
 		var numberOfGuests = model.getNumberOfGuests();
 		$("#sidebar-fullmenu").html("");
 		//Update information about ingridients
