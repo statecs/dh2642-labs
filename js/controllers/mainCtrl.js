@@ -4,20 +4,8 @@ var MainCtrl = function(view,model, dishToSelectView) {
 	// canvas view so that we know which shape type
 	// is currently active.
 
-	/* var listenForClicks = function(view) {
-
-        view.container.find("div").click(function() {
-            id = dishToSelectView.setSelectedDish(this.id);
-            console.log("Clicked " + id);
-            window.navigate.details(id);
-        });
-    };
-        listenForClicks(view);
-*/
-
-var listenForClicks = function(view) {
-	$(".img-name").click(function() {
-
+	$(document).on('click','.img-name',function () {
+        
 		console.log(this.id);
 		//Set selected dish
 		dishToSelectView.setSelectedDish(this.id);
@@ -26,10 +14,8 @@ var listenForClicks = function(view) {
 		$("#dishToSelectView").show();
 		/* #pageTwo change CSS to display:none; */
 		$("#mainView").hide();
-	});
-  };
 
-  	listenForClicks(view);
+	});
 
 	//Update view when type is selected
 	view.container.find("#dishType").change(function(){

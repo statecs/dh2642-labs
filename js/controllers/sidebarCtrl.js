@@ -17,8 +17,11 @@ var SidebarCtrl = function(view,model) {
 		model.setNumberOfGuests(numGuest);
 	});
 
-	SidebarCtrl.prototype.removeButtonPressed = function (dishId) {
-    this.model.removeDishFromMenu(dishId);
-};
+	
+	$(document).on('click','.removeButton',function (dishId) {
+		
+  		model.removeDishFromMenu(1);
+
+    });
 
 };

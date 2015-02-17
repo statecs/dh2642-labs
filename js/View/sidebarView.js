@@ -1,5 +1,5 @@
 var SidebarView = function (container, model) {
-
+	this.buttonListeners = [];
 	this.container = container;
 	this.sideConfirmButton = container.find("#sidebarConfirmButton");
 	var numberOfGuests = this.numberOfGuests = container.find("#peopleInput");
@@ -11,6 +11,8 @@ var SidebarView = function (container, model) {
 
 
 	var loadMenu = function() {
+
+		var listeners = this.buttonListeners;
 
 		var numberOfGuests = model.getNumberOfGuests();
 		$("#sidebar-fullmenu").html("");
@@ -25,6 +27,14 @@ var SidebarView = function (container, model) {
         	});
             var cost = "<div class='col-md-6 text-right'>"+ totalPriceOfDish + "</div>";
             $("#sidebar-fullmenu").append("<div class='row'>" + name + cost + "</div>");
+
+            var removeButton = $("<button>");
+            removeButton.addClass("removeButton");
+            removeButton.attr("id", "remove_" + dish.type);
+            removeButton.attr("value", dish.id);
+
+ 			 $("#sidebar-fullmenu").append(removeButton);
+
         });
 	};
 	// The observer update function, triggered by the model when there are changes
