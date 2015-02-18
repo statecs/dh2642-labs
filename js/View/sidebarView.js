@@ -3,6 +3,7 @@ var SidebarView = function (container, model) {
 	this.container = container;
 	this.sideConfirmButton = container.find("#sidebarConfirmButton");
 	var numberOfGuests = this.numberOfGuests = container.find("#peopleInput");
+	var sidebarPriceContainer = container.find("#sidebar-totalprice");
 
 	// Register to listen for updates from the model. We need
 	// to also implement update method (see bellow) that will 
@@ -13,7 +14,12 @@ var SidebarView = function (container, model) {
 	var loadMenu = function() {
 
 		var numberOfGuests = model.getNumberOfGuests();
-		$("#sidebar-fullmenu").html("");
+		var totalPrice = 0;
+
+		//Initialization of containers
+		sidebarPriceContainer.html("");
+		$("#sidebar-fullmenu").html("<div class='row sidebar-header'><div class='col-md-6'>Dish Name</div><div class='col-md-6 text-right'>Cost</div></div>");
+
 		//Update information about ingridients
         $.each(model.getFullMenu(), function(key, dish) {
         	var totalPriceOfDish = 0;
@@ -33,7 +39,17 @@ var SidebarView = function (container, model) {
 
  			 $("#sidebar-fullmenu").append(removeButton);
 
+ 			 totalPrice += totalPriceOfDish;
+
         });
+        if(model.getFullMenu().length == 0){
+ 			 $("#sidebar-fullmenu").append("<div class='row text-center'>Nothing in menu</div>");  
+ 			 sidebarPriceContainer.append("Total Price: 0 SEK");     	
+        }
+        else{
+        	sidebarPriceContainer.append("Total price: " + totalPrice + "SEK");
+        }
+
 	};
 	// The observer update function, triggered by the model when there are changes
 	this.update = function() {
