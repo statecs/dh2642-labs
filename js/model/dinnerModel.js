@@ -4,7 +4,7 @@ var DinnerModel = function() {
 	//TODO Lab 2 implement the data structure that will hold number of guest
 	// and selected dinner options for dinner menu
 
-	var numberOfGuests = 0;
+	var numberOfGuests = 4;   //Default number of guests
 	var dinnerMenu = [];
 
 	this.setNumberOfGuests = function(num) {
@@ -24,11 +24,15 @@ var DinnerModel = function() {
 	//Returns the dish that is on the menu for selected type 
 	// Must handle empty list, or if type is not found
 	this.getSelectedDish = function(type) {
-		return $(dinnerMenu).filter(function(index,dish) {
-	  		if(dish.type === type){
-	  			return dish;
-	  		}
-	  	});
+		var result = $.grep(dinnerMenu, function(dish){
+			return dish.type == type;
+		});
+		if(result.length == 0){
+			console.log("Nothing in dinnermenu!");
+		}
+		else{
+			return result[0];
+		}
 	}
 
 	//Returns all the dishes on the menu (IMPROVEMENT: Add sorting by type)

@@ -88,6 +88,19 @@ button{
 .recipes-list{
   margin-top: 50px;
 }
+
+
+/* Full menu View*/
+.full-recipes-list{
+  margin-top: 50px;
+  border-right: 1px solid black;
+  margin-bottom: 1em;
+}
+.full-menu-totalprice{
+  margin-top: 50px;
+  margin-bottom: 1em;
+}
+
 .description{
   font-size: 10px;
   margin-top:5%;
@@ -152,5 +165,4 @@ button{
   margin-left: 5px;
   border: none;
 }
-
 

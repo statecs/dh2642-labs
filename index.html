@@ -38,7 +38,7 @@
 		    <div class="sidebar-content"><!-- Sidebar content -->
 				<h4>My Dinner</h4>
 				<label class="numGuests" for="numGuests"> People </label>
-				<input id="peopleInput" value="0" type="number" name="quantity" min="0" max="99">
+				<input id="peopleInput" value="4" type="number" name="quantity" min="0" max="99">
 		    </div>
 		    <hr/>
 		    <!--Placeholder for showing full menu in sidebar-->
@@ -143,10 +143,16 @@
 	</div> <!--ends page-5-bar-->
 
 	<!--Main container for showing full menu-->
-	<div class="main-container recipes-list col-md-10"></div>
-      
-	<button id="printFull" class="col-md-10">Print Full Recipe</button>
-		
+	<div class="container">
+		<div class="row">
+			<div class="main-container full-recipes-list col-md-8"></div>
+	    	<div class="full-menu-totalprice col-md-2"></div>
+	    </div>  
+	    <hr/>
+	    <div class="row">
+	    	<button id="printFull" class="col-md-3 col-md-offset-4">Print Full Recipe</button>
+		</div>	
+		</div>
 	</div> <!--ends fullMenuView-->
 
 </div>
