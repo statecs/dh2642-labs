@@ -134,7 +134,7 @@ var DinnerModel = function() {
 	//Function currently used for dynamically load images from BigOven REST API, maybe replacing getAllDishes()
 	this.getRecipeType = function(type) {
         var apiKey = "dvxjQjPAhbmCkz236n860N99N6441Zb2";
-        var url = "http://api.bigoven.com/recipes?pg=1&rpp=10&title_kw="
+        var url = "http://api.bigoven.com/recipes?pg=1&rpp=200&title_kw="
                   + type 
                   + "&api_key="+apiKey;
         parent = this;

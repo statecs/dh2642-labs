@@ -14,7 +14,6 @@ var MainView = function (container, model) {
 		// clear anything that's in the list
 		dishesContainer.html("");
 		$.each(dishes, function(key) {
-			console.log(dishes[key]);
 			var stringToAdd = $("<div>");
 			stringToAdd.addClass("thumbnail-dish");
         	stringToAdd.html("<img src='" + dishes[key].ImageURL120 + "'><button class='thumbnail-dish-button' id='" + dishes[key].RecipeID + "'>" + dishes[key].Title + "</button><br /><p class='description'>" + dishes[key].Subcategory + "</p>");
@@ -27,7 +26,7 @@ var MainView = function (container, model) {
 	// The observer update function, triggered by the model when there are changes
 	this.update = function(argv) {
 		if(typeof(argv) === "object"){
-			console.log("Dishes loaded");
+			console.log("Dishes loaded to MainView");
 			loadDishes(argv.Results);
 		}
 		

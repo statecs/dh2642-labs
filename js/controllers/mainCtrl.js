@@ -19,7 +19,7 @@ var MainCtrl = function(view,model, dishToSelectView) {
 
 	//Update view when type is selected
 	view.container.find("#dishType").change(function(){
-		model.notifyObservers();
+		model.getRecipeType($("#dishType option:selected").val());
 	});
 
 	/* $("input[type=search]").on("search", function(){
@@ -34,6 +34,11 @@ var MainCtrl = function(view,model, dishToSelectView) {
 		
 		model.notifyObservers();
 
+	});
+
+	$(document).on({
+    	ajaxStart: function() { $("body").addClass("loading");    },
+     	ajaxStop: function() { $("body").removeClass("loading"); }    
 	});
 
 };
