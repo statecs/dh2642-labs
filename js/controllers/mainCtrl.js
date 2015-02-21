@@ -4,7 +4,7 @@ var MainCtrl = function(view,model, dishToSelectView) {
 	// canvas view so that we know which shape type
 	// is currently active.
 
-	$(document).on('click','.img-name',function () {
+	$(document).on('click','.thumbnail-dish-button',function () {
         
 		console.log(this.id);
 		//Set selected dish

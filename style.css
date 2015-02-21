@@ -33,7 +33,7 @@ button{
   color:#000 !important;
 }
 
-/*startView.html */
+/* StartView */
 /* Transparent box - frontpage */
 #transbox{
   position: relative;
@@ -51,7 +51,7 @@ button{
   border-bottom-width: 2px;
 }
 
-/*pagetwo.html & pagefour.html */
+/*SidebarView */
 .numGuests{
   margin-right: 10px;
 }
@@ -110,16 +110,18 @@ button{
   font-size: 10px;
   margin-top:5%;
 }
-.image {
+
+/* Thumnails used in mainView, dishToSelectView and FullMenuView*/
+.thumbnail-dish {
     display: inline-block;
     width: 200px;
     margin-right: 20px;
     vertical-align: top;
 }
-.image img { 
+.thumbnail-dish img { 
     border: 2px solid black;
 }
-.img-name {
+.thumbnail-dish-button {
     text-align: center;
     margin-top: 0px; 
     padding:10px 10px;

@@ -23,8 +23,8 @@ var FullMenuView = function(container, model) {
 				priceOfDish += ingredient.price*model.getNumberOfGuests();
 			});
 			var stringToAdd = $("<div>");
-			stringToAdd.addClass("image");
-        	stringToAdd.html("<img src='images/" + dish.image + "'><button class='img-name' id='" + dish.id + "'>" + dish.name + "</button><h3>" + priceOfDish + " SEK</h3>");
+			stringToAdd.addClass("thumbnail-dish");
+        	stringToAdd.html("<img src='images/" + dish.image + "'><button class='thumbnail-dish-button' id='" + dish.id + "'>" + dish.name + "</button><h3>" + priceOfDish + " SEK</h3>");
 
         	dishesContainer.append(stringToAdd);
         	totalPrice += priceOfDish;

@@ -131,6 +131,27 @@ var DinnerModel = function() {
 		}
 	}
 
+	//Function currently used for dynamically load images from BigOven REST API, maybe replacing getAllDishes()
+	this.getRecipeType = function(type) {
+        var apiKey = "dvxjQjPAhbmCkz236n860N99N6441Zb2";
+        var url = "http://api.bigoven.com/recipes?pg=1&rpp=10&title_kw="
+                  + type 
+                  + "&api_key="+apiKey;
+        parent = this;
+        $.ajax({
+            type: "GET",
+            dataType: 'json',
+            cache: false,
+            url: url,
+            success: function (data) {
+            	console.log(data);
+            	parent.notifyObservers(data);
+            },
+            error: function (){
+            	console.log("Error");
+            }
+        });	
+    }
 	/*****************************************  
 	      Observable implementation    
 	*****************************************/
