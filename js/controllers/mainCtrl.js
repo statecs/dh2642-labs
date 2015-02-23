@@ -8,7 +8,7 @@ var MainCtrl = function(view,model, dishToSelectView) {
         
 		console.log(this.id);
 		//Set selected dish
-		dishToSelectView.setSelectedDish(this.id);
+		model.setSelectedDishTemp(this.id);
 
 		/* #pageThree change CSS to display:inline; */
 		$("#dishToSelectView").show();

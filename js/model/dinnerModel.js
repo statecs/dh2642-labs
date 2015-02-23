@@ -11,7 +11,7 @@ var DinnerModel = function() {
 		//TODO Lab 2
 		if (num > 0) {
 			numberOfGuests = num;
-			this.notifyObservers();
+			this.notifyObservers([null,null]);
 		}
 	}
 
@@ -66,12 +66,12 @@ var DinnerModel = function() {
 
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
 	//it is removed from the menu and the new one added.
-	this.addDishToMenu = function(id) {
+	this.addDishToMenu = function(dishToAdd) {
 		var notFound = true;			  	//To check if type is already in the menu
-		var dishToAdd = this.getDish(id)	//Dish to add for the menu
+		//var dishToAdd = this.getDish(id)	//Dish to add for the menu
 		$.each(dinnerMenu,function(index) {
 			//Check if dish of type found and replace it
-			if(dinnerMenu[index].type === dishToAdd.type) {
+			if(dinnerMenu[index].Category === dishToAdd.Category) {
 				notFound = false;
 				dinnerMenu[index] = dishToAdd;
 			}
@@ -80,7 +80,7 @@ var DinnerModel = function() {
 		if(notFound){
 			dinnerMenu.push(dishToAdd);
 		}
-		this.notifyObservers();
+		this.notifyObservers([null,null]);
 	}
 
 	//Removes dish from menu
@@ -96,7 +96,7 @@ var DinnerModel = function() {
 		if(indexToRemove != -1){
 			dinnerMenu.splice(indexToRemove,1);
 		}
-		this.notifyObservers();
+		this.notifyObservers([null,null]);
 	}
 
 	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
@@ -130,6 +130,21 @@ var DinnerModel = function() {
 			}
 		}
 	}
+	//Method for setting selected single dish
+	this.setSelectedDishTemp = function(recipeID){
+        var apiKey = "dvxjQjPAhbmCkz236n860N99N6441Zb2";
+		var url = "http://api.bigoven.com/recipe/" + recipeID + "?api_key="+apiKey;
+		parent = this;
+		$.ajax({
+		         type: "GET",
+		         dataType: 'json',
+		         cache: false,
+		         url: url,
+		         success: function (data) {
+		            parent.notifyObservers([data,"dishToSelect"]);
+		         }
+		       });
+	}
 
 	//Function currently used for dynamically load info from BigOven REST API, maybe replacing getAllDishes()
 	this.getRecipeType = function(filter) {
@@ -145,7 +160,7 @@ var DinnerModel = function() {
             url: url,
             success: function (data) {
             	console.log(data);
-            	parent.notifyObservers(data);
+            	parent.notifyObservers([data,"main"]);
             },
             error: function (xhr, status, error){
             	console.log(error);

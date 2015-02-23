@@ -23,19 +23,19 @@ var SidebarView = function (container, model) {
 		//Update information about ingridients
         $.each(model.getFullMenu(), function(key, dish) {
         	var totalPriceOfDish = 0;
-            var name = "<div class='col-md-6'>"+ dish.name + "</div>";
+            var name = "<div class='col-md-6'>"+ dish.Title + "</div>";
             
             //Update information about ingridients
-        	$.each(dish.ingredients, function(key, ingredient) {
-	            totalPriceOfDish += ingredient.price*numberOfGuests;
+        	$.each(dish.Ingredients, function(key, ingredient) {
+	            totalPriceOfDish += ingredient.Quantity*numberOfGuests;
         	});
             var cost = "<div class='col-md-6 text-right'>"+ totalPriceOfDish + "</div>";
             $("#sidebar-fullmenu").append("<div class='row'>" + name + cost + "</div>");
 
             var removeButton = $("<button>");
             removeButton.addClass("removeButton");
-            removeButton.attr("id", "remove_" + dish.type);
-            removeButton.attr("value", dish.id);
+            removeButton.attr("id", "remove_" + dish.Category);
+            removeButton.attr("value", dish.RecipeID);
 
  			 $("#sidebar-fullmenu").append(removeButton);
 
