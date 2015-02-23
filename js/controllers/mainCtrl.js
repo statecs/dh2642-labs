@@ -37,8 +37,8 @@ var MainCtrl = function(view,model, dishToSelectView) {
 	});
 
 	$(document).on({
-    	ajaxStart: function() { $("body").addClass("loading");    },
-     	ajaxStop: function() { $("body").removeClass("loading"); }    
+    	ajaxStart: function() { $(".main-container").addClass("loading");    },
+     	ajaxStop: function() { $(".main-container").removeClass("loading"); }    
 	});
 
 };

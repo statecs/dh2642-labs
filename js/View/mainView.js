@@ -13,6 +13,7 @@ var MainView = function (container, model) {
 	var loadDishes = function(dishes) {
 		// clear anything that's in the list
 		dishesContainer.html("");
+		dishesContainer.html("<div class='loader'/>");
 		$.each(dishes, function(key) {
 			var stringToAdd = $("<div>");
 			stringToAdd.addClass("thumbnail-dish");
