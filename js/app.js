@@ -12,7 +12,7 @@ $(function() {
 
 	//And create the needed controllers
 	var startCtrl = new StartCtrl(startView, model);
-	var mainCtrl = new MainCtrl(mainView, model, dishToSelectView);
+	var mainCtrl = new MainCtrl(mainView, model);
 	var sidebarCtrl = new SidebarCtrl(sidebarView, model);
 	var dishToSelectCtrl = new DishToSelectCtrl(dishToSelectView, model);
 	var fullMenuCtrl = new FullMenuCtrl(fullMenuView, model);

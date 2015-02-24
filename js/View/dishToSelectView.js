@@ -6,22 +6,20 @@ var DishToSelectView = function (container, model) {
     var ingridentHeader = container.find("#h3-ingridents-dishToSelect");
     var dishesContainerSelect = container.find(".food");
 
-    var selectedDish = this.selectedDish = {};
     // Register to listen for updates from the model. We need
     // to also implement update method (see bellow) that will 
     // be called by the model on each change.
     model.addObserver(this);
 
-    var loadDishOfSelected = function(){
+    var loadDishOfSelected = function(selectedDish){
+        dishesContainerSelect.html("");
 
-    dishesContainerSelect.html("");
-
-    // get the current dish
-    dishesContainerSelect.append("<h3 id='dishHeader'" + selectedDish.Title + "</h3></br>" + "<div class='imageSelect'><img src='" + selectedDish.ImageURL + "'></div></br><h3>PREPARATION</h3><p class='description'>" + selectedDish.Instructions + "</p><button class='image' id='back3to2Button'>Back to Select Dish</button>");
+        // get the current dish
+        dishesContainerSelect.append("<h3 id='dishHeader'" + selectedDish.Title + "</h3></br>" + "<div class='imageSelect'><img src='" + selectedDish.ImageURL + "'></div></br><h3>PREPARATION</h3><p class='description'>" + selectedDish.Instructions + "</p><button class='image' id='back3to2Button'>Back to Select Dish</button>");
 
     }
 
-	var loadIngredientsOfSelected = function() {
+	var loadIngredientsOfSelected = function(selectedDish) {
         ingridentHeader.html("");
         ingredientsContainer.html("");
         //Can lateron be changed to selected
@@ -47,10 +45,9 @@ var DishToSelectView = function (container, model) {
     // The observer update function, triggered by the model when there are changes
     this.update = function(argv) {
         if(argv[1] == "dishToSelect"){
-            this.selectedDish = selectedDish = argv[0];
-            console.log(this.selectedDish);
-            loadIngredientsOfSelected();
-            loadDishOfSelected();
+            var dishSelected = model.getSelectedDish();
+            loadIngredientsOfSelected(dishSelected);
+            loadDishOfSelected(dishSelected);
         }
     }
 }

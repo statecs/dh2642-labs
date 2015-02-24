@@ -26,11 +26,12 @@ var MainView = function (container, model) {
 
 	// The observer update function, triggered by the model when there are changes
 	this.update = function(argv) {
+		console.log("MainView tries to update");
 		if(argv[1] == "main"){
 			console.log("Dishes loaded to MainView");
 			loadDishes(argv[0].Results);
 		}
 		
 	}
-	model.getRecipeType($("#dishType option:selected").val());
+	model.getAllDishes($("#dishType option:selected").val());
 }

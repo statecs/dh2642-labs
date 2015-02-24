@@ -11,8 +11,6 @@ var SidebarCtrl = function(view,model) {
 
 	});
 
-
-
 	//Set numberOfGuests when input change
 	view.container.find("#peopleInput").change(function(){
 		var numGuest = $("#peopleInput").val();
@@ -22,7 +20,6 @@ var SidebarCtrl = function(view,model) {
 	//remove dish from menu and notify observers
 	$(document).on('click','.removeButton',function () {
   		model.removeDishFromMenu(this.value);
-  		model.notifyObservers();
     });
 
 };

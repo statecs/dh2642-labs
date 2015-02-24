@@ -1,4 +1,4 @@
-var MainCtrl = function(view,model, dishToSelectView) {
+var MainCtrl = function(view,model) {
 	
 	// Attach listener to all the buttons in the 
 	// canvas view so that we know which shape type
@@ -8,7 +8,7 @@ var MainCtrl = function(view,model, dishToSelectView) {
         
 		console.log(this.id);
 		//Set selected dish
-		model.setSelectedDishTemp(this.id);
+		model.setSelectedDish(this.id);
 
 		/* #pageThree change CSS to display:inline; */
 		$("#dishToSelectView").show();
@@ -19,7 +19,7 @@ var MainCtrl = function(view,model, dishToSelectView) {
 
 	//Update view when type is selected
 	view.container.find("#dishType").change(function(){
-		model.getRecipeType($("#dishType option:selected").val());
+		model.getAllDishes($("#dishType option:selected").val());
 	});
 
 	/* $("input[type=search]").on("search", function(){

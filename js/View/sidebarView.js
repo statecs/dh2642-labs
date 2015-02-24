@@ -24,7 +24,6 @@ var SidebarView = function (container, model) {
         $.each(model.getFullMenu(), function(key, dish) {
         	var totalPriceOfDish = 0;
             var name = "<div class='col-md-6'>"+ dish.Title + "</div>";
-            
             //Update information about ingridients
         	$.each(dish.Ingredients, function(key, ingredient) {
 	            totalPriceOfDish += ingredient.Quantity*numberOfGuests;
@@ -36,11 +35,9 @@ var SidebarView = function (container, model) {
             removeButton.addClass("removeButton");
             removeButton.attr("id", "remove_" + dish.Category);
             removeButton.attr("value", dish.RecipeID);
-
  			 $("#sidebar-fullmenu").append(removeButton);
 
  			 totalPrice += totalPriceOfDish;
-
         });
         if(model.getFullMenu().length == 0){
  			 $("#sidebar-fullmenu").append("<div class='row text-center'>Nothing in menu</div>");  
@@ -52,8 +49,10 @@ var SidebarView = function (container, model) {
 
 	};
 	// The observer update function, triggered by the model when there are changes
-	this.update = function() {
-		loadMenu();	
+	this.update = function(argv) {
+		if(argv[0] == "updateMenu"){
+			loadMenu();
+		}
 	}
 	loadMenu();
 }

@@ -9,8 +9,8 @@ var DishToSelectCtrl = function(view,model) {
   	  $("#sidebarView").find("#sidebarConfirmButton").removeAttr("disabled");
 
   	  //Add dish to menu
-  	  console.log(view.selectedDish.RecipeID);
-	  model.addDishToMenu(view.selectedDish);
+  	  var dishToAdd = model.getSelectedDish();
+	  model.addDishToMenu(dishToAdd);
 
   	  
   	  /* #mainView change CSS to display:inline; */
