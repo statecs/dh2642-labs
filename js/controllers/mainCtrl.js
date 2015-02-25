@@ -31,9 +31,7 @@ var MainCtrl = function(view,model) {
 		e.preventDefault();
 		var searchedFor = document.getElementById('dishFilter').value;
 		console.log(searchedFor);
-		
-		model.notifyObservers();
-
+		model.getAllDishes($("#dishType option:selected").val(), searchedFor);
 	});
 
 	$(document).on({
