@@ -31,6 +31,13 @@ var MainView = function (container, model) {
 			console.log("Dishes loaded to MainView");
 			loadDishes(argv[1].Results);
 		}
+		else if(argv[0] == "error"){
+			dishesContainer.html("");
+			dishesContainer.append("<div class='alert alert-danger' role='alert'>"
+  				+  "<span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span>"
+  				+  "<span class='sr-only'>Error:</span>"
+  				+  "Something went wrong on loading dishes, probably you need to turn on internet</div>");
+		}
 		
 	}
 	model.getAllDishes($("#dishType option:selected").val());

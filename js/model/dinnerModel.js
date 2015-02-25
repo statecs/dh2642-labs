@@ -123,6 +123,10 @@ var DinnerModel = function() {
 		         success: function (data) {
 		         	parent.selectedDish = data;
 		            parent.notifyObservers(["dishToSelect", data]);
+		         },
+		         error: function (xhr, status, error){
+	            	console.log("Error");
+	            	parent.notifyObservers(["error", null]);
 		         }
 		       });
 	}
@@ -156,7 +160,8 @@ var DinnerModel = function() {
             	parent.notifyObservers(["main", data]);
             },
             error: function (xhr, status, error){
-            	console.log(error);
+            	console.log("Error");
+            	parent.notifyObservers(["error", null]);
             }
         });	
     }
