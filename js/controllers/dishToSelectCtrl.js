@@ -9,7 +9,8 @@ var DishToSelectCtrl = function(view,model) {
   	  $("#sidebarView").find("#sidebarConfirmButton").removeAttr("disabled");
 
   	  //Add dish to menu
-	 	model.addDishToMenu(view.getSelectedDish().id);
+  	  var dishToAdd = model.getSelectedDish();
+	  model.addDishToMenu(dishToAdd);
 
   	  
   	  /* #mainView change CSS to display:inline; */
@@ -21,9 +22,9 @@ var DishToSelectCtrl = function(view,model) {
 	/* If backbutton click */
 	$(document).on('click','#back3to2Button',function () {
 	  /* #pageThree change CSS to display:none; */
-  	  $("#dishToSelectView").hide();
+  	  $("#dishToSelectView").hide("slow");
   	  /* #pageTwo change CSS to display:inline; */
-	  $("#mainView").show();
+	  $("#mainView").show("slow");
 
 	});
 };

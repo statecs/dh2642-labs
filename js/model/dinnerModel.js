@@ -6,12 +6,13 @@ var DinnerModel = function() {
 
 	var numberOfGuests = 4;   //Default number of guests
 	var dinnerMenu = [];
+	var selectedDish = this.selectedDish = {};
 
 	this.setNumberOfGuests = function(num) {
 		//TODO Lab 2
 		if (num > 0) {
 			numberOfGuests = num;
-			this.notifyObservers();
+			this.notifyObservers(["numberOfGuests",null]);
 		}
 	}
 
@@ -58,7 +59,7 @@ var DinnerModel = function() {
 		$.each(dinnerMenu,function(index, dishFromMenu){
 			//For each ingridient, add price times number of guests
 			$.each(dishFromMenu.ingredients,function(index,ingredient) {
-				totalMenuPrice += ingredient.price * numberOfGuests;
+				totalMenuPrice += parseFloat(ingredient.price * numberOfGuests);
 			});
 		});
 		return totalMenuPrice;
@@ -66,12 +67,13 @@ var DinnerModel = function() {
 
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
 	//it is removed from the menu and the new one added.
-	this.addDishToMenu = function(id) {
+	this.addDishToMenu = function(dishToAdd) {
 		var notFound = true;			  	//To check if type is already in the menu
-		var dishToAdd = this.getDish(id)	//Dish to add for the menu
+		//var dishToAdd = this.getDish(id)	//Dish to add for the menu
+		console.log("addDishToMenu");
 		$.each(dinnerMenu,function(index) {
 			//Check if dish of type found and replace it
-			if(dinnerMenu[index].type === dishToAdd.type) {
+			if(dinnerMenu[index].Category === dishToAdd.Category) {
 				notFound = false;
 				dinnerMenu[index] = dishToAdd;
 			}
@@ -80,15 +82,15 @@ var DinnerModel = function() {
 		if(notFound){
 			dinnerMenu.push(dishToAdd);
 		}
-		this.notifyObservers();
+		this.notifyObservers(["updateMenu",null]);
 	}
 
 	//Removes dish from menu
-	this.removeDishFromMenu = function(id) {
+	this.removeDishFromMenu = function(recipeId) {
 		var indexToRemove = -1;			//Index of item to remove
 		$.each(dinnerMenu,function(index, dishFromMenu){
 			//Check if 'id' is in dinnerMenu
-			if(dishFromMenu.id == id){
+			if(dishFromMenu.RecipeID == recipeId){
 				indexToRemove = index;
 			}
 		});
@@ -96,31 +98,9 @@ var DinnerModel = function() {
 		if(indexToRemove != -1){
 			dinnerMenu.splice(indexToRemove,1);
 		}
-		this.notifyObservers();
+		this.notifyObservers(["updateMenu",null]);
 	}
 
-	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
-	//you can use the filter argument to filter out the dish by name or ingredient (use for search)
-	//if you don't pass any filter all the dishes will be returned
-	this.getAllDishes = function (type,filter) {
-	  return $(dishes).filter(function(index,dish) {
-		var found = true;
-		if(filter){
-			found = false;
-			$.each(dish.ingredients,function(index,ingredient) {
-				//match if equal
-				if(ingredient.name.indexOf(filter)!=-1) {
-					found = true;
-				}
-			});
-			if(dish.name.indexOf(filter) != -1)
-			{
-				found = true;
-			}
-		}
-	  	return dish.type == type && found;
-	  });	
-	}
 
 	//function that returns a dish of specific ID
 	this.getDish = function (id) {
@@ -130,7 +110,61 @@ var DinnerModel = function() {
 			}
 		}
 	}
-
+	//Method for setting selected single dish
+	this.setSelectedDish = function(recipeID){
+        var apiKey = "dvxjQjPAhbmCkz236n860N99N6441Zb2";
+		var url = "http://api.bigoven.com/recipe/" + recipeID + "?api_key="+apiKey;
+		parent = this;
+		$.ajax({
+		         type: "GET",
+		         dataType: 'json',
+		         cache: false,
+		         url: url,
+		         success: function (data) {
+		         	parent.selectedDish = data;
+		            parent.notifyObservers(["dishToSelect", data]);
+		         },
+		         error: function (xhr, status, error){
+	            	console.log("Error");
+	            	parent.notifyObservers(["error", null]);
+		         }
+		       });
+	}
+	//Method for getting selected dish
+	this.getSelectedDish = function(){
+		return this.selectedDish;
+	}
+	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
+	//you can use the filter argument to filter out the dish by name or ingredient (use for search)
+	//if you don't pass any filter all the dishes will be returned
+	//Function currently used for dynamically load info from BigOven REST API
+	this.getAllDishes = function(type,filter) {
+		//If no filter is used, setting filter to empty string
+		if(filter === undefined){
+			filter = "";
+		}
+        var apiKey = "dvxjQjPAhbmCkz236n860N99N6441Zb2";
+        var url = "http://api.bigoven.com/recipes?pg=1&rpp=200&title_kw="
+                  + type + "&title_kw=" + filter
+                  + "&api_key="+apiKey;
+        parent = this;
+        $.ajax({
+            type: "GET",
+            dataType: 'json',
+            cache: false,
+            url: url,
+            success: function (data) {
+            	//console.log(data);
+            	parent.dishes = data;
+            	console.log("GetAllDishes");
+            	parent.notifyObservers(["main", data]);
+            },
+            error: function (xhr, status, error){
+            	console.log("Error");
+            	parent.notifyObservers(["error", null]);
+            }
+        });	
+    }
 	/*****************************************  
 	      Observable implementation    
 	*****************************************/
@@ -158,7 +192,7 @@ var DinnerModel = function() {
 	// defining the unit i.e. "g", "slices", "ml". Unit
 	// can sometimes be empty like in the example of eggs where
 	// you just say "5 eggs" and not "5 pieces of eggs" or anything else.
-	var dishes = [{
+	var dishes = this.dishes = [{
 		'id':1,
 		'name':'French toast',
 		'type':'starter',

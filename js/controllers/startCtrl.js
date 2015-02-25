@@ -4,7 +4,9 @@ var StartCtrl = function(view,model) {
 	view.container.find("#createButton").click(function() {
 		
 		/* #startView change CSS to display:none; */
-	  	$("#startView").hide();
+
+		$( "#startView" ).hide("slow");
+
 		
 		/* #mainView change CSS to display:inline; */
  	 	$("#mainView").show();

@@ -33,7 +33,7 @@ button{
   color:#000 !important;
 }
 
-/*startView.html */
+/* StartView */
 /* Transparent box - frontpage */
 #transbox{
   position: relative;
@@ -51,7 +51,7 @@ button{
   border-bottom-width: 2px;
 }
 
-/*pagetwo.html & pagefour.html */
+/*SidebarView */
 .numGuests{
   margin-right: 10px;
 }
@@ -110,22 +110,29 @@ button{
   font-size: 10px;
   margin-top:5%;
 }
-.image {
+
+/* Thumnails used in mainView, dishToSelectView and FullMenuView*/
+.thumbnail-dish {
     display: inline-block;
-    width: 200px;
+    width: 124px;
     margin-right: 20px;
     vertical-align: top;
 }
-.image img { 
+.thumbnail-dish img { 
     border: 2px solid black;
+    width:124px;
 }
-.img-name {
+.thumbnail-dish-button {
     text-align: center;
     margin-top: 0px; 
     padding:10px 10px;
     font-size: 15px;
     font-weight: bold;
     background: #d3d3d3;
+}
+
+.imageSelect img{
+  width:70%;
 }
 
 /*pagethree.html */
@@ -169,5 +176,32 @@ button{
   background-color: white;
   margin-left: 5px;
   border: none;
+}
+
+.loader{
+  display:none;
+    min-height:     100px;
+    background: rgba( 255, 255, 255, 0.3 ) 
+                url('images/ajax-loader.gif') 
+                50% 50% 
+                no-repeat;
+  position: relative;
+}
+
+/* When the body has the loading class, we turn
+   the scrollbar off with overflow:hidden */
+body.loading {
+    overflow: hidden;   
+}
+
+/* Anytime the body has the loading class, our
+   modal element will be visible */
+.loading .loader {
+    display: block;
+}
+/* Anytime the body has the loading class, our
+   modal element will be visible */
+.loading .thumbnail-dish {
+    display: none;
 }
 
