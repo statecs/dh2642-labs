@@ -27,9 +27,9 @@ var MainView = function (container, model) {
 	// The observer update function, triggered by the model when there are changes
 	this.update = function(argv) {
 		console.log("MainView tries to update");
-		if(argv[1] == "main"){
+		if(argv[0] == "main"){
 			console.log("Dishes loaded to MainView");
-			loadDishes(argv[0].Results);
+			loadDishes(argv[1].Results);
 		}
 		
 	}

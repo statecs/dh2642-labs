@@ -23,7 +23,7 @@ var PrintMenuView = function(container, model) {
 	};
 
 	this.update = function(argv){
-		if(argv[0] == "updateMenu"){
+		if(argv[0] == "updateMenu" || argv[0] == "numberOfGuests"){
 			loadPrintMenu();
 		}
 	};

@@ -44,7 +44,7 @@ var DishToSelectView = function (container, model) {
 
     // The observer update function, triggered by the model when there are changes
     this.update = function(argv) {
-        if(argv[1] == "dishToSelect"){
+        if(argv[0] == "dishToSelect" || argv[0] == "numberOfGuests"){
             var dishSelected = model.getSelectedDish();
             loadIngredientsOfSelected(dishSelected);
             loadDishOfSelected(dishSelected);

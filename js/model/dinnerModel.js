@@ -12,7 +12,7 @@ var DinnerModel = function() {
 		//TODO Lab 2
 		if (num > 0) {
 			numberOfGuests = num;
-			this.notifyObservers([null,null]);
+			this.notifyObservers(["numberOfGuests",null]);
 		}
 	}
 
@@ -122,7 +122,7 @@ var DinnerModel = function() {
 		         url: url,
 		         success: function (data) {
 		         	parent.selectedDish = data;
-		            parent.notifyObservers([data,"dishToSelect"]);
+		            parent.notifyObservers(["dishToSelect", data]);
 		         }
 		       });
 	}
@@ -153,7 +153,7 @@ var DinnerModel = function() {
             	//console.log(data);
             	parent.dishes = data;
             	console.log("GetAllDishes");
-            	parent.notifyObservers([data,"main"]);
+            	parent.notifyObservers(["main", data]);
             },
             error: function (xhr, status, error){
             	console.log(error);

@@ -50,7 +50,7 @@ var SidebarView = function (container, model) {
 	};
 	// The observer update function, triggered by the model when there are changes
 	this.update = function(argv) {
-		if(argv[0] == "updateMenu"){
+		if(argv[0] == "updateMenu" || argv[0] == "numberOfGuests"){
 			loadMenu();
 		}
 	}
