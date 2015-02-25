@@ -30,16 +30,16 @@ var DishToSelectView = function (container, model) {
         
         //Update information about ingridients
         $.each(selectedDish.Ingredients, function(key, ingredient) {
-            var quantity = "<div class='col-md-1'>" + ingredient.Quantity*numberOfGuests + "</div>";
+            var quantity = "<div class='col-md-1'>" + Math.floor(ingredient.Quantity*numberOfGuests * 100) / 100 + "</div>";
             var unit = "<div class='col-md-2'>"+ ingredient.MetricUnit + "</div>";
             var name = "<div class='col-md-7'>"+ ingredient.Name + "</div>";
             var currency = "<div class='col-md-1 text-right'>SEK</div>";
-            var price = "<div class='col-md-1 text-right'>"+ ingredient.Quantity*numberOfGuests + "</div>";
+            var price = "<div class='col-md-1 text-right'>"+ Math.floor(ingredient.Quantity*numberOfGuests * 100) / 100  + "</div>";
             ingredientsContainer.append("<div class='row'>" + quantity + unit + name + currency + price + "</div>");
             totalPrice += ingredient.Quantity*numberOfGuests;
         });
 
-        $("#totalprice-ingridients").html("<div id='totalprice-ingridients' class='text-right'>TOTAL SEK: " + totalPrice + "</div>");
+        $("#totalprice-ingridients").html("<div id='totalprice-ingridients' class='text-right'>TOTAL SEK: " + Math.floor(totalPrice * 100) / 100 + "</div>");
 	}
 
     // The observer update function, triggered by the model when there are changes
