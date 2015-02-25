@@ -22,9 +22,9 @@ var DishToSelectCtrl = function(view,model) {
 	/* If backbutton click */
 	$(document).on('click','#back3to2Button',function () {
 	  /* #pageThree change CSS to display:none; */
-  	  $("#dishToSelectView").hide();
+  	  $("#dishToSelectView").hide("slow");
   	  /* #pageTwo change CSS to display:inline; */
-	  $("#mainView").show();
+	  $("#mainView").show("slow");
 
 	});
 };

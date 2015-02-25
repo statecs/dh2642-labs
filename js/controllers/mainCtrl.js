@@ -11,7 +11,7 @@ var MainCtrl = function(view,model) {
 		model.setSelectedDish(this.id);
 
 		/* #pageThree change CSS to display:inline; */
-		$("#dishToSelectView").show();
+		$("#dishToSelectView").show("slow");
 		/* #pageTwo change CSS to display:none; */
 		$("#mainView").hide();
 

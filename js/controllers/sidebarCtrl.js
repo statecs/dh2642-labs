@@ -3,8 +3,8 @@ var SidebarCtrl = function(view,model) {
 	/* If toastButton  click */
 	view.container.find("#sidebarConfirmButton").click(function() {
 		/* Hide mainView and sidebarView */
-		$("#mainView").hide();
-		$("#sidebarView").hide();
+		$("#mainView").hide("slow");
+		$("#sidebarView").hide("slow");
 				
 		/*Show fullMenuView*/
 		$("#fullMenuView").show();
