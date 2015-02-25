@@ -28,7 +28,7 @@ var SidebarView = function (container, model) {
         	$.each(dish.Ingredients, function(key, ingredient) {
 	            totalPriceOfDish += ingredient.Quantity*numberOfGuests;
         	});
-            var cost = "<div class='col-md-6 text-right'>"+ totalPriceOfDish + "</div>";
+            var cost = "<div class='col-md-6 text-right'>"+  Math.floor(totalPriceOfDish * 100) / 100 + "</div>";
             $("#sidebar-fullmenu").append("<div class='row'>" + name + cost + "</div>");
 
             var removeButton = $("<button>");
@@ -44,7 +44,7 @@ var SidebarView = function (container, model) {
  			 sidebarPriceContainer.append("Total Price: 0 SEK");     	
         }
         else{
-        	sidebarPriceContainer.append("Total price: " + totalPrice + "SEK");
+        	sidebarPriceContainer.append("Total price: " + Math.floor(totalPrice * 100) / 100  + "SEK");
         }
 
 	};

@@ -26,12 +26,12 @@ var FullMenuView = function(container, model) {
 			});
 			var stringToAdd = $("<div>");
 			stringToAdd.addClass("thumbnail-dish");
-        	stringToAdd.html("<img src='" + dish.ImageURL + "'></img><button id='" + dish.RecipeID + "'>" + dish.Title + "</button><h3>" + priceOfDish + " SEK</h3>");
+        	stringToAdd.html("<img src='" + dish.ImageURL + "'></img><button id='" + dish.RecipeID + "'>" + dish.Title + "</button><h3>" + parseFloat(priceOfDish) + " SEK</h3>");
 
         	dishesContainer.append(stringToAdd);
         	totalPrice += priceOfDish;
         });
-		totalPriceContainer.append("<h2>Total Price:</h2><h3>" + totalPrice + " SEK</h3>");
+		totalPriceContainer.append("<h2>Total Price:</h2><h3>" + Math.floor(totalPrice * 100) / 100  + " SEK</h3>");
 
 	};
 
