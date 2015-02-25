@@ -17,6 +17,8 @@ var FullMenuView = function(container, model) {
 		var totalPrice = 0;
 		var numberOfGuests = model.getNumberOfGuests();
 		numberOfGuestsTitle.append("<h3>My Dinner: " + numberOfGuests + " people</h3>");
+		totalPriceContainer.html("<div class='loader'/>");
+
 		$.each(model.getFullMenu(), function(key, dish) {
 			var priceOfDish = 0;
 			$.each(dish.Ingredients, function(key, ingredient){
@@ -24,7 +26,7 @@ var FullMenuView = function(container, model) {
 			});
 			var stringToAdd = $("<div>");
 			stringToAdd.addClass("thumbnail-dish");
-        	stringToAdd.html("<img src='" + dish.ImageURL120 + "'></img><button class='thumbnail-dish-button' id='" + dish.RecipeID + "'>" + dish.Title + "</button><h3>" + priceOfDish + " SEK</h3>");
+        	stringToAdd.html("<img src='" + dish.ImageURL + "'></img><button id='" + dish.RecipeID + "'>" + dish.Title + "</button><h3>" + priceOfDish + " SEK</h3>");
 
         	dishesContainer.append(stringToAdd);
         	totalPrice += priceOfDish;

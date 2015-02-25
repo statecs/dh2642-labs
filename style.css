@@ -120,6 +120,7 @@ button{
 }
 .thumbnail-dish img { 
     border: 2px solid black;
+    width:124px;
 }
 .thumbnail-dish-button {
     text-align: center;
@@ -128,6 +129,10 @@ button{
     font-size: 15px;
     font-weight: bold;
     background: #d3d3d3;
+}
+
+.imageSelect img{
+  width:70%;
 }
 
 /*pagethree.html */
@@ -172,8 +177,6 @@ button{
   margin-left: 5px;
   border: none;
 }
-
-
 
 .loader{
   display:none;

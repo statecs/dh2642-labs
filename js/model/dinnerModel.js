@@ -59,7 +59,7 @@ var DinnerModel = function() {
 		$.each(dinnerMenu,function(index, dishFromMenu){
 			//For each ingridient, add price times number of guests
 			$.each(dishFromMenu.ingredients,function(index,ingredient) {
-				totalMenuPrice += ingredient.price * numberOfGuests;
+				totalMenuPrice += parseFloat(ingredient.price * numberOfGuests);
 			});
 		});
 		return totalMenuPrice;
