@@ -3,11 +3,11 @@ var PrintMenuCtrl = function(view,model) {
 	view.container.find("#backToMainButton").click(function() {
 		
 	  /*Hide printMenuView*/	
-  	  $("#printMenuView").hide("slow");
+  	  $("#printMenuView").hide();
 	 
 	 /*Show mainView and sidebarView*/
-	  $("#mainView").show("slow");
-	  $("#sidebarView").show("slow");
+	  $("#mainView").show();
+	  $("#sidebarView").show();
 
 
 	});

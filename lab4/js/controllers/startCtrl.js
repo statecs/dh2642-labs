@@ -5,7 +5,7 @@ var StartCtrl = function(view,model) {
 		
 		/* #startView change CSS to display:none; */
 
-		$( "#startView" ).hide("slow");
+		$( "#startView" ).hide();
 
 		
 		/* #mainView change CSS to display:inline; */
