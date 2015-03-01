@@ -6,5 +6,7 @@ dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner) {
   // $routingParams.paramName
   // Check the app.js to figure out what is the paramName in this case
 	
-	$scope.selectedDish = Dinner.Dish.get($routeParams.dishId);
+	//Need to improve error handling like in search control
+	$scope.selectedDish = Dinner.Dish.get({id:$routeParams.dishId});
+	
 });
