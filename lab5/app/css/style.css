@@ -51,33 +51,31 @@ button{
   border-bottom-width: 2px;
 }
 
-/*SidebarView */
-.numGuests{
-  margin-right: 10px;
-}
-/*Dish Name & Cost - background grey */
-.dishHead{
-  background: #d3d3d3;
-  padding: 0px 5px;
-  border-color: black;
-  border-style: solid;
-}
-/* padding 10px left/right and 5px top/bottom */
-.sidebar-content{
-  padding: 5px 10px;
+/*    Sidebar    */
+.sidebar-nav{
+  border-right: 2px solid black;
+  margin-bottom:  0px;
+  height: 100%;
 }
 .sidebar-header{
   background: #d3d3d3;
-  padding: 5px 10px;
   margin-bottom: 5px;
 }
+
+/*    SEARCH    */
+
 /*border left 3px solid black */
-.content{
-  border-left:3px solid black;
-  height: 100%;
+.main-header{
+  border-bottom:2px solid black;
   overflow: hidden;
-  padding-bottom: 75px;
+  padding-left: 50px;
+  padding-bottom: 25px;
+  padding-top: 25px;
 }
+.main-container{
+  padding:25px;
+}
+
 .select-dish{
   background-color:#ffe599;
   padding:25px;
@@ -87,30 +85,9 @@ button{
   margin-top: 43px;
 }
 /* main container padding 25px top/bottom/right/left */
-.main-container{
-  padding:25px;
-}
 .recipes-list{
   margin-top: 50px;
 }
-
-
-/* Full menu View*/
-.full-recipes-list{
-  margin-top: 50px;
-  border-right: 1px solid black;
-  margin-bottom: 1em;
-}
-.full-menu-totalprice{
-  margin-top: 50px;
-  margin-bottom: 1em;
-}
-
-.description{
-  font-size: 10px;
-  margin-top:5%;
-}
-
 /* Thumnails used in mainView, dishToSelectView and FullMenuView*/
 .thumbnail-dish {
     display: inline-block;
@@ -130,6 +107,24 @@ button{
     font-weight: bold;
     background: #d3d3d3;
 }
+
+
+/* Full menu View*/
+.full-recipes-list{
+  margin-top: 50px;
+  border-right: 1px solid black;
+  margin-bottom: 1em;
+}
+.full-menu-totalprice{
+  margin-top: 50px;
+  margin-bottom: 1em;
+}
+
+.description{
+  font-size: 10px;
+  margin-top:5%;
+}
+
 
 .imageSelect img{
   width:70%;
@@ -186,6 +181,20 @@ button{
                 50% 50% 
                 no-repeat;
   position: relative;
+}
+#sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    left: 250px;
+    width: 250px;
+    height: 100%;
+    margin-left: -250px;
+    overflow-y: auto;
+    background: #fff;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
 }
 
 /* When the body has the loading class, we turn
