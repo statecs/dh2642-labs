@@ -1,29 +1,33 @@
-
-
 <!-- TODO in Lab 5: Display the items on the menu with cost for each -->
 
 
 <!-- Displaying number of guests both in input box and here is redundant. It is here only for the example
 purpose so you can see how some information from the model can be retrieved. In Lab 5 you will replace 
 this with Total price of the menu -->
-<div class="col-md-2 sidebar">
-    <div class="sidebar-content">
-    	<h4>My Dinner</h4>
-    	People: <input type="number" ng-model="numberOfGuests" ng-change="setNumberOfGuest(numberOfGuests)"/>
+
+
+ <!-- Sidebar -->
+        <div id="sidebar-wrapper" class="col-md-2">
+            <div class="sidebar-nav">
+               
+                    <h4>My Dinner</h4>
+        People: <input class="number" type="number" ng-model="numberOfGuests" ng-change="setNumberOfGuest(numberOfGuests)"/>
         <hr/>
-        <!--Placeholder for showing full menu in sidebar-->
-        <div class='row sidebar-header'>
-        	<div class='col-md-6'>Dish Name</div>
-        	<div class='col-md-6 text-right'>Cost</div>
-        </div>
-        <ul>
-        	<li ng-repeat="dish in dishMenu">
-        	{{dish.Title}}
-        	</li>
+                <div class="col-md-6">Dish Name</div>
+            <div class="col-md-6 text-right">Cost</div><hr/>
+            
+              <ul>
+            <li ng-repeat="dish in dishMenu">
+            {{dish.Title}}
+            </li>
         </ul>
         <div class="row">
-        	<div id="sidebar-totalprice" class="col-md-12 sidebar-header text-right">Total Price: {{getTotalMenuPrice()}}</div>
+            <div id="sidebar-totalprice" class="col-md-12 text-right">Total Price: {{getTotalMenuPrice()}}</div>
+            <hr/>
         </div>
-        <a ng-href="#/full_menu" id="sidebarConfirmButton" class="btn btn-default col-md-offset-3">Confirm Dinner</a>
-    </div>
-</div>
+        <a ng-href="#/overview" id="sidebarConfirmButton" class="btn btn-default col-md-offset-3">Confirm Dinner</a>
+
+              
+            </div>
+        </div>
+        <!-- /#sidebar-wrapper -->
