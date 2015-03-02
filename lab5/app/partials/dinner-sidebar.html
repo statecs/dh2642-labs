@@ -7,27 +7,31 @@ this with Total price of the menu -->
 
 
  <!-- Sidebar -->
-        <div id="sidebar-wrapper" class="col-md-2">
-            <div class="sidebar-nav">
-               
-                    <h4>My Dinner</h4>
+<div id="sidebar-wrapper" class="col-md-2">
+    <div class="sidebar-nav">
+        <h4>My Dinner</h4>
         People: <input class="number" type="number" ng-model="numberOfGuests" ng-change="setNumberOfGuest(numberOfGuests)"/>
         <hr/>
-                <div class="col-md-6">Dish Name</div>
-            <div class="col-md-6 text-right">Cost</div><hr/>
-            
-              <ul>
-            <li ng-repeat="dish in dishMenu">
+        <div class="col-md-6">Dish Name</div>
+        <div class="col-md-6 text-right">Cost</div><hr/>
+        
+        <div class="row" ng-repeat="dish in fullMenu">
+            <div class="col-md-6">
             {{dish.Title}}
-            </li>
-        </ul>
-        <div class="row">
-            <div id="sidebar-totalprice" class="col-md-12 text-right">Total Price: {{getTotalMenuPrice()}}</div>
-            <hr/>
-        </div>
-        <a ng-href="#/overview" id="sidebarConfirmButton" class="btn btn-default col-md-offset-3">Confirm Dinner</a>
-
-              
+            </div>
+            <div class="col-md-4 text-right">
+                {{getPriceOfDish(dish)}}
+            </div>
+            <div class="col-md-1">
+                <!-- Need to add ng-click action for remove item from menu-->
+                <a ng-click="" class="btn btn-danger" id="remove_{{dish.Category}}">X</a>
             </div>
         </div>
-        <!-- /#sidebar-wrapper -->
+        <div class="row">
+        <div id="sidebar-totalprice" class="col-md-12 text-right">Total Price: {{getTotalMenuPrice()}}</div>
+        <hr/>
+        </div>
+        <a ng-href="#/overview" id="sidebarConfirmButton" class="btn btn-default col-md-offset-3">Confirm Dinner</a>
+    </div>
+</div>
+<!-- /#sidebar-wrapper -->

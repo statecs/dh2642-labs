@@ -6,11 +6,27 @@ dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner) {
   // $routingParams.paramName
   // Check the app.js to figure out what is the paramName in this case
 
+	//Need to improve error handling like in search control
+	$scope.selectedDish = Dinner.Dish.get({id:$routeParams.dishId});
+	$scope.numberOfGuests = Dinner.getNumberOfGuests();
+
  $scope.$backButton = function() { 
     window.history.back();
   };
 
-	//Need to improve error handling like in search control
-	$scope.selectedDish = Dinner.Dish.get({id:$routeParams.dishId});
+  //Not working ye in dish.html
+  $scope.getPriceOfDish = function(){
+	var totalPriceOfDish = 0;
+	$.each($scope.selectedDish.Ingredients, function(key, ingredient) {
+		totalPriceOfDish += ingredient.Quantity*$scope.numberOfGuests;
+	});  	
+	return totalPriceOfDish;
+  }
+
+  $scope.addDishToMenu = function(e){
+  	e.preventDefault();
+  	console.log($scope.selectedDish);
+  	Dinner.addDishToMenu($scope.selectedDish);
+  }
 	
 });

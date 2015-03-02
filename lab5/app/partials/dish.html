@@ -13,7 +13,7 @@ Instructions, Ingredients and total cost. -->
 			<h3> Preparation</h3>
 			<p ng-src="{{selectDish.Instructions}}" class="description">{{selectDish.Subcategory}}</p>
 
-			<button ng-click="$backButton()" id="backButton">Back to selected Dish</button>
+			<button ng-click="$backButton()" id="backButton">Back to search</button>
 
 	</div>
 
@@ -22,19 +22,18 @@ Instructions, Ingredients and total cost. -->
 
 	<div class="ingredients col-md-5"> 
 				
-		<h3 id="h3-ingridents-dishToSelect"><h3 id="h3-ingridents-dishToSelect">Ingredients for 4 people</h3></h3>
+		<h3 id="h3-ingridents-dishToSelect">Ingredients for {{numberOfGuests}} people</h3>
 		<hr>
 		<!--Used for ingredient list for selected item-->
 		<div class="ing">
 		
-			<div class="row">
+			<div class="row" ng-repeat="ingredient in selectedDish.Ingredients">
+				<div class="col-md-1">{{ingredient.Quantity}}</div>
 				<div class="col-md-1">{{ingredient.MetricUnit}}</div>
 				<div class="col-md-2"></div>
-				<div class="col-md-7">{{ingredient.Name}}</div>
+				<div class="col-md-6">{{ingredient.Name}}</div>
 				<div class="col-md-1 text-right">SEK</div>
-				<div class="col-md-1 text-right">{{ingredient.Quanity}}</div>
-				
-			
+				<div class="col-md-1 text-right">{{ingredient.Quantity * numberOfGuests}}</div>			
 			</div>
 
 		</div>
@@ -44,11 +43,11 @@ Instructions, Ingredients and total cost. -->
 
 		<div class="row">
 			<div class="buttonconfirm col-md-6">
-				<a ng-href="#overview"><button id="confirmButton">Confirm dish</button></a>
+				<a ng-click="addDishToMenu($event)" ng-href="#search" class="btn btn-default">Confirm dish</a>
 			</div>
 
 			<div class="totalsek col-md-6">
-				<div id="totalprice-ingridients" class="text-right"><div id="totalprice-ingridients" class="text-right">TOTAL SEK: 172</div></div>
+				<div id="totalprice-ingridients" class="text-right"><div id="totalprice-ingridients" class="text-right">TOTAL SEK: 0</div></div>
 			</div>
 		</div>
 

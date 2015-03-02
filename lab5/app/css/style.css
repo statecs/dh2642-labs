@@ -162,7 +162,7 @@ input.number{
 .removeButton {
   width: 16px;
   height: 16px;
-  background-image: url('images/remove.png');
+  background-image: url('../images/remove.png');
   background-color: white;
   margin-left: 5px;
   border: none;

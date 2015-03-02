@@ -1,9 +1,6 @@
-<!-- We include the sidebar as it is shared across two screens. -->
-<ng-include src="'partials/dinner-sidebar.html'" ng-controller="DinnerCtrl"></ng-include>
-
 <!-- TODO in Lab 5: Display the dish information including image, Description, 
 Instructions, Ingredients and total cost. -->
-<div class="row" id="page-content-wrapper" >
+
 <div class="page-bar row">
 		<div class="col-md-9">
 			<h3>My Dinner: 4 people</h3>
@@ -11,23 +8,22 @@ Instructions, Ingredients and total cost. -->
 		<div class="col-md-2">
 			<button id="backToMainButton" ng-click="$backButton()" >Go back and edit dinner</button>
 		</div>
-	</div> <!--ends page-bar-->
+</div> <!--ends page-bar-->
 
 
 	<div class="page-6-content">
-	<div class="row">
-		<div class="col-md-2" id="mainImage">
-			<img src="images/toast.jpg"/>
-		</div>
+	<div class="row" ng-repeat="dish in fullMenu">
+
+		<div class="col-md-2 col-md-offset-1 thumbnail-dish"><img ng-src="{{dish.ImageURL}}" alt="Image of dish, title of dish is {{dish.Title}}" /></div>
 		<div class="col-md-3">
 			<h3>
-				<div id="mainName">Toast</div>
+				<div id="mainName">{{dish.Title}}</div>
 			</h3>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla sit amet turpis non tempus. Praesent nec diam a augue mattis dictum nec sed odio. Fusce quis nisi nibh.</p>
+			<p>INGREDIENTS</p>
 		</div>
 		<div class="col-md-5">
 			<h4>Preparations</h4>
-			<p><div id="mainDescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla sit amet turpis non tempus. Praesent nec diam a augue mattis dictum nec sed odio. Fusce quis nisi nibh.</div></p>
+			<p><div id="mainDescription">{{dish.Instructions}}</div></p>
 		</div>
 	</div>
 

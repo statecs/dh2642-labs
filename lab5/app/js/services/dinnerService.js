@@ -42,7 +42,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
     //TODO Lab 2
     var allIngredients = [];
     $.each(dinnerMenu,function(index, dishFromMenu){
-      $.each(dishFromMenu.ingredients,function(index,ingredient) {
+      $.each(dishFromMenu.Ingredients,function(index,ingredient) {
         allIngredients.push(ingredient);
       });
     });
@@ -54,8 +54,8 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
     var totalMenuPrice = 0;     //To count total menu price 
     $.each(dinnerMenu,function(index, dishFromMenu){
       //For each ingridient, add price times number of guests
-      $.each(dishFromMenu.ingredients,function(index,ingredient) {
-        totalMenuPrice += Math.floor(ingredient.price*numberOfGuests * 100) / 100;
+      $.each(dishFromMenu.Ingredients,function(index,ingredient) {
+        totalMenuPrice += Math.floor(ingredient.Quantity*numberOfGuest * 100) / 100;
       });
     });
     return totalMenuPrice;
