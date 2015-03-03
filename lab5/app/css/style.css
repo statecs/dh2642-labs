@@ -2,14 +2,15 @@ html,body{
     font-family: "Raleway", sans-serif;
     height:   100%;
 }
-
-/* background image */
-.background-small{
-  background: url(../images/fameating.jpg) no-repeat center center fixed; 
+html{
+  background: linear-gradient(0deg, rgba(250,250,250,0.9), rgba(250,250,250,0.9)), url(../images/fameating.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;;
+  background-size: cover;
+}
+body{
+  background:none;
 }
 /* Header yellow transparent background, black-border-bottom */
 header{
@@ -39,6 +40,11 @@ input.number{
   width:50px;
 }
 
+
+a header#uniqueHeader {
+  color:#000000;
+  text-decoration: none !important;
+}
 
 .text-center{
   padding:10px;
@@ -127,7 +133,7 @@ input.number{
   .dishImage{
 
     display: inline-block;
-    width: 350px;
+    width: 300px;
     margin-right: 20px;
     vertical-align: top;
     }  
@@ -152,10 +158,6 @@ input.number{
     font-weight: bold;
     background: #d3d3d3;
 }
-
-
-
-
 
 
 

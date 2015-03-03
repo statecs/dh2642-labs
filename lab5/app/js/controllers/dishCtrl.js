@@ -14,7 +14,7 @@ dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner) {
     window.history.back();
   };
 
-  //Not working ye in dish.html
+  //Not working yet in dish.html
   $scope.getPriceOfDish = function(){
 	var totalPriceOfDish = 0;
 	$.each($scope.selectedDish.Ingredients, function(key, ingredient) {

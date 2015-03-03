@@ -20,6 +20,7 @@ which module to associate the app with. In app.js we create the "dinnerPlanner" 
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="js/angularjs-viewhead.js"></script>
 
     
     <!-- The application JavaScript code -->
@@ -42,7 +43,7 @@ which module to associate the app with. In app.js we create the "dinnerPlanner" 
             <h1>HOMELETTE</h1>
             <p>From the best chefs in the world directly into your kitchen</p>
     </header></a>
-    <div class="wrapper" ng-view></div>
+    <div class="{{viewTitle}} wrapper" ng-view ></div>
 
   </body>
   
