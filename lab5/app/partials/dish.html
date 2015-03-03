@@ -11,10 +11,9 @@ Instructions, Ingredients and total cost. -->
 			<div class="image"><img ng-src="{{selectedDish.ImageURL}}" class="dishImage" alt="Image of dish, title of dish is {{selectedDish.Title}}" /></div>
 
 			<h3> Preparation</h3>
-			<p ng-src="{{selectDish.Instructions}}" class="description">{{selectDish.Subcategory}}</p>
+			<p ng-src="{{selectDish.Instructions}}" class="description">{{selectedDish.Instructions}}</p>
 
-			<a ng-href="#/search"><button id="backButton">Back to search</button></a>
-
+			<a ng-href="#/search" class="btn btn-default" id="backButton">Back to search</a>
 	</div>
 
 
@@ -47,7 +46,7 @@ Instructions, Ingredients and total cost. -->
 			</div>
 
 			<div class="totalsek col-md-6">
-				<div id="totalprice-ingridients" class="text-right"><div id="totalprice-ingridients" class="text-right">TOTAL SEK: 0</div></div>
+				<div id="totalprice-ingridients" class="text-right"><div id="totalprice-ingredients" class="text-right">TOTAL SEK: {{getPriceOfDish(dish)}}</div></div>
 			</div>
 		</div>
 

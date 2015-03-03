@@ -40,7 +40,7 @@ dinnerPlannerApp.config(['$routeProvider',
       when('/home', {
         templateUrl: 'partials/home.html',
         controller: function ($scope) {
-                    $scope.chosenTitle = 'Dynamic Title';
+                    $scope.chosenTitle = 'Home';
                 }
       }).
       when('/search', {

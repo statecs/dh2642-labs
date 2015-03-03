@@ -12,10 +12,10 @@ this with Total price of the menu -->
         <h4>My Dinner</h4>
         People: <input class="number" type="number" ng-model="numberOfGuests" ng-change="setNumberOfGuest(numberOfGuests)"/>
         <hr/>
-        <div class="col-md-6">Dish Name</div>
-        <div class="col-md-6 text-right">Cost</div><hr/>
+        <div class="col-md-6 left-padding">Dish Name</div>
+        <div class="col-md-6 right-padding">Cost</div><hr/>
         
-        <div class="row" ng-repeat="dish in fullMenu">
+        <div class="row ingredient" ng-repeat="dish in fullMenu">
             <div class="col-md-6">
             {{dish.Title}}
             </div>
@@ -24,7 +24,7 @@ this with Total price of the menu -->
             </div>
             <div class="col-md-1">
                 <!-- Need to add ng-click action for remove item from menu-->
-                <a ng-click="" class="btn btn-danger" id="remove_{{dish.Category}}">X</a>
+                <a ng-click="" class="btn-small btn-danger" id="remove_{{dish.Category}}">X</a>
             </div>
         </div>
         <div class="row">

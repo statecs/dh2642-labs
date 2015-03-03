@@ -29,13 +29,7 @@ header p{
 }
 /*REMOVED THIS FROM SIDEBAR, MAYBE ADD LATER */
 /* buttons and text - color black and bold */
-button{
-  background-color: orange;
-  border: 3px solid black;
-  width: 100%;
-  font-weight:bold;
-  color:#000 !important;
-}
+
 input.number{
   width:50px;
 }
@@ -63,12 +57,33 @@ a header#uniqueHeader {
     list-style: none;
     width:210px;
 }
-
-
+.ingredient{
+  font-size:12px;
+}
+.left-padding{
+  padding-left:0px;
+}
+.right-padding{
+  padding-left:35px;
+}
+.btn-small{
+  padding: 5px 7px;
+font-size: 5px;
+}
 #page-content-wrapper{
   padding-left:270px;
 }
-
+#sidebar-totalprice{
+  padding-top:10%;
+  padding-bottom:10%;
+}
+#fullmenu-numguests-title{
+font-size:15px;
+padding-left:20px;
+}
+.description{
+  text-align: justify;
+}
 #sidebar-wrapper {
     z-index: 1000;
     position: fixed;

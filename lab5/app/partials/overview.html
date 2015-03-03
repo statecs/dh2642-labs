@@ -4,24 +4,32 @@ Instructions, Ingredients and total cost. -->
 		<div class="col-md-10">
 			<h3 id="fullmenu-numguests-title">My Dinner: {{numberOfGuests}} people</h3>
 		</div>
-		<div class="col-md-2">
-			<a ng-href="#/search"><button id="backToMainButton" >Go back and edit dinner</button></a>
+		<div class="col-md-2"><br />
+			<a ng-href="#/search" class="btn btn-default" id="backToMainButton" >Go back and edit dinner</a>
 		</div>
 	</div> <!--ends page-5-bar-->
 
-	<div class="row">
-		<div class="col-md-offset-1"></div>
-			<div class="col-md-3" ng-repeat="dish in fullMenu">
-			<h3 ng-src="{{dish.Title}}" id="dishHeader" class="title">{{dish.Title}}</h3>
+
+<!--Main container for showing full menu-->
+	<div class="container">
+		<div class="row">
+			<div class="fullmenu-main-container full-recipes-list col-md-8" ng-repeat="dish in fullMenu">
+				
+	<h3 ng-src="{{dish.Title}}" id="dishHeader" class="title">{{dish.Title}}</h3>
 			<div class="thumbnail-dish"><img ng-src="{{dish.ImageURL}}" class="dishImage" alt="Image of dish, title of dish is {{dish.Title}}" /></div>
+
+			</div>
+	    	<div class="full-menu-totalprice col-md-2">TOTAL PRICE</div>
+	    </div>  
+	    <hr/>
+	  
 		</div>
-		<div class="col-md-2">
-		TOTAL PRICE
-		</div>
-	</div>
+
+
 	<div class="row">	
-	    	<a ng-href="#preparation">
-	    		<button id="printFull" class="col-md-3 col-md-offset-4">Print Full Recipe</button>
+	    	<a ng-href="#preparation" class="btn btn-default col-md-3 col-md-offset-4" id="printFull">
+	    	
+Print Full Recipe
 	    	</a>
 	</div>	
 
