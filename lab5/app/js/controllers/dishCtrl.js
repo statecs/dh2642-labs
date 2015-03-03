@@ -10,10 +10,6 @@ dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner) {
 	$scope.selectedDish = Dinner.Dish.get({id:$routeParams.dishId});
 	$scope.numberOfGuests = Dinner.getNumberOfGuests();
 
- $scope.$backButton = function() { 
-    window.history.back();
-  };
-
   //Not working yet in dish.html
   $scope.getPriceOfDish = function(){
 	var totalPriceOfDish = 0;
