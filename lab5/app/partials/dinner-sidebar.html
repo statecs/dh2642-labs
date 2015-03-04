@@ -27,7 +27,7 @@ this with Total price of the menu -->
             {{dish.Title}}
             </div>
             <div class="col-md-4 text-right">
-                {{getPriceOfDish(dish)}}
+                {{getPriceOfDish(dish) | number:2}}
             </div>
             <div class="col-md-1">
                 <!-- Need to add ng-click action for remove item from menu-->
@@ -35,7 +35,7 @@ this with Total price of the menu -->
             </div>
         </div>
         <div class="row">
-        <div id="sidebar-totalprice" class="col-md-12 text-right">Total Price: {{getTotalMenuPrice()}}</div>
+        <div id="sidebar-totalprice" class="col-md-12 text-right">Total Price: {{getTotalMenuPrice() | number:2}}</div>
         <hr/>
         </div>
         <a ng-href="#/overview" id="sidebarConfirmButton" class="btn btn-default col-md-offset-3">Confirm Dinner</a>

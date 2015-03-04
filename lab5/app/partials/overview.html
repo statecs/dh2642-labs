@@ -19,7 +19,7 @@ Instructions, Ingredients and total cost. -->
 			<div class="thumbnail-dish"><img ng-src="{{dish.ImageURL}}" class="dishImage" alt="Image of dish, title of dish is {{dish.Title}}" /></div>
 
 			</div>
-	    	<div class="full-menu-totalprice col-md-2">TOTAL PRICE</div>
+	    	<div class="full-menu-totalprice col-md-2">TOTAL PRICE <h1>{{getTotalMenuPrice() | number:2}}kr</h1></div>
 	    </div>  
 	    <hr/>
 	  

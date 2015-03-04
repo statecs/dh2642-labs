@@ -29,5 +29,6 @@ dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner) {
   	console.log($scope.selectedDish);
   	Dinner.addDishToMenu($scope.selectedDish);
   }
-	
+
+
 });

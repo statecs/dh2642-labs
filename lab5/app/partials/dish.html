@@ -22,18 +22,18 @@ Instructions, Ingredients and total cost. -->
 
 	<div class="ingredients col-md-5"> 
 				
-		<h3 id="h3-ingridents-dishToSelect">Ingredients for <span ng-bind="numberOfGuests"></span>people</h3>
+		<h3 id="h3-ingridents-dishToSelect">Ingredients for <span ng-bind="numberOfGuests"></span> people</h3>
 		<hr>
 		<!--Used for ingredient list for selected item-->
 		<div class="ing">
 		
 			<div class="row" ng-repeat="ingredient in selectedDish.Ingredients">
-				<div class="col-md-1">{{ingredient.Quantity}}</div>
+				<div class="col-md-1">{{ingredient.Quantity | number:2}}</div>
 				<div class="col-md-1">{{ingredient.MetricUnit}}</div>
 				<div class="col-md-2"></div>
 				<div class="col-md-6">{{ingredient.Name}}</div>
 				<div class="col-md-1 text-right">SEK</div>
-				<div class="col-md-1 text-right">{{ingredient.Quantity * numberOfGuests}}</div>			
+				<div class="col-md-1 text-right">{{ingredient.Quantity * numberOfGuests | number:2}}</div>			
 			</div>
 
 		</div>
@@ -47,7 +47,7 @@ Instructions, Ingredients and total cost. -->
 			</div>
 
 			<div class="totalsek col-md-6">
-				<div id="totalprice-ingridients" class="text-right"><div id="totalprice-ingredients" class="text-right">TOTAL SEK: {{getPriceOfDish(dish)}}</div></div>
+				<div id="totalprice-ingridients" class="text-right"><div id="totalprice-ingredients" class="text-right">TOTAL SEK: {{getPriceOfDish(dish) | number:2}}</div></div>
 			</div>
 		</div>
 
