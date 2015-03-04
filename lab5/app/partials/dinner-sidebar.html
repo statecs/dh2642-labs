@@ -19,25 +19,27 @@ this with Total price of the menu -->
         <h4>My Dinner</h4>
         People: <input class="number" type="number" ng-model="numberOfGuests" ng-change="setNumberOfGuest(numberOfGuests)"/>
         <hr/>
-        <div class="col-md-6 left-padding">Dish Name</div>
-        <div class="col-md-6 right-padding">Cost</div><hr/>
+        <div class="row bg-primary">
+        <div class="col-md-6 text-right">Dish Name</div>
+        <div class="col-md-6 text-right">Cost</div>
+        </div>
         
         <div class="row ingredient" ng-repeat="dish in fullMenu">
-            <div class="col-md-6">
-            {{dish.Title}}
-            </div>
-            <div class="col-md-4 text-right">
-                {{getPriceOfDish(dish) | number:2}}
-            </div>
             <div class="col-md-1">
                 <!-- Need to add ng-click action for remove item from menu-->
-                <a ng-click="" class="btn-small btn-danger" id="remove_{{dish.Category}}">X</a>
+                <a ng-click="removeDishFromMenu($event)" class="btn-small btn-danger" id="{{dish.RecipeID}}">X</a>
+            </div>
+            <div class="col-md-8">
+            {{dish.Title}}
+            </div>
+            <div class="col-md-2 text-right">
+                {{getPriceOfDish(dish) | number:2}}
             </div>
         </div>
-        <div class="row">
+        <div class="row bg-info">
         <div id="sidebar-totalprice" class="col-md-12 text-right">Total Price: {{getTotalMenuPrice() | number:2}}</div>
-        <hr/>
         </div>
+        <hr/>
         <a ng-href="#/overview" id="sidebarConfirmButton" class="btn btn-default col-md-offset-3">Confirm Dinner</a>
     </div>
 </div>

@@ -25,12 +25,19 @@ dinnerPlannerApp.controller('DinnerCtrl', function ($scope,Dinner,$cookies,$cook
     Dinner.setNumberOfGuests(number);
   }
   
+  $scope.removeDishFromMenu = function(event){
+    Dinner.removeDishFromMenu(event.target.id);
+  }
+
   $scope.getPriceOfDish = function(dish){
-	var totalPriceOfDish = 0;
-	$.each(dish.Ingredients, function(key, ingredient) {
-		totalPriceOfDish += ingredient.Quantity*$scope.numberOfGuests;
-	});  	
-	return totalPriceOfDish;
+    if(dish === undefined){
+      return;
+    }
+  	var totalPriceOfDish = 0;
+  	$.each(dish.Ingredients, function(key, ingredient) {
+  		totalPriceOfDish += ingredient.Quantity*$scope.numberOfGuests;
+  	});  	
+  	return totalPriceOfDish;
   }
   /*$scope.removeDishToMenu = function(e){
   	Dinner.removeDishToMenu($scope.selectedDish.);

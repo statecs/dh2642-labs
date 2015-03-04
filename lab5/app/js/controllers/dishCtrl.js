@@ -16,8 +16,9 @@ dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner) {
  }, true);
 
   //Not working yet in dish.html
-  $scope.getPriceOfDish = function(){
+  $scope.getPriceOfSelectedDish = function(){
 	var totalPriceOfDish = 0;
+	console.log($scope.selectedDish.Ingredients);
 	$.each($scope.selectedDish.Ingredients, function(key, ingredient) {
 		totalPriceOfDish += ingredient.Quantity*$scope.numberOfGuests;
 	});  	
