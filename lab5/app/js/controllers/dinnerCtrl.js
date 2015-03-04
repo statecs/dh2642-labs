@@ -2,9 +2,12 @@
 // display or modify the dinner menu
 dinnerPlannerApp.controller('DinnerCtrl', function ($scope,Dinner) {
 
+  $scope.fullMenu = Dinner.getFullMenu();
+
+
+  //Only need to call this method once (not using $watch) as we only show the value
   $scope.numberOfGuests = Dinner.getNumberOfGuests();
 
-  $scope.fullMenu = Dinner.getFullMenu();
 
   $scope.setNumberOfGuest = function(number){
     Dinner.setNumberOfGuests(number);

@@ -8,7 +8,12 @@ dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner) {
 
 	//Need to improve error handling like in search control
 	$scope.selectedDish = Dinner.Dish.get({id:$routeParams.dishId});
-	$scope.numberOfGuests = Dinner.getNumberOfGuests();
+	
+ //Litening to changes of number of guests in the Dinner Service
+ $scope.$watch(function() { return Dinner.getNumberOfGuests(); }, function(newVal) { 
+    /* Do the stuff */
+     $scope.numberOfGuests = newVal;
+ }, true);
 
   //Not working yet in dish.html
   $scope.getPriceOfDish = function(){
