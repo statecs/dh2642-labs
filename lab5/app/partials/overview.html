@@ -13,10 +13,12 @@ Instructions, Ingredients and total cost. -->
 <!--Main container for showing full menu-->
 	<div class="container">
 		<div class="row">
-			<div class="fullmenu-main-container full-recipes-list col-md-8" ng-repeat="dish in fullMenu">
-				
-	<h3 ng-src="{{dish.Title}}" id="dishHeader" class="title">{{dish.Title}}</h3>
-			<div class="thumbnail-dish"><img ng-src="{{dish.ImageURL}}" class="dishImage" alt="Image of dish, title of dish is {{dish.Title}}" /></div>
+			<div class="fullmenu-main-container full-recipes-list col-md-8" >
+	
+			<div class="thumbnail-dish" ng-repeat="dish in fullMenu"><img ng-src="{{dish.ImageURL}}" class="dishImage" alt="Image of dish, title of dish is {{dish.Title}}" />
+			<p ng-src="{{dish.Title}}" id="dishHeader" class="title">{{dish.Title}}</p>
+			<h3>{{numberOfGuests | number:2}} kr</h3>
+			</div>
 
 			</div>
 	    	<div class="full-menu-totalprice col-md-2">TOTAL PRICE <h1>{{getTotalMenuPrice() | number:2}}kr</h1></div>

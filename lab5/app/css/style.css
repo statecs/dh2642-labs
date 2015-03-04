@@ -95,7 +95,11 @@ padding-left:20px;
     border-right: 1px solid;
 }
 
-
+.full-recipes-list {
+margin-top: 50px;
+border-right: 1px solid black;
+margin-bottom: 1em;
+}
 /* StartView */
 /* Transparent box - frontpage */
 #transbox{
@@ -203,7 +207,12 @@ body.loading {
     display: none;
 }
 
-
+.full-menu-totalprice{
+  padding-top:50px;
+}
+.list-preparation{
+  padding-top:50px;
+}
 
 @media(max-width:768px) {
   
