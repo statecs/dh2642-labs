@@ -21,7 +21,7 @@
 							{{status}}
 						</div>
 
-						<div class="thumbnail-dish" ng-repeat="dish in dishes | filter:query | orderBy:Title">
+						<div class="thumbnail-dish" ng-repeat="dish in load_recipes | filter:query | orderBy:Title">
 					 		<img ng-src="{{dish.ImageURL}}" class="thumbnail-dish" alt="Image of dish, title of dish is {{dish.Title}}"/>
 					 		<a ng-href="#/dish/{{dish.RecipeID}}">{{dish.Title}}</a>
 					 		<p>{{dish.Instructions}}</p>
