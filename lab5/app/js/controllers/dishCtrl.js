@@ -15,7 +15,14 @@ dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner,$co
      $scope.numberOfGuests = lastVal;
  }, true);
 
-
+  $scope.getPriceOfSelectedDish = function(){
+  var totalPriceOfDish = 0;
+  console.log($scope.selectedDish.Ingredients);
+  $.each($scope.selectedDish.Ingredients, function(key, ingredient) {
+    totalPriceOfDish += ingredient.Quantity*$scope.numberOfGuests;
+  });   
+  return totalPriceOfDish;
+  }
 
   $scope.addDishToMenu = function(e){
 
