@@ -10,20 +10,12 @@ dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner,$co
 	$scope.selectedDish = Dinner.Dish.get({id:$routeParams.dishId});
 	
  //Litening to changes of number of guests in the Dinner Service
- $scope.$watch(function() { return Dinner.getNumberOfGuests(); }, function(newVal) { 
+ $scope.$watch(function() { return Dinner.getNumberOfGuests(); }, function(lastVal) { 
     /* Do the stuff */
-     $scope.numberOfGuests = newVal;
+     $scope.numberOfGuests = lastVal;
  }, true);
 
-  //Not working yet in dish.html
-  $scope.getPriceOfSelectedDish = function(){
-	var totalPriceOfDish = 0;
-	console.log($scope.selectedDish.Ingredients);
-	$.each($scope.selectedDish.Ingredients, function(key, ingredient) {
-		totalPriceOfDish += ingredient.Quantity*$scope.numberOfGuests;
-	});  	
-	return totalPriceOfDish;
-  }
+
 
   $scope.addDishToMenu = function(e){
 

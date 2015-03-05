@@ -29,20 +29,19 @@ dinnerPlannerApp.controller('DinnerCtrl', function ($scope,Dinner,$cookies,$cook
     Dinner.removeDishFromMenu(event.target.id);
   }
 
-  $scope.getPriceOfDish = function(dish){
-    if(dish === undefined){
-      return;
-    }
-  	var totalPriceOfDish = 0;
-  	$.each(dish.Ingredients, function(key, ingredient) {
-  		totalPriceOfDish += ingredient.Quantity*$scope.numberOfGuests;
-  	});  	
-  	return totalPriceOfDish;
-  }
+
   /*$scope.removeDishToMenu = function(e){
   	Dinner.removeDishToMenu($scope.selectedDish.);
   }*/
   $scope.getTotalMenuPrice = function() {
-  	return Dinner.getTotalMenuPrice();
+    return Dinner.getTotalMenuPrice();
+  }
+  $scope.getPriceOfDish = function(dish) {
+
+    var totalPriceOfDish = 0;
+    $.each(dish.Ingredients, function(key, ingredient) {
+      totalPriceOfDish += ingredient.Quantity*$scope.numberOfGuests;
+    });   
+    return totalPriceOfDish;
   }
 });
