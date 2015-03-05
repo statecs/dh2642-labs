@@ -36,6 +36,7 @@ dinnerPlannerApp.controller('DinnerCtrl', function ($scope,Dinner,$cookies,$cook
   $scope.getTotalMenuPrice = function() {
     return Dinner.getTotalMenuPrice();
   }
+  
   $scope.getPriceOfDish = function(dish) {
 
     var totalPriceOfDish = 0;

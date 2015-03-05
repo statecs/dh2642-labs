@@ -14,6 +14,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
   }
 
 
+  
   //Get number of guests in dinner party
   this.getNumberOfGuests = function() {
     return numberOfGuest;

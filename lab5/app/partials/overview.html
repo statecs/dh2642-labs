@@ -17,7 +17,7 @@ Instructions, Ingredients and total cost. -->
 	
 			<div class="thumbnail-dish" ng-repeat="dish in fullMenu"><img ng-src="{{dish.ImageURL}}" class="dishImage" alt="Image of dish, title of dish is {{dish.Title}}" />
 			<p ng-src="{{dish.Title}}" id="dishHeader" class="title">{{dish.Title}}</p>
-			<h3>{{numberOfGuests | number:2}} kr</h3>
+			<h3>{{getPriceOfDish(dish) | number:2}} kr</h3>
 			</div>
 
 			</div>
