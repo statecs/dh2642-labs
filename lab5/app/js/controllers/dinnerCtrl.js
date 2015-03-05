@@ -3,14 +3,18 @@
 dinnerPlannerApp.controller('DinnerCtrl', function ($scope,Dinner,$cookies,$cookieStore) {
 
 
- $scope.bump = function () {
-        var lastVal = $cookieStore.get('lastValue');
+ $scope.setNumberOfGuest = function (number) {
+  
+  Dinner.setNumberOfGuests(number);
+
+        var lastVal = $cookieStore.get('numberOfGuest');
+
         if (!lastVal) {
-            $scope.lastVal = 1;
+            $scope.lastVal = number;
         } else {
-            $scope.lastVal = lastVal + 1;
+            $scope.lastVal = number;
         }
-        $cookieStore.put('lastValue', $scope.lastVal);
+        $cookieStore.put('numberOfGuest', $scope.lastVal);
     }
     
 
@@ -18,12 +22,8 @@ dinnerPlannerApp.controller('DinnerCtrl', function ($scope,Dinner,$cookies,$cook
 
 
   //Only need to call this method once (not using $watch) as we only show the value
-  $scope.numberOfGuests = Dinner.getNumberOfGuests();
-
-
-  $scope.setNumberOfGuest = function(number){
-    Dinner.setNumberOfGuests(number);
-  }
+  $scope.numberOfGuests = $cookieStore.get('numberOfGuest');
+// $scope.numberOfGuests = Dinner.getNumberOfGuests();
   
   $scope.removeDishFromMenu = function(event){
     Dinner.removeDishFromMenu(event.target.id);

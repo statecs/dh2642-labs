@@ -5,7 +5,7 @@
 // the next time.
 dinnerPlannerApp.factory('Dinner',function ($resource) {
   
-  var numberOfGuest = 4;
+  var numberOfGuest;
   var dinnerMenu = [];
 
   //Sets number of guests in dinner party
