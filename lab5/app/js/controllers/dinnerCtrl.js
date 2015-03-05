@@ -8,15 +8,19 @@ dinnerPlannerApp.controller('DinnerCtrl', function ($scope,Dinner,$cookies,$cook
         $cookieStore.put('numberOfGuests', number);
         console.log($cookieStore.get('numberOfGuests'));
   }
-  var dinnerMenuIdCookie = $cookieStore.get('dinnerMenuId') || [];
-  console.log(dinnerMenuIdCookie);
-  $.each(dinnerMenuIdCookie, function(key, value){
-      console.log("Add dish from cookie to menu: " + value);
-      Dinner.addDishToMenu(Dinner.Dish.get({id:value}));
-  });
-
-  //Get dinner menu from Dinner Service, (!need to use cookies!)  
-  $scope.fullMenu = Dinner.getFullMenu();
+  var fullMenuIds = $cookieStore.get('dinnerMenuId') || [];
+  if(fullMenuIds == []){
+    $scope.fullMenu = Dinner.getFullMenu();
+  }
+  else{
+    $scope.fullMenu = [];
+    $.each(fullMenuIds, function(key, value){
+        console.log("Add dish from cookie to menu: " + value);
+        var dinnerToPush = Dinner.Dish.get({id:value});
+        $scope.fullMenu.push(dinnerToPush);
+        Dinner.addDishToMenu(dinnerToPush);
+    });
+  }
 
   //Getting number of guests, loads from cookie if defined or use Dinner service
   $scope.numberOfGuests = $cookieStore.get('numberOfGuests') || Dinner.getNumberOfGuests();
@@ -24,21 +28,28 @@ dinnerPlannerApp.controller('DinnerCtrl', function ($scope,Dinner,$cookies,$cook
   //Remove dish from dinner menu
   $scope.removeDishFromMenu = function(event){
     Dinner.removeDishFromMenu(event.target.id);
+    var newCookie = $cookieStore.get('dinnerMenuId');
+    newCookie.splice(newCookie.indexOf(event.target.id),1);
+    $cookieStore.remove('dinnerMenuId');
+    $cookieStore.put('dinnerMenuId', newCookie);
   }
 
+  $scope.$watch(function() { return Dinner.getTotalMenuPrice(); }, function(lastVal) {
+     $scope.getTotalMenuPrice = lastVal;
+ }, true);
   //Get total price of dinner menu
-  $scope.getTotalMenuPrice = function() {
-    return Dinner.getTotalMenuPrice();
-  }
+  //$scope.getTotalMenuPrice = Dinner.getTotalMenuPrice();
   
   /*Get price of single dish 
     IN: dish object
     OUT: total price of dish */
   $scope.getPriceOfDish = function(dish) {
     var totalPriceOfDish = 0;
-    $.each(dish.Ingredients, function(key, ingredient) {
-      totalPriceOfDish += ingredient.Quantity*$scope.numberOfGuests;
-    });   
+    if(typeof(dish.Ingredients) === 'object'){
+      $.each(dish.Ingredients, function(key, ingredient) {
+        totalPriceOfDish += ingredient.Quantity*$scope.numberOfGuests;
+      });
+    }
     return totalPriceOfDish;
   }
 });

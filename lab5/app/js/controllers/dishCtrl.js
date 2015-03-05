@@ -12,15 +12,20 @@ dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner,$co
 
   $scope.getPriceOfSelectedDish = function(){
     var totalPriceOfDish = 0;
-    $.each($scope.selectedDish.Ingredients, function(key, ingredient) {
-      totalPriceOfDish += ingredient.Quantity*$scope.numberOfGuests;
-    });   
+    if(typeof($scope.selectedDish.Ingredients) === 'object'){
+      $.each($scope.selectedDish.Ingredients, function(key, ingredient) {
+        totalPriceOfDish += ingredient.Quantity*$scope.numberOfGuests;
+      });   
+    }
     return totalPriceOfDish;
   }
 
   $scope.addDishToMenu = function(e){
-  	//Dinner.addDishToMenu($scope.selectedDish);
+  	Dinner.addDishToMenu($scope.selectedDish);
     var dinnerMenuToUpdate = $cookieStore.get('dinnerMenuId') || [];
+    if(dinnerMenuToUpdate == []){
+
+    }
     dinnerMenuToUpdate.push($scope.selectedDish.RecipeID);
     console.log(dinnerMenuToUpdate);
     $cookieStore.put('dinnerMenuId', dinnerMenuToUpdate);

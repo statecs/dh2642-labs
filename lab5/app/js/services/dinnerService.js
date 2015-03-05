@@ -5,7 +5,7 @@
 // the next time.
 dinnerPlannerApp.factory('Dinner',function ($resource,$cookies,$cookieStore) {
   
-  var numberOfGuest = $cookieStore.get('numberOfGuests');
+  var numberOfGuest = $cookieStore.get('numberOfGuests') || 4;
   var dinnerMenu = [];
 
   //Sets number of guests in dinner party
@@ -96,9 +96,9 @@ dinnerPlannerApp.factory('Dinner',function ($resource,$cookies,$cookieStore) {
     }
   }
 
-  this.DishSearch = $resource('http://api.bigoven.com/recipes',{pg:1,rpp:25,api_key:'dvxjQjPAhbmCkz236n860N99N6441Zb2'});
+  this.DishSearch = $resource('http://api.bigoven.com/recipes',{pg:1,rpp:25,api_key:'dvxsO9JIQp0n0O389gZr2xzlq83P223F'});
   
-  this.Dish = $resource('http://api.bigoven.com/recipe/:id',{api_key:'dvxjQjPAhbmCkz236n860N99N6441Zb2'});
+  this.Dish = $resource('http://api.bigoven.com/recipe/:id',{api_key:'dvxsO9JIQp0n0O389gZr2xzlq83P223F'});
 
   //Maybe need to add .setSelectedDish() also?!?!
 
