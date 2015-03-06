@@ -5,8 +5,15 @@ dinnerPlannerApp.controller('DinnerCtrl', function ($scope,Dinner,$cookies,$cook
 
  //Litening to changes of number of guests in the Dinner Service
  $scope.$watch(function() { return Dinner.getNumberOfGuests(); }, function(lastVal) {
-     $scope.numberOfGuests = lastVal;
+     $scope.numberOfGuests = $cookieStore.get('numberOfGuests') || lastVal;
  }, true);
+
+
+  $scope.removecookie = function(cookie){
+    $cookieStore.remove('dinnerMenuId'), cookie;
+    console.log("delete");
+  }
+
 
 
  $scope.getTotalMenuPrice = function() {
@@ -18,39 +25,36 @@ dinnerPlannerApp.controller('DinnerCtrl', function ($scope,Dinner,$cookies,$cook
         $cookieStore.put('numberOfGuests', number);
         console.log($cookieStore.get('numberOfGuests'));
   }
-  var fullMenuIds = $cookieStore.get('dinnerMenuId') || [];
-  if(fullMenuIds == []){
-    $scope.fullMenu = Dinner.getFullMenu();
+
+  $scope.fullMenu = function(){
+    var fullMenuIds = $cookieStore.get('dinnerMenuId') || [];
+    //console.log(Dinner.getFullMenu());
+    var currentFullMenu = Dinner.getFullMenu();
+    //console.log(currentFullMenu === 'object');
+    if(fullMenuIds != [] && typeof(currentFullMenu) === 'object' && currentFullMenu.length == 0){
+      $.each(fullMenuIds, function(key, value){
+          var dinnerToPush = Dinner.Dish.get({id:value});
+          Dinner.addDishToMenu(dinnerToPush);
+      });
+    }
+    return Dinner.getFullMenu();
   }
-  else{
-    $scope.fullMenu = [];
-    $.each(fullMenuIds, function(key, value){
-        console.log("Add dish from cookie to menu: " + value);
-        var dinnerToPush = Dinner.Dish.get({id:value});
-        $scope.fullMenu.push(dinnerToPush);
-        Dinner.addDishToMenu(dinnerToPush);
-    });
-  }
+    
 
   //Getting number of guests, loads from cookie if defined or use Dinner service
-  $scope.numberOfGuests = $cookieStore.get('numberOfGuests') || Dinner.getNumberOfGuests();
+//  $scope.numberOfGuests = $cookieStore.get('numberOfGuests') || Dinner.getNumberOfGuests();
 
 
   
   //Remove dish from dinner menu
   $scope.removeDishFromMenu = function(event){
     Dinner.removeDishFromMenu(event.target.id);
-    var newCookie = $cookieStore.get('dinnerMenuId');
+    var fullMenuIds = $cookieStore.get('dinnerMenuId') || [];
 
-    if (newCookie != -1) {
-
-      newCookie.splice(newCookie.indexOf(event.target.id),1);
-    $cookieStore.remove('dinnerMenuId');
-    $cookieStore.put('dinnerMenuId', newCookie);
-  }       
-  event.preventDefault();
-  return true;
-
+    if(typeof(fullMenuIds) === 'object' && fullMenuIds != []){
+          fullMenuIds.splice(fullMenuIds.indexOf(event.target.id),1);
+          $cookieStore.put('dinnerMenuId', fullMenuIds);
+    }
   }
 
 
