@@ -7,7 +7,7 @@ dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner,$co
 	
  //Litening to changes of number of guests in the Dinner Service
  $scope.$watch(function() { return Dinner.getNumberOfGuests(); }, function(lastVal) {
-     $scope.numberOfGuests = lastVal;
+     $scope.numberOfGuests = $cookieStore.get('numberOfGuests') || lastVal;
  }, true);
 
   $scope.getPriceOfSelectedDish = function(){
@@ -21,14 +21,39 @@ dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner,$co
   }
 
   $scope.addDishToMenu = function(e){
-  	Dinner.addDishToMenu($scope.selectedDish);
-    var dinnerMenuToUpdate = $cookieStore.get('dinnerMenuId') || [];
-    if(dinnerMenuToUpdate == []){
+  	var dishToAdd = $scope.selectedDish;
+    var fullMenuIds = $cookieStore.get('dinnerMenuId') || [];
+    var fullDinnerMenuCookie = [];
+    var notFound = true;          //To check if type is already in the menu
+    
 
+    //Adding to dinner service
+    Dinner.addDishToMenu(dishToAdd);
+    
+    //Getting the full menu from cookie
+    if(typeof(fullMenuIds) === 'object'){
+      $.each(fullMenuIds, function(key, value){
+          var dinnerToPush = Dinner.Dish.get({id:value});
+          fullDinnerMenuCookie.push(dinnerToPush);
+      });
     }
-    dinnerMenuToUpdate.push($scope.selectedDish.RecipeID);
-    console.log(dinnerMenuToUpdate);
-    $cookieStore.put('dinnerMenuId', dinnerMenuToUpdate);
+
+    $.each(fullDinnerMenuCookie,function(index) {
+      //Check if dish of type found and replace it
+      if(fullDinnerMenuCookie[index].Category === dishToAdd.Category) {
+        notFound = false;
+        fullMenuIds[index] = dishToAdd.RecipeID;
+        //console.log(dinnerMenuToUpdate);
+        $cookieStore.put('dinnerMenuId', fullMenuIds);
+      }
+      });
+    //If not found in menu, just add dish in the end
+    if(notFound){
+      fullMenuIds.push(dishToAdd.RecipeID);
+      $cookieStore.put('dinnerMenuId', fullMenuIds);
+    }
+
+
   }
 
 

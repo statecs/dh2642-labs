@@ -52,12 +52,14 @@ dinnerPlannerApp.factory('Dinner',function ($resource,$cookies,$cookieStore) {
   //Returns the total price of the menu (all the ingredients multiplied by number of guests).
   this.getTotalMenuPrice = function() {
     var totalMenuPrice = 0;     //To count total menu price 
-    $.each(dinnerMenu,function(index, dishFromMenu){
-      //For each ingridient, add price times number of guests
-      $.each(dishFromMenu.Ingredients,function(index,ingredient) {
-        totalMenuPrice += Math.floor(ingredient.Quantity*numberOfGuest * 100) / 100;
+    if(typeof(dinnerMenu) === 'object' && dinnerMenu != []){
+      $.each(dinnerMenu,function(index, dishFromMenu){
+        //For each ingridient, add price times number of guests
+        $.each(dishFromMenu.Ingredients,function(index,ingredient) {
+          totalMenuPrice += Math.floor(ingredient.Quantity*numberOfGuest * 100) / 100;
+        });
       });
-    });
+    }
     return totalMenuPrice;
   }
 
