@@ -20,16 +20,6 @@ dinnerPlannerApp.controller('DinnerCtrl', function ($scope,Dinner,$cookies,$cook
   }
 
   $scope.fullMenu = function(){
-    var fullMenuIds = $cookieStore.get('dinnerMenuId') || [];
-    //console.log(Dinner.getFullMenu());
-    var currentFullMenu = Dinner.getFullMenu();
-    //console.log(currentFullMenu === 'object');
-    if(fullMenuIds != [] && typeof(currentFullMenu) === 'object' && currentFullMenu.length == 0){
-      $.each(fullMenuIds, function(key, value){
-          var dinnerToPush = Dinner.Dish.get({id:value});
-          Dinner.addDishToMenu(dinnerToPush);
-      });
-    }
     return Dinner.getFullMenu();
   }
     
@@ -42,13 +32,7 @@ dinnerPlannerApp.controller('DinnerCtrl', function ($scope,Dinner,$cookies,$cook
   //Remove dish from dinner menu
   $scope.removeDishFromMenu = function(event){
     Dinner.removeDishFromMenu(event.target.id);
-    var fullMenuIds = $cookieStore.get('dinnerMenuId') || [];
-
-    if(typeof(fullMenuIds) === 'object' && fullMenuIds != []){
-          fullMenuIds.splice(fullMenuIds.indexOf(event.target.id),1);
-          $cookieStore.put('dinnerMenuId', fullMenuIds);
-    }
-  }
+ }
 
 
   //Get total price of dinner menu
