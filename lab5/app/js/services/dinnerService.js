@@ -8,21 +8,6 @@ dinnerPlannerApp.factory('Dinner',function ($resource,$cookies,$cookieStore) {
   var numberOfGuest = $cookieStore.get('numberOfGuests') || 4;
   var dinnerMenu = [];
   
-  this.loadMenu = function(dishIds){
-    var parent = this;
-    if(!(typeof(dishIds) === 'undefined')){
-      $.each(dishIds, function(index, value){
-        if(value != null){
-
-          var dishToAdd = parent.Dish.get({id:value}, function(data){
-            console.log("loadMenu: ", JSON.parse(data));
-          });
-
-          console.log("load menu (dishToadd): ", dishToAdd);
-        }
-      });
-    }
-  }
   //Sets number of guests in dinner party
   this.setNumberOfGuests = function(num) {
     numberOfGuest = num;
@@ -107,7 +92,6 @@ dinnerPlannerApp.factory('Dinner',function ($resource,$cookies,$cookieStore) {
       dinnerMenu.push(dishToAdd);
       lastVal.push(dishToAdd.RecipeID);
       console.log("Lastval(notfound): ", lastVal);
-      $cookieStore.remove('dinnerMenuId');
     }
     
     $cookieStore.put('dinnerMenuId', lastVal);
@@ -142,8 +126,25 @@ dinnerPlannerApp.factory('Dinner',function ($resource,$cookies,$cookieStore) {
   // methods created in it. You can consider that this is instead
   // of calling var model = new DinnerModel() we did in the previous labs
   // This is because Angular takes care of creating it when needed.
-  this.loadMenu($cookieStore.get('dinnerMenuId'));
-  
+  var parent = this;
+    if(typeof($cookieStore.get('dinnerMenuId')) === 'object'){
+      var menuIds = $cookieStore.get('dinnerMenuId');
+      console.log("Receating cookie, menuIds: ", menuIds, ", $cookieStore.get('dinnerMenuId'): ", $cookieStore.get('dinnerMenuId'));
+      for(var i = 0; i < menuIds.length; i++){
+          console.log("this.Dish: ", this.Dish);
+          this.Dish.get({id:menuIds[i]},function(data){
+            console.log("Recreating cookie, dish from cookie: ", data);
+            parent.addDishToMenu(data);
+          },function(data){
+            
+          });      
+        
+      }
+    }
+    else{
+      console.log("No menu data, creating empty");
+    }
+
   return this;
 
 });
