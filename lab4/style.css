@@ -178,30 +178,17 @@ button{
   border: none;
 }
 
-.loader{
-  display:none;
-    min-height:     100px;
-    background: rgba( 255, 255, 255, 0.3 ) 
-                url('images/ajax-loader.gif') 
-                50% 50% 
-                no-repeat;
-  position: relative;
+#sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    left: 250px;
+    width: 0;
+    height: 100%;
+    margin-left: -250px;
+    overflow-y: auto;
+    background: #000;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
 }
-
-/* When the body has the loading class, we turn
-   the scrollbar off with overflow:hidden */
-body.loading {
-    overflow: hidden;   
-}
-
-/* Anytime the body has the loading class, our
-   modal element will be visible */
-.loading .loader {
-    display: block;
-}
-/* Anytime the body has the loading class, our
-   modal element will be visible */
-.loading .thumbnail-dish {
-    display: none;
-}
-

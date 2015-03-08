@@ -1,0 +1,34 @@
+<!-- TODO in Lab 5: Display the dish information including image, Description, 
+Instructions, Ingredients and total cost. -->
+
+<div class="page-bar row">
+		<div class="col-md-9">
+			<h3 id="fullmenu-numguests-title">My Dinner: {{numberOfGuests}} people</h3>
+		</div>
+		<div class="col-md-2"><br />
+			<a ng-href="#/search" class="btn btn-default" id="backToMainButton" >Go back and edit dinner</a>
+		</div>
+</div> <!--ends page-bar-->
+
+
+	<div class="page-6-content">
+	<div class="row list-preparation" ng-repeat="dish in fullMenu()">
+
+		<div class="col-md-2 col-md-offset-1 thumbnail-dish"><img ng-src="{{dish.ImageURL}}" alt="Image of dish, title of dish is {{dish.Title}}" /></div>
+		<div class="col-md-3">
+			<h3>
+				<div id="mainName">{{dish.Title}}</div>
+			</h3>
+			<p>INGREDIENTS</p>
+		</div>
+		<div class="col-md-5">
+			<h4>Preparations</h4>
+			<p><div id="mainDescription">{{dish.Instructions}}</div></p>
+		</div>
+	</div>
+
+
+
+</div>
+
+ 

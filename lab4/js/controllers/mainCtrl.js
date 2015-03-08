@@ -11,7 +11,7 @@ var MainCtrl = function(view,model) {
 		model.setSelectedDish(this.id);
 
 		/* #pageThree change CSS to display:inline; */
-		$("#dishToSelectView").show("slow");
+		$("#dishToSelectView").show();
 		/* #pageTwo change CSS to display:none; */
 		$("#mainView").hide();
 
@@ -33,9 +33,15 @@ var MainCtrl = function(view,model) {
 		console.log(searchedFor);
 		model.getAllDishes($("#dishType option:selected").val(), searchedFor);
 	});
+	$('input#dishFilter').on("input", function(e) {
+		e.preventDefault();
+		var searchedFor = this.value;
+		console.log(searchedFor);
+		model.getAllDishes($("#dishType option:selected").val(), searchedFor);
+	});
 
 	$(document).on({
-    	ajaxStart: function() { $(".main-container").addClass("loading");    },
+    	ajaxStart: function() { $(".main-container").addClass("loading");},
      	ajaxStop: function() { $(".main-container").removeClass("loading"); }    
 	});
 

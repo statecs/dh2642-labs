@@ -1,0 +1,59 @@
+<!-- We include the sidebar as it is shared across two screens. -->
+<ng-include src="'partials/dinner-sidebar.html'" ng-controller="DinnerCtrl"></ng-include>
+
+<!-- TODO in Lab 5: Display the dish information including image, Description, 
+Instructions, Ingredients and total cost. -->
+<div class="row" id="page-content-wrapper" >
+	<div class="col-md-5">
+			
+			<h3 ng-src="{{selectDish.Title}}" id="dishHeader" class="title">{{selectedDish.Title}}</h3>
+			
+			<div class="image"><img ng-src="{{selectedDish.ImageURL}}" class="dishImage" alt="Image of dish, title of dish is {{selectedDish.Title}}" /></div>
+
+			<h3> Preparation</h3>
+			<p ng-src="{{selectDish.Instructions}}" class="description">{{selectedDish.Instructions}}</p>
+
+			<a ng-href="#/search" class="btn btn-default" id="backButton">Back to search</a>
+	</div>
+
+
+
+	<!--<div class="ingredients col-md-5" ng-repeat="ingredient in ingredients | filter:query | orderBy:Title">-->
+
+	<div class="ingredients col-md-5"> 
+				
+		<h3 id="h3-ingridents-dishToSelect">Ingredients for <span ng-bind="numberOfGuests"></span> people</h3>
+		<hr>
+		<!--Used for ingredient list for selected item-->
+		<div class="ing">
+		
+			<div class="row" ng-repeat="ingredient in selectedDish.Ingredients">
+				<div class="col-md-1">{{ingredient.Quantity | number:2}}</div>
+				<div class="col-md-1">{{ingredient.MetricUnit}}</div>
+				<div class="col-md-2"></div>
+				<div class="col-md-6">{{ingredient.Name}}</div>
+				<div class="col-md-1 text-right">SEK</div>
+				<div class="col-md-1 text-right">{{ingredient.Quantity * numberOfGuests | number:2}}</div>			
+			</div>
+
+		</div>
+
+		<hr>
+
+
+		<div class="row">
+			<div class="buttonconfirm col-md-6">
+				<a ng-click="addDishToMenu($event)" ng-href="#search" class="btn btn-default">Confirm dish</a>
+			</div>
+
+			<div class="totalsek col-md-6">
+				<div id="totalprice-ingredients" class="text-right">TOTAL SEK: {{getPriceOfSelectedDish() | number:2}}</div>
+			</div>
+		</div>
+
+	</div>
+
+
+</div>
+
+ 
