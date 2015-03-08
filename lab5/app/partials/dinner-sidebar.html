@@ -20,7 +20,6 @@ this with Total price of the menu -->
         <div class="col-md-6 text-right">Dish Name</div>
         <div class="col-md-6 text-right">Cost</div>
         </div>
-        <a ng-click="removecookie()">Delete all</a>
         
         <div class="row ingredient" ng-repeat="dish in fullMenu()">
             <div class="col-md-1">
@@ -35,6 +34,7 @@ this with Total price of the menu -->
         <div class="row bg-info">
         <div id="sidebar-totalprice" class="col-md-12 text-right">Total Price: {{getTotalMenuPrice()  | number:2}}</div>
         </div>
+        <a ng-click="removecookie()">Delete all</a>
         <hr/>
         <a ng-href="#/overview" id="sidebarConfirmButton" class="btn btn-default col-md-offset-3">Confirm Dinner</a>
     </div>

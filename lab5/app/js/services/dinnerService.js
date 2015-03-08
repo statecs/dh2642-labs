@@ -76,42 +76,44 @@ dinnerPlannerApp.factory('Dinner',function ($resource,$cookies,$cookieStore) {
   //Adds the passed dish to the menu. If the dish of that type already exists on the menu
   //it is removed from the menu and the new one added.
   this.addDishToMenu = function(dishToAdd) {
-
     console.log("addToDish, dishToAdd: ", dishToAdd);
-   // var notFound = true;          //To check if type is already in the menu
-    var lastVal = $cookieStore.get('dinnerMenuId') || [];
-
+    var notFound = true;                                             //To check if type is already in the menu
+    var dinnerMenuIds = $cookieStore.get('dinnerMenuId') || [];      //The dinnerMenuIds from cookie to update
+    console.log("dinnerMenuIds before adding): ", dinnerMenuIds);
 
     if($cookieStore.get('dinnerMenuId')){
-     
-      console.log("Lastval(notfound): ", lastVal);
-       dinnerMenu.push(dishToAdd);
-      lastVal.push(dishToAdd.RecipeID);
+      //Check if dish of type found and replace it
+      $.each(dinnerMenu,function(index) {
+        if(dinnerMenu[index].Category === dishToAdd.Category) {
+          notFound = false;
+          dinnerMenu[index] = dishToAdd;
+          dinnerMenuIds[index] = dishToAdd.RecipeID;
+          console.log("dinnerMenuIds after adding(found): " , dinnerMenuIds);
+        }
+      });
+      //If not found, push it to the end of current menu
+      if(notFound){
+        dinnerMenu.push(dishToAdd);
+        dinnerMenuIds.push(dishToAdd.RecipeID);
+        console.log("dinnerMenuIds after adding(notfound): ", dinnerMenuIds);
+      }
 
-
-    } else{
-       dinnerMenu.push(dishToAdd);
-      lastVal.push(dishToAdd.RecipeID);
     }
-
-       $cookieStore.put('dinnerMenuId', lastVal);
-
-
-  /*   //If not found in menu, just add dish in the end
-    if(notFound){
+    //This else condition maybe is unecessary? 
+    else{
+      //If cookie is empty, add item to the empty menu
       dinnerMenu.push(dishToAdd);
-      lastVal.push(dishToAdd.RecipeID);
-      console.log("Lastval(notfound): ", lastVal);
+      dinnerMenuIds.push(dishToAdd.RecipeID);
+      console.log("dinnerMenuIds after adding (Empty cookie): ", dinnerMenuIds);
     }
-    
-    $cookieStore.put('dinnerMenuId', lastVal);
-    console.log($cookieStore.get('dinnerMenuId'));*/
+    //Finally, put the updated dinnerMenuIds in the cookie
+    $cookieStore.put('dinnerMenuId', dinnerMenuIds);
   }
 
   //Removes dish from menu
   this.removeDishFromMenu = function(recipeId) {
     var indexToRemove = -1;     //Index of item to remove
-    var lastVal = $cookieStore.get('dinnerMenuId') || [];
+    var dinnerMenuIds = $cookieStore.get('dinnerMenuId') || [];
     $.each(dinnerMenu,function(index, dishFromMenu){
       //Check if 'id' is in dinnerMenu
       if(dishFromMenu.RecipeID == recipeId){
@@ -121,8 +123,8 @@ dinnerPlannerApp.factory('Dinner',function ($resource,$cookies,$cookieStore) {
     //Remove dish from menu if found
     if(indexToRemove != -1){
       dinnerMenu.splice(indexToRemove,1);
-      lastVal.splice(indexToRemove,1);
-      $cookieStore.put('dinnerMenuId', lastVal);
+      dinnerMenuIds.splice(indexToRemove,1);
+      $cookieStore.put('dinnerMenuId', dinnerMenuIds);
     }
   }
 
