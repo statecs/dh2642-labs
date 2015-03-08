@@ -2,16 +2,6 @@
 // display or modify the dinner menu
 dinnerPlannerApp.controller('DinnerCtrl', function ($scope,Dinner,$cookies,$cookieStore) {
 
-
- //Litening to changes of number of guests in the Dinner Service
- $scope.$watch(function() { return Dinner.getNumberOfGuests(); }, function(lastVal) {
-     $scope.numberOfGuests = lastVal;
- }, true);
-
-
- $scope.getTotalMenuPrice = function() {
-    return Dinner.getTotalMenuPrice();
-  }
   //Sets number of guests, also stores it in a cookie
   $scope.setNumberOfGuest = function (number) {
         Dinner.setNumberOfGuests(number);
@@ -34,26 +24,19 @@ dinnerPlannerApp.controller('DinnerCtrl', function ($scope,Dinner,$cookies,$cook
 
   //Getting number of guests, loads from cookie if defined or use Dinner service
   $scope.numberOfGuests = $cookieStore.get('numberOfGuests') || Dinner.getNumberOfGuests();
-
-
   
   //Remove dish from dinner menu
   $scope.removeDishFromMenu = function(event){
     Dinner.removeDishFromMenu(event.target.id);
     var newCookie = $cookieStore.get('dinnerMenuId');
-
-    if (newCookie != -1) {
-
-      newCookie.splice(newCookie.indexOf(event.target.id),1);
+    newCookie.splice(newCookie.indexOf(event.target.id),1);
     $cookieStore.remove('dinnerMenuId');
     $cookieStore.put('dinnerMenuId', newCookie);
-  }       
-  event.preventDefault();
-  return true;
-
   }
 
-
+  $scope.$watch(function() { return Dinner.getTotalMenuPrice(); }, function(lastVal) {
+     $scope.getTotalMenuPrice = lastVal;
+ }, true);
   //Get total price of dinner menu
   //$scope.getTotalMenuPrice = Dinner.getTotalMenuPrice();
   
