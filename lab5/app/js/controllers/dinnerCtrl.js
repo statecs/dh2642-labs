@@ -9,6 +9,12 @@ dinnerPlannerApp.controller('DinnerCtrl', function ($scope,Dinner,$cookies,$cook
  }, true);
 
 
+  $scope.removecookie = function(cookie){
+    $cookieStore.remove('dinnerMenuId'), cookie;
+     window.location.reload(); 
+  }
+
+
  $scope.getTotalMenuPrice = function() {
     return Dinner.getTotalMenuPrice();
   }
