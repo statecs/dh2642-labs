@@ -4,7 +4,13 @@
 // service is created first time it is needed and then just reuse it
 // the next time.
 dinnerPlannerApp.factory('Dinner',function ($resource,$cookies,$cookieStore) {
-  
+
+    this.DishSearch = $resource('http://api.bigoven.com/recipes',{pg:1,rpp:25,api_key:'dvxjQjPAhbmCkz236n860N99N6441Zb2'});
+
+     
+      this.Dish = $resource('http://api.bigoven.com/recipe/:id',{api_key:'dvxjQjPAhbmCkz236n860N99N6441Zb2'});
+ 
+
   var numberOfGuest = $cookieStore.get('numberOfGuests') || 4;
   var dinnerMenu = [];
   
@@ -72,13 +78,40 @@ dinnerPlannerApp.factory('Dinner',function ($resource,$cookies,$cookieStore) {
   this.addDishToMenu = function(dishToAdd) {
 
     console.log("addToDish, dishToAdd: ", dishToAdd);
-    var notFound = true;          //To check if type is already in the menu
-    var lastVal = $cookieStore.get('dinnerMenuId') || [];
-    console.log("Lastval (before adding): ", lastVal);
+   // var notFound = true;          //To check if type is already in the menu
+ var lastVal = $cookieStore.get('dinnerMenuId') || [];
+
+    if ($cookieStore.get('dinnerMenuId') == []) {
+                menuId = $cookieStore.get('dinnerMenuId');
+                console.log(menuId);
+                console.log("LOL");
+
+                    for (var i = 0; i<menuId.length; ++i) {
+                        var url = "http://api.bigoven.com/recipe/" + menuId[i] + "?api_key='dvxjQjPAhbmCkz236n860N99N6441Zb2'";
+this.Dish.get({id:menuId[i]},function(data){
+     dinnerMenu.push(data);
+   },function(data){
+       
+     
+   });
+}
+
+
+    }
+    else{
+    
+      dinnerMenu.push(dishToAdd);
+      lastVal.push(dishToAdd.RecipeID);
+
+
+
+
+   // var lastVal = $cookieStore.get('dinnerMenuId') || [];
+   // console.log("Lastval (before adding): ", lastVal);
     $.each(dinnerMenu,function(index) {
       //Check if dish of type found and replace it
+      console.log("test");
       if(dinnerMenu[index].Category === dishToAdd.Category) {
-        notFound = false;
         dinnerMenu[index] = dishToAdd;
 
         lastVal[index] = dishToAdd.RecipeID;
@@ -87,7 +120,13 @@ dinnerPlannerApp.factory('Dinner',function ($resource,$cookies,$cookieStore) {
     
       }
     });
-    //If not found in menu, just add dish in the end
+
+    }
+       console.log("Lastval(notfound): ", lastVal);
+       $cookieStore.put('dinnerMenuId', lastVal);
+
+
+  /*   //If not found in menu, just add dish in the end
     if(notFound){
       dinnerMenu.push(dishToAdd);
       lastVal.push(dishToAdd.RecipeID);
@@ -95,7 +134,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource,$cookies,$cookieStore) {
     }
     
     $cookieStore.put('dinnerMenuId', lastVal);
-    console.log($cookieStore.get('dinnerMenuId'));
+    console.log($cookieStore.get('dinnerMenuId'));*/
   }
 
   //Removes dish from menu
@@ -116,9 +155,6 @@ dinnerPlannerApp.factory('Dinner',function ($resource,$cookies,$cookieStore) {
     }
   }
 
-  this.DishSearch = $resource('http://api.bigoven.com/recipes',{pg:1,rpp:25,api_key:'dvxjQjPAhbmCkz236n860N99N6441Zb2'});
-  
-  this.Dish = $resource('http://api.bigoven.com/recipe/:id',{api_key:'dvxjQjPAhbmCkz236n860N99N6441Zb2'});
 
   //Maybe need to add .setSelectedDish() also?!?!
 
@@ -126,8 +162,9 @@ dinnerPlannerApp.factory('Dinner',function ($resource,$cookies,$cookieStore) {
   // methods created in it. You can consider that this is instead
   // of calling var model = new DinnerModel() we did in the previous labs
   // This is because Angular takes care of creating it when needed.
+ 
   var parent = this;
-    if(typeof($cookieStore.get('dinnerMenuId')) === 'object'){
+        if(typeof($cookieStore.get('dinnerMenuId')) === 'object'){
       var menuIds = $cookieStore.get('dinnerMenuId');
       console.log("Receating cookie, menuIds: ", menuIds, ", $cookieStore.get('dinnerMenuId'): ", $cookieStore.get('dinnerMenuId'));
       for(var i = 0; i < menuIds.length; i++){
@@ -144,6 +181,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource,$cookies,$cookieStore) {
     else{
       console.log("No menu data, creating empty");
     }
+
 
   return this;
 
