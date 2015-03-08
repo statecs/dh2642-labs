@@ -28,7 +28,7 @@ dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner,$co
     }
     dinnerMenuToUpdate.push($scope.selectedDish.RecipeID);
     console.log(dinnerMenuToUpdate);
-    $cookieStore.put('dinnerMenuId', dinnerMenuToUpdate);
+    $cookieStore.put('dinnerMenuIde', dinnerMenuToUpdate);
   }
 
 
